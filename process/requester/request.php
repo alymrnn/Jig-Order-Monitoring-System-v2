@@ -62,6 +62,13 @@ if ($method == 'fetch_request') {
 			$approval_date_of_quotation = $j['approval_date_of_quotation']; // May 16
 			$restriction_of_approval_date_of_quotation = date('Y-m-d', (strtotime('+7 day', strtotime($restriction_of_reply_quotation)))); // May 24 + 7 days = May 31
 
+			$required_delivery_date = $j['required_delivery_date'];
+			$color4 = "";
+
+			if (!empty($required_delivery_date) && $required_delivery_date < $server_date_only) {
+				$color4 = "background-color:#C83535; color:#FFF";
+			}
+
 			if ($supplier == 'Local') {
 
 			} else if ($supplier == 'FAS' || $supplier == 'FAPV' || $supplier == 'FSKIP') {
@@ -117,21 +124,21 @@ if ($method == 'fetch_request') {
 			echo '</td>';
 
 			echo '<td style = "' . $color . '">' . $c . '</td>';
-			echo '<td style = " ' . $color . $cursor . '"  class="' . $class_mods . '" onclick="get_cancel_details(&quot;' . $j['request_id'] . '~!~' . $j['cancel_date'] . '~!~' . $j['cancel_reason'] . '~!~' . $j['cancel_by'] . '~!~' . $j['cancel_section'] . '&quot;)">' . $j['status'] . '</td>';
-			echo '<td style = "' . $color . '">' . $j['carmaker'] . '</td>';
-			echo '<td style = "' . $color . '">' . $j['carmodel'] . '</td>';
-			echo '<td style = "' . $color . '">' . $j['product'] . '</td>';
-			echo '<td style = "' . $color . '">' . $j['jigname'] . '</td>';
-			echo '<td style = "' . $color . '">' . $j['drawing_no'] . '</td>';
-			echo '<td style = "' . $color . '">' . $j['type'] . '</td>';
-			echo '<td style = "' . $color . '">' . $j['qty'] . '</td>';
-			echo '<td style = "' . $color . '">' . $j['purpose'] . '</td>';
-			echo '<td style = "' . $color . '">' . $j['budget'] . '</td>';
-			echo '<td style = "' . $color . '">' . $j['date_requested'] . '</td>';
-			echo '<td style = "' . $color . '">' . $j['requested_by'] . '</td>';
-			echo '<td style = "' . $color . '">' . $j['required_delivery_date'] . '</td>';
-			echo '<td style = "' . $color . '">' . $j['remarks'] . '</td>';
-			echo '<td style = "' . $color . '">' . $j['uploaded_by'] . '</td>';
+			echo '<td style = " ' . $color4 . $cursor . '"  class="' . $class_mods . '" onclick="get_cancel_details(&quot;' . $j['request_id'] . '~!~' . $j['cancel_date'] . '~!~' . $j['cancel_reason'] . '~!~' . $j['cancel_by'] . '~!~' . $j['cancel_section'] . '&quot;)">' . $j['status'] . '</td>';
+			echo '<td style = "' . $color4 . '">' . $j['carmaker'] . '</td>';
+			echo '<td style = "' . $color4 . '">' . $j['carmodel'] . '</td>';
+			echo '<td style = "' . $color4 . '">' . $j['product'] . '</td>';
+			echo '<td style = "' . $color4 . '">' . $j['jigname'] . '</td>';
+			echo '<td style = "' . $color4 . '">' . $j['drawing_no'] . '</td>';
+			echo '<td style = "' . $color4 . '">' . $j['type'] . '</td>';
+			echo '<td style = "' . $color4 . '">' . $j['qty'] . '</td>';
+			echo '<td style = "' . $color4 . '">' . $j['purpose'] . '</td>';
+			echo '<td style = "' . $color4 . '">' . $j['budget'] . '</td>';
+			echo '<td style = "' . $color4 . '">' . $j['date_requested'] . '</td>';
+			echo '<td style = "' . $color4 . '">' . $j['requested_by'] . '</td>';
+			echo '<td style = "' . $color4 . '">' . $j['required_delivery_date'] . '</td>';
+			echo '<td style = "' . $color4 . '">' . $j['remarks'] . '</td>';
+			echo '<td style = "' . $color4 . '">' . $j['uploaded_by'] . '</td>';
 			//rfq
 			echo '<td style = "' . $color2 . '">' . $j['date_of_issuance_rfq'] . '</td>';
 			echo '<td style = "' . $color2 . '">' . $j['rfq_no'] . '</td>';
@@ -186,25 +193,35 @@ if ($method == 'fetch_requested_processed') {
 	$stmt = $conn->prepare($query);
 	$stmt->execute();
 	if ($stmt->rowCount() > 0) {
-		foreach ($stmt->fetchALL() as $j) {
+		foreach ($stmt->fetchAll() as $j) {
 			$c++;
-			echo '<tr>';
+
+			// Check if required delivery date is delayed
+			$required_delivery_date = $j['required_delivery_date'];
+			$color4 = "";
+
+			// Check if required delivery date is delayed (before today's date)
+			if (!empty($required_delivery_date) && $required_delivery_date < $server_date_only) {
+				$color4 = "background-color:#C83535; color:#FFF";
+			}
+
+			echo '<tr>'; 
 			echo '<td>' . $c . '</td>';
-			echo '<td>' . $j['status'] . '</td>';
-			echo '<td>' . $j['carmaker'] . '</td>';
-			echo '<td>' . $j['carmodel'] . '</td>';
-			echo '<td>' . $j['product'] . '</td>';
-			echo '<td>' . $j['jigname'] . '</td>';
-			echo '<td>' . $j['drawing_no'] . '</td>';
-			echo '<td>' . $j['type'] . '</td>';
-			echo '<td>' . $j['qty'] . '</td>';
-			echo '<td>' . $j['purpose'] . '</td>';
-			echo '<td>' . $j['budget'] . '</td>';
-			echo '<td>' . $j['date_requested'] . '</td>';
-			echo '<td>' . $j['requested_by'] . '</td>';
-			echo '<td>' . $j['required_delivery_date'] . '</td>';
-			echo '<td>' . $j['remarks'] . '</td>';
-			echo '<td>' . $j['uploaded_by'] . '</td>';
+			echo '<td style="' . $color4 . '">' . $j['status'] . '</td>';
+			echo '<td style="' . $color4 . '">' . $j['carmaker'] . '</td>';
+			echo '<td style="' . $color4 . '">' . $j['carmodel'] . '</td>';
+			echo '<td style="' . $color4 . '">' . $j['product'] . '</td>';
+			echo '<td style="' . $color4 . '">' . $j['jigname'] . '</td>';
+			echo '<td style="' . $color4 . '">' . $j['drawing_no'] . '</td>';
+			echo '<td style="' . $color4 . '">' . $j['type'] . '</td>';
+			echo '<td style="' . $color4 . '">' . $j['qty'] . '</td>';
+			echo '<td style="' . $color4 . '">' . $j['purpose'] . '</td>';
+			echo '<td style="' . $color4 . '">' . $j['budget'] . '</td>';
+			echo '<td style="' . $color4 . '">' . $j['date_requested'] . '</td>';
+			echo '<td style="' . $color4 . '">' . $j['requested_by'] . '</td>';
+			echo '<td style="' . $color4 . '">' . $j['required_delivery_date'] . '</td>';
+			echo '<td style="' . $color4 . '">' . $j['remarks'] . '</td>';
+			echo '<td style="' . $color4 . '">' . $j['uploaded_by'] . '</td>';
 			echo '</tr>';
 		}
 	}

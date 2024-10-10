@@ -49,6 +49,10 @@
                   <div class="col-sm-2">
                     <label>Count:&ensp;</label><b><span class="h2" id="count_view"></span></b><br>
                   </div>
+                  <div class="col-6 offset-4">
+                    <p style="background: #FFFAD1; border-left: 3px solid #E89F4C; font-size: 16px;"><span><i>Note:</i></span> Items
+                      highlighted in <span style="color:red; font-weight: bold">RED</span> are those that are delayed based on the <span style="color:red; font-weight: bold">REQUIRED DELIVERY DATE</span></p>
+                  </div>
                 </div>
                 <div class="row mb-4">
                   <div class="col-sm-2">

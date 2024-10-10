@@ -101,8 +101,15 @@
                           <b><span class="h3" id="count_view"></span></b><br>
                           <label>Count</label>
                         </div>
+                        <div class="col-6 offset-5">
+                          <p style="background: #FFFAD1; border-left: 3px solid #E89F4C; font-size: 16px;">
+                            <span><i>Note:</i></span> Items
+                            highlighted in <span style="color:red; font-weight: bold">RED</span> are those that are
+                            delayed based on the <span style="color:red; font-weight: bold">REQUIRED DELIVERY
+                              DATE</span></p>
+                        </div>
                       </div>
-                     
+
                       <div class="row">
                         <div class="col-12">
                           <div class="card-body table-responsive p-0" style="height: 500px;">
