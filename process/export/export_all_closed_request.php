@@ -74,9 +74,9 @@ if ($stmt->rowCount() > 0) {
 			$row['supplier'],
 			$row['etd'],
 			$row['eta'],
-			$row['actual_arrival_date'],
 			$row['invoice_no'],
 			$row['remarks2'],
+			$row['actual_arrival_date'],
 
 		);
 		fputcsv($f, $lineData, $delimiter);

@@ -172,6 +172,8 @@ if (isset($_POST['upload'])) {
                             $request_id = $x['request_id'];
                         }
 
+                        $c_uploaded_by = $_SESSION['fullname'];
+
                         $query = "UPDATE joms_rfq_process SET 
                         date_reply_quotation = '$date_reply_quotation', 
                         leadtime = '$leadtime', 
@@ -184,7 +186,7 @@ if (isset($_POST['upload'])) {
                         fsib_code = '$fsib_code',
                         date_sent_to_internal_signatories = '$date_sent_to_internal_signatories',
                         target_approval_date_of_quotation = '$target_approval_date_of_quotation',
-                        c_uploaded_by = '" . $_SESSION['fullname'] . "',
+                        c_uploaded_by = '$c_uploaded_by',
                         c_date_updated = '$server_date_time'
                         WHERE request_id = '$request_id'";
 

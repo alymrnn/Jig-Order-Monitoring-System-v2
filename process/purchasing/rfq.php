@@ -155,7 +155,7 @@ if ($method == 'filter_rfq_process') {
 		// query select joms complete rfq
 		$query = $query . ", joms_rfq_process.date_reply_quotation, joms_rfq_process.leadtime, joms_rfq_process.quotation_no, joms_rfq_process.unit_price_jpy, joms_rfq_process.unit_price_usd, joms_rfq_process.unit_price_php, joms_rfq_process.total_amount, joms_rfq_process.fsib_no, joms_rfq_process.fsib_code, joms_rfq_process.date_sent_to_internal_signatories, joms_rfq_process.target_approval_date_of_quotation, joms_rfq_process.c_uploaded_by";
 		// query select joms po eta
-		$query = $query . ", joms_po_process.approval_date_of_quotation, joms_po_process.target_date_submission_to_purchasing, joms_po_process.actual_date_of_submission_to_purchasing, joms_po_process.target_po_date, joms_po_process.po_date, joms_po_process.po_no, joms_po_process.supplier, joms_po_process.etd, joms_po_process.eta, joms_po_process.po_uploaded_by";
+		$query = $query . ", joms_po_process.approval_date_of_quotation, joms_po_process.target_date_submission_to_purchasing, joms_po_process.actual_date_of_submission_to_purchasing, joms_po_process.target_po_date, joms_po_process.po_date, joms_po_process.po_no, joms_po_process.supplier, joms_po_process.etd, joms_po_process.eta, joms_po_process.actual_arrival_date, joms_po_process.invoice_no, joms_po_process.po_uploaded_by, joms_po_process.remarks AS remarks2";
 	}
 
 	// query from table left joins
@@ -191,20 +191,49 @@ if ($method == 'filter_rfq_process') {
 			// $approval_date_of_quotation = $j['approval_date_of_quotation']; 
 			$restriction_of_approval_date_of_quotation = date('Y-m-d', (strtotime('+7 day', strtotime($restriction_of_reply_quotation)))); // May 24 + 7 days = May 31
 
+			// Declaration
+
 			$targetReplyQuotation = $j['target_date_reply_quotation'];
-			$dateReplyQuotation = $j['date_reply_quotation'];
-			$targetApprovalDateQuotation = $j['target_approval_date_of_quotation'];
-			$approvalDateQuotation = $j['approval_date_of_quotation'];
-			$actualDateSub = $j['actual_date_of_submission_to_purchasing'];
-			$poDate = $j['po_date'];
-			$etd = $j['etd'];
-			$eta = $j['eta'];
-			$server_date_only;
-
 			$targetReplyQuotation = date('Y-m-d', (strtotime('13 day', strtotime($targetReplyQuotation))));
-			$targetApprovalDateQuotation = date('Y-m-d', (strtotime('3 day', strtotime($targetApprovalDateQuotation))));
-			$actualDateSub = date('Y-m-d', (strtotime('2 day', strtotime($actualDateSub))));
 
+			$dateReplyQuotation = "";
+			if (!empty($j['date_reply_quotation'])) {
+				$dateReplyQuotation = $j['date_reply_quotation'];
+			}
+			
+			$targetApprovalDateQuotation = "";
+			if (!empty($j['target_approval_date_of_quotation'])) {
+				$targetApprovalDateQuotation = $j['target_approval_date_of_quotation'];
+				$targetApprovalDateQuotation = date('Y-m-d', (strtotime('3 day', strtotime($targetApprovalDateQuotation))));
+			}
+
+			$approvalDateQuotation = "";
+			if (!empty($j['approval_date_of_quotation'])) {
+				$approvalDateQuotation = $j['approval_date_of_quotation'];
+			}
+
+			$actualDateSub = "";
+			if (!empty($j['actual_date_of_submission_to_purchasing'])) {
+				$actualDateSub = $j['actual_date_of_submission_to_purchasing'];
+				$actualDateSub = date('Y-m-d', (strtotime('2 day', strtotime($actualDateSub))));
+			}
+
+			$poDate = "";
+			if (!empty($j['po_date'])) {
+				$poDate = $j['po_date'];
+			}
+
+			$etd = "";
+			if (!empty($j['etd'])) {
+				$etd = $j['etd'];
+			}
+
+			$eta = "";
+			if (!empty($j['eta'])) {
+				$eta = $j['eta'];
+			}
+
+			// Conditions
 
 			if (($targetReplyQuotation < $dateReplyQuotation) || ($dateReplyQuotation == '1970-01-01')) {
 				$targetReplyQuotationColor = "background-color:red;";
@@ -232,18 +261,18 @@ if ($method == 'filter_rfq_process') {
 				$etaColor = "";
 			}
 
-
-
-
 			if ($date_of_issuance_rfq == '' && $server_date_only > $restriction_of_issuance_rfq || $date_of_issuance_rfq > $restriction_of_issuance_rfq) {
 				$color = "background-color:red;";
 
 			} else {
 				$color = "";
 			}
+
 			echo '<tr>';
 			echo '<td>';
+			
 			$disable_row = '';
+
 			if ($rfq_status_search == 'cancelled') {
 				$disable_row = 'disabled';
 				$cursor = 'cursor:pointer';
@@ -319,9 +348,9 @@ if ($method == 'filter_rfq_process') {
 						echo '<td>' . $j['supplier'] . '</td>';
 						echo '<td style = "' . $etdColor . '">' . $j['etd'] . '</td>';
 						echo '<td style = "' . $etaColor . '">' . $j['eta'] . '</td>';
-						echo '<td></td>';
-						echo '<td></td>';
-						echo '<td></td>';
+						echo '<td>' . $j['invoice_no'] . '</td>';
+						echo '<td>' . $j['remarks2'] . '</td>';
+						echo '<td>' . $j['actual_arrival_date'] . '</td>';
 						echo '<td>' . $j['po_uploaded_by'] . '</td>';
 					}
 				}
@@ -331,6 +360,7 @@ if ($method == 'filter_rfq_process') {
 		}
 	}
 }
+
 
 if ($method == 'cancellation') {
 	$id = [];

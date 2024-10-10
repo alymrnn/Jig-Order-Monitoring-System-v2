@@ -32,7 +32,7 @@ if ($method == 'fetch_request') {
 	}
 
 	//color for coding for the delay of date 
-	$query = $query . " AND (joms_request.date_updated >= '$request_date_from 00:00:00' AND joms_request.date_updated <= '$request_date_to 23:59:59')";
+	$query = $query . " AND (joms_request.date_requested >= '$request_date_from' AND joms_request.date_requested <= '$request_date_to')";
 
 	$stmt = $conn->prepare($query);
 	$stmt->execute();

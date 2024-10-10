@@ -164,8 +164,11 @@ if (isset($_POST['upload'])) {
                         foreach ($res->fetchALL() as $x) {
                             $id = $x['id'];
                         }
+
+                        $po_uploaded_by = $_SESSION['fullname'];
+
                         $insert = "INSERT INTO joms_po_process(`request_id`, `approval_date_of_quotation`, `target_date_submission_to_purchasing`, `actual_date_of_submission_to_purchasing`, `target_po_date`, `po_date`, `po_no`, `supplier`, `etd`, `eta`, `actual_arrival_date`, `invoice_no`,`remarks`, `po_uploaded_by`) 
-                         VALUES ('$request_id', '$approval_date_of_quotation', '$target_date_submission_to_purchasing', '$actual_date_of_submission_to_purchasing', '$target_po_date', '$po_date', '$po_no',  '$supplier', '$etd', '$eta', '$actual_arrival_date', '$invoice_no', '$remarks2', '" . $_SESSION['fullname'] . "')";
+                         VALUES ('$request_id', '$approval_date_of_quotation', '$target_date_submission_to_purchasing', '$actual_date_of_submission_to_purchasing', '$target_po_date', '$po_date', '$po_no',  '$supplier', '$etd', '$eta', '$actual_arrival_date', '$invoice_no', '$remarks2', '$po_uploaded_by')";
                         $stmt = $conn->prepare($insert);
                         if ($stmt->execute()) {
                             // $error = 0;
@@ -191,6 +194,8 @@ if (isset($_POST['upload'])) {
                         if ($stmt->rowCount() > 0) {
                             foreach ($stmt->fetchALL() as $j) {
                                 $request_id = $j['request_id'];
+                                $po_uploaded_by = $_SESSION['fullname'];
+
                                 $stmt = NULL;
                                 $query = "UPDATE joms_po_process SET 
                                
@@ -208,7 +213,7 @@ if (isset($_POST['upload'])) {
                                 invoice_no = '$invoice_no',
                                 -- classification = '$classification',
                                 remarks = '$remarks2', 
-                                po_uploaded_by = '" . $_SESSION['fullname'] . "' WHERE request_id = '$request_id'";
+                                po_uploaded_by = '$po_uploaded_by' WHERE request_id = '$request_id'";
                                 $stmt = $conn->prepare($query);
                                 if ($stmt->execute()) {
                                     $error = 0;

@@ -149,7 +149,9 @@ if (isset($_POST['upload'])) {
                             $id = $x['id'];
                         }
 
-                        $insert = "INSERT INTO joms_rfq_process(`request_id`, `date_of_issuance_rfq`, `rfq_no`, `target_date_reply_quotation`, `item_code`, `i_uploaded_by`) VALUES ('$request_id','$date_of_issuance_rfq','$rfq_no','$target_date_reply_quotation', '$item_code', '" . $_SESSION['fullname'] . "')";
+                        $i_uploaded_by = $_SESSION['fullname'];
+
+                        $insert = "INSERT INTO joms_rfq_process(`request_id`, `date_of_issuance_rfq`, `rfq_no`, `target_date_reply_quotation`, `item_code`, `i_uploaded_by`) VALUES ('$request_id','$date_of_issuance_rfq','$rfq_no','$target_date_reply_quotation', '$item_code', '$i_uploaded_by')";
                         $stmt = $conn->prepare($insert);
                         if ($stmt->execute()) {
                             // $error = 0;
@@ -174,9 +176,10 @@ if (isset($_POST['upload'])) {
                         if ($stmt->rowCount() > 0) {
                             foreach ($stmt->fetchALL() as $j) {
                                 $request_id = $j['request_id'];
+                                $i_uploaded_by = $_SESSION['fullname'];
 
                                 $stmt = NULL;
-                                $query = "UPDATE joms_rfq_process SET date_of_issuance_rfq = '$date_of_issuance_rfq', rfq_no = '$rfq_no', target_date_reply_quotation = '$target_date_reply_quotation', item_code = '$item_code', i_uploaded_by = '" . $_SESSION['fullname'] . "', i_date_updated = '$server_date_time' WHERE request_id = '$request_id'";
+                                $query = "UPDATE joms_rfq_process SET date_of_issuance_rfq = '$date_of_issuance_rfq', rfq_no = '$rfq_no', target_date_reply_quotation = '$target_date_reply_quotation', item_code = '$item_code', i_uploaded_by = '$i_uploaded_by', i_date_updated = '$server_date_time' WHERE request_id = '$request_id'";
                                 $stmt = $conn->prepare($query);
                                 if ($stmt->execute()) {
                                     $error = 0;
