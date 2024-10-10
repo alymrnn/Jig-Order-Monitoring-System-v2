@@ -28,9 +28,11 @@
           <div class="card card-secondary">
             <div class="card-header">
               <h3 class="card-title"></h3>
-              <button type="button" class="btn btn-danger ml-1" id="btnCancel" data-toggle="modal"
+              <button type="button" class="btn btn-danger ml-1 mr-2" id="btnCancel" data-toggle="modal"
                 data-target="#cancel_request" disabled>
                 Cancel Request</button>
+              <button type="button" class="btn btn-primary">
+                Export Record</button>
               <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
                   <i class="fas fa-minus"></i>
@@ -43,25 +45,42 @@
             <!-- /.card-header -->
             <div class="card-body">
               <div class="container-fluid">
-                <div class="row mb-4">
-                  <div class="col-sm-1 text-center">
-                    <b><span class="h3" id="count_view"></span></b><br>
-                    <label>Count</label>
+                <div class="row">
+                  <div class="col-sm-2">
+                    <label>Count:&ensp;</label><b><span class="h2" id="count_view"></span></b><br>
                   </div>
-                  <div class="col-sm-2 offset-sm-3">
+                </div>
+                <div class="row mb-4">
+                  <div class="col-sm-2">
+                    <label>Car Maker</label>
+                    <select class="form-control" id="request_car_maker_search" style="width: 100%;"
+                      onchange="search_request()" required>
+                      <option selected value="Please Select">Select car maker</option>
+                    </select>
+                  </div>
+                  <div class="col-sm-2">
+                    <label>Car Model</label>
+                    <select class="form-control" id="request_car_model_search" style="width: 100%;"
+                      onchange="search_request()" required>
+                      <option selected value="Please Select">Select car model</option>
+                    </select>
+                  </div>
+                  <div class="col-sm-2">
                     <label>Section</label>
+                    <label class="text-danger">*</label>
                     <select class="form-control" id="request_section_search" style="width: 100%;"
                       onchange="search_request()" required>
-                      <option selected value="Please Select">Please Select</option>
-                      <option value="mppd1">Mppd1 - Request</option>
-                      <option value="ame1req">Ame1 - Request</option>
-                      <option value="ame2req">Ame2 - Request</option>
-                      <option value="ame3req">Ame3 - Request</option>
-                      <option value="ame5req">Ame5 - Request</option>
+                      <option selected value="Please Select">Select section</option>
+                      <option value="mppd1">MPPD1 - Request</option>
+                      <option value="ame1req">AME1 - Request</option>
+                      <option value="ame2req">AME2 - Request</option>
+                      <option value="ame3req">AME3 - Request</option>
+                      <option value="ame5req">AME5 - Request</option>
                     </select>
                   </div>
                   <div class="col-sm-2 ">
                     <label>Status</label>
+                    <label class="text-danger">*</label>
                     <select class="form-control" id="request_status_search" style="width: 100%;"
                       onchange="search_request()" required>
                       <option selected value="pending">Pending</option>
@@ -73,10 +92,12 @@
                   </div>
                   <div class="col-sm-2">
                     <label>Date From</label>
+                    <label class="text-danger">*</label>
                     <input type="date" class="form-control" id="request_date_from_search" onchange="search_request()">
                   </div>
                   <div class="col-sm-2">
                     <label>Date To</label>
+                    <label class="text-danger">*</label>
                     <input type="date" class="form-control" id="request_date_to_search" onchange="search_request()">
                   </div>
                 </div>
@@ -88,7 +109,7 @@
                         <thead
                           style="text-align:center; position: sticky;top: 0; z-index: 1;  background-color: #f8f9fa;">
                           <tr>
-                          <th colspan="17" class="bg-secondary">Request</th>
+                            <th colspan="17" class="bg-secondary">Request</th>
                             <th colspan="17" class="bg-light">RFQ Process</th>
                             <th colspan="11" class="bg-secondary">PO Process</th>
                             <th colspan="2" class="bg-light">Delivery</th>

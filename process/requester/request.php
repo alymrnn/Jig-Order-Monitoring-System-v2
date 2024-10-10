@@ -10,6 +10,8 @@ if ($method == 'fetch_request') {
 	$request_date_from = $_POST['request_date_from'];
 	$request_date_to = $_POST['request_date_to'];
 	$request_section = $_POST['request_section'];
+	$request_car_maker = $_POST['request_car_maker'];
+	$request_car_model = $_POST['request_car_model'];
 
 	//Select or check all the data in the table and combine Request+RFQ+PO+Installation
 	$c = 0;
@@ -28,7 +30,16 @@ if ($method == 'fetch_request') {
 	} else if ($request_status == 'ame3') {
 		$query = $query . " WHERE joms_request.status = 'closed' AND joms_installation.installation_date IS NULL";
 	} else {
-		$query = $query . " WHERE joms_request.status = '$request_status' AND  joms_request.section= '$request_section'";
+		$query = $query . " WHERE joms_request.status = '$request_status' AND joms_request.section= '$request_section'";
+
+		// Only add carmaker or carmodel conditions if they are provided
+		if (!empty($request_car_maker)) {
+			$query = $query . " AND joms_request.carmaker = '$request_car_maker'";
+		}
+
+		if (!empty($request_car_model)) {
+			$query = $query . " AND joms_request.carmodel = '$request_car_model'";
+		}
 	}
 
 	//color for coding for the delay of date 
@@ -168,6 +179,7 @@ if ($method == 'fetch_request') {
 		}
 	}
 }
+
 //display all request data with all pending request in the Ame1 table or mppd1
 if ($method == 'fetch_requested_processed') {
 	$c = 0;
@@ -199,7 +211,6 @@ if ($method == 'fetch_requested_processed') {
 	}
 }
 
-
 if ($method == 'cancellation') {
 	$id = [];
 	$id = $_POST['id'];
@@ -223,6 +234,33 @@ if ($method == 'cancellation') {
 	}
 }
 
+if ($method == 'fetch_opt_car_maker') {
+	$query = "SELECT DISTINCT carmaker FROM joms_request ORDER BY carmaker ASC";
+	$stmt = $conn->prepare($query, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
+	$stmt->execute();
+	if ($stmt->rowCount() > 0) {
+		echo '<option value="" selected>Select car maker</option>';
+		foreach ($stmt->fetchAll() as $row) {
+			echo '<option>' . htmlspecialchars($row['carmaker']) . '</option>';
+		}
+	} else {
+		echo '<option value="">No car makers available</option>';
+	}
+}
+
+if ($method == 'fetch_opt_car_model') {
+	$query = "SELECT DISTINCT carmodel FROM joms_request ORDER BY carmodel ASC";
+	$stmt = $conn->prepare($query, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
+	$stmt->execute();
+	if ($stmt->rowCount() > 0) {
+		echo '<option value="" selected>Select car model</option>';
+		foreach ($stmt->fetchAll() as $row) {
+			echo '<option>' . htmlspecialchars($row['carmodel']) . '</option>';
+		}
+	} else {
+		echo '<option value="">No car models available</option>';
+	}
+}
 
 $conn = NULL;
 ?>

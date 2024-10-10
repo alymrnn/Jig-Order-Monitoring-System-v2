@@ -1,12 +1,12 @@
 <footer class="main-footer">
   <div class="d-flex justify-content-between">
-  <div class="mr-auto "> <strong> Developed by: </strong> JJ Buendia
-  | <strong>Co-Developers:</strong>  Vince Alcantara, Raymart Vergara
-</div>
-  <div class=""> <strong>Copyright &copy; 2023 | All Rights Reserved</div>
-  <div class="">  <b>Version</b> 2.1.2</div>
-</div>
-  </footer>
+    <div class="mr-auto "> <strong> Developed by: </strong> JJ Buendia
+      | <strong>Co-Developers:</strong> Vince Alcantara, Raymart Vergara, Ally Maranan
+    </div>
+    <div> <strong>Copyright &copy; 2023 | All Rights Reserved</div>
+    <div style="font-weight: normal;">&nbsp;&nbsp;Version 2.1.2</div>
+  </div>
+</footer>
 <?php
 //MODALS
 include '../../modals/logout.php';
@@ -33,4 +33,5 @@ include '../../modals/account/update_account.php';
 <script src="../../dist/js/adminlte.js"></script>
 
 </body>
+
 </html>

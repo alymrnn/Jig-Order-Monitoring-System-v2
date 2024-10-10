@@ -12,6 +12,9 @@
 		document.getElementById('request_date_to_search').value = '<?= $server_date_only ?>';
 		search_request();
 		//setInterval(search_request, 10000);
+
+		fetch_opt_car_maker();
+		fetch_opt_car_model();
 	});
 
 	const search_request = () => {
@@ -19,6 +22,8 @@
 		let request_date_from = document.getElementById('request_date_from_search').value;
 		let request_date_to = document.getElementById('request_date_to_search').value;
 		let request_section = document.getElementById('request_section_search').value;
+		let request_car_maker = document.getElementById('request_car_maker_search').value;
+		let request_car_model = document.getElementById('request_car_model_search').value;
 
 		$('#spinner').css('display', 'block');
 		$.ajax({
@@ -30,7 +35,9 @@
 				request_status: request_status,
 				request_date_from: request_date_from,
 				request_date_to: request_date_to,
-				request_section: request_section
+				request_section: request_section,
+				request_car_maker: request_car_maker,
+				request_car_model: request_car_model
 			}, success: function (response) {
 				document.getElementById('list_of_request').innerHTML = response;
 				$('#spinner').fadeOut();
@@ -76,6 +83,7 @@
 		});
 		get_checked_length();
 	}
+
 	const select_all_func = () => {
 		var select_all = document.getElementById('cancel_check_all');
 		if (select_all.checked == true) {
@@ -91,6 +99,7 @@
 		}
 		get_checked_length();
 	}
+
 	const get_checked_length = () => {
 		var arr = [];
 		document.querySelectorAll("input.singleCheck[type='checkbox']:checked").forEach((el, i) => {
@@ -112,6 +121,7 @@
 	$("#install_modal").on('hidden.bs.modal', e => {
 		$('#installation_date').val('');
 	});
+
 	const cancel_req = () => {
 		var arr = [];
 		$('input.singleCheck:checkbox:checked').each(function () {
@@ -178,6 +188,34 @@
 			}
 		}
 
+	}
+
+	const fetch_opt_car_maker = () => {
+		$.ajax({
+			url: '../../process/requester/request.php',
+			type: 'POST',
+			cache: false,
+			data: {
+				method: 'fetch_opt_car_maker',
+			},
+			success: function (response) {
+				$('#request_car_maker_search').html(response);
+			}
+		});
+	}
+
+	const fetch_opt_car_model = () => {
+		$.ajax({
+			url: '../../process/requester/request.php',
+			type: 'POST',
+			cache: false,
+			data: {
+				method: 'fetch_opt_car_model',
+			},
+			success: function (response) {
+				$('#request_car_model_search').html(response);
+			}
+		});
 	}
 
 </script>
