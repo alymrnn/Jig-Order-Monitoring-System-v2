@@ -218,4 +218,23 @@
 		});
 	}
 
+	const export_request_monitoring_record = () => {
+		let request_status = document.getElementById('request_status_search').value;
+		let request_date_from = document.getElementById('request_date_from_search').value;
+		let request_date_to = document.getElementById('request_date_to_search').value;
+		let request_section = document.getElementById('request_section_search').value;
+		let request_car_maker = document.getElementById('request_car_maker_search').value;
+		let request_car_model = document.getElementById('request_car_model_search').value;
+
+		window.open(
+			'../../process/export/export_request_monitoring_record.php?request_status=' + request_status +
+			"&request_date_from=" + request_date_from +
+			"&request_date_to=" + request_date_to +
+			"&request_section=" + request_section +
+			"&request_car_maker=" + request_car_maker +
+			"&request_car_model=" + request_car_model,
+			'_blank'
+		);
+	}
+
 </script>

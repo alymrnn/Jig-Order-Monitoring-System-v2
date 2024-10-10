@@ -31,7 +31,7 @@
               <button type="button" class="btn btn-danger ml-1 mr-2" id="btnCancel" data-toggle="modal"
                 data-target="#cancel_request" disabled>
                 Cancel Request</button>
-              <button type="button" class="btn btn-primary">
+              <button type="button" class="btn btn-primary" onclick="export_request_monitoring_record()">
                 Export Record</button>
               <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse">

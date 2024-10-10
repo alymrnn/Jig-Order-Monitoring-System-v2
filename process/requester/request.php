@@ -113,7 +113,6 @@ if ($method == 'fetch_request') {
 				$class_mods = "";
 			}
 
-
 			echo '<input type="checkbox" class="singleCheck bg-secondary" value="' . $j['request_id'] . '" onclick="get_checked_length()" ' . $disable_row . '>';
 			echo '</td>';
 
