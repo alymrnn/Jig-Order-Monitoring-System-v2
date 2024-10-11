@@ -116,7 +116,7 @@
                           style="text-align:center; position: sticky;top: 0; z-index: 1;  background-color: #f8f9fa;">
                           <tr>
                             <th colspan="18" class="bg-secondary">Request</th>
-                            <th colspan="17" class="bg-light">RFQ Process</th>
+                            <th colspan="19" class="bg-light">RFQ Process</th>
                             <th colspan="11" class="bg-secondary">PO Process</th>
                             <th colspan="2" class="bg-light">Delivery</th>
                             <th colspan="3" class="bg-secondary">Installation</th>
@@ -145,6 +145,7 @@
 
                             <th>Date of Issuance of RFQ </th>
                             <th>RFQ No </th>
+                            <th>RFQ Remarks </th>
                             <th>Target Date of Reply Quotation </th>
                             <th>Item Code</th>
                             <th>Uploaded By</th>
@@ -159,8 +160,8 @@
                             <th>FSIB Code </th>
                             <th>Date sent to Internal Signatories </th>
                             <th>Target Approval date of quotation </th>
+                            <th>RFQ Status </th>
                             <th>Uploaded By</th>
-
 
                             <th>Approval date of quotation </th>
                             <th>Target Date Submission to Purchasing </th>

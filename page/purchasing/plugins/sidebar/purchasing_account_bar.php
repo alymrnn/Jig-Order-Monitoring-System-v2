@@ -1,9 +1,9 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
-        <img src="../../dist/img/logo.png" alt="Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+        <img src="../../dist/img/logo.png" alt="Logo" class="brand-image">
         <span class="brand-text font-weight-light"><b>JOMS |
-                <?=htmlspecialchars($_SESSION['section']);?>
+                <?= htmlspecialchars($_SESSION['section']); ?>
             </b></span>
     </a>
 
@@ -17,7 +17,7 @@
             </div>
             <div class="info">
                 <a href="#" class="d-block"><b>
-                        <?=htmlspecialchars($_SESSION['fullname']);?>
+                        <?= htmlspecialchars($_SESSION['fullname']); ?>
                     </b></a>
             </div>
         </div>

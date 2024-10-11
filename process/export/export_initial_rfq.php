@@ -11,8 +11,77 @@ $f = fopen('php://memory', 'w');
 fputs($f, "\xEF\xBB\xBF");
 
 // Set column headers 
-$fields = array('Request ID', 'Status', 'Car Maker', 'Car Model', 'Product', 'Jig Name', 'Drawing No', 'Type', 'Qty', 'Purpose', 'Kigyo Budget', 'Shipping Method', 'Date Requested', 'Requested By', 'Required Delivery Date', 'Remarks (fill up if ECT jig is under new design, supplier)', 'Date of Issuance of RFQ', 'RFQ No', 'Target Date of Reply Quotation', 'Item Code', 'Date of Reply Quotation ', 'LEADTIME(based on quotation)', 'Quotation No ', 'Unit Price JPY ', 'Unit Price USD', 'Unit Price PHP', 'Total Amount', 'FSIB No.', 'FSIB Code', 'Date sent to Internal Signatories', 'Target Approval date of quotation');
-$fields_exp = array('Request ID', 'Status', 'Ex. Mazda', 'Ex. J12SRHD', 'Ex.123', 'Ex. DA-123', 'Ex.', 'Ex.Assy jig', 'Ex.123', 'Ex. EV-MP Set up', 'Ex.12345', 'Ex. AIR', 'Ex. YYYY-MM-DD', 'Ex. Juan', 'Ex. YYYY-MM-DD', 'Example', 'Ex. YYYY-MM-DD', 'RFQ No', 'Ex. YYYY-MM-DD', 'Item Code', 'Ex. YYYY-MM-DD', 'LEADTIME(based on quotation)', 'Quotation No ', 'Unit Price JPY ', 'Unit Price USD', 'Unit Price PHP', 'Total Amount ', 'FSIB No. ', 'FSIB Code ', 'Ex. YYYY-MM-DD', 'Ex. YYYY-MM-DD');
+$fields = array(
+	'Request ID',
+	'Status',
+	'Car Maker',
+	'Car Model',
+	'Product',
+	'Jig Name',
+	'Drawing No',
+	'Type',
+	'Qty',
+	'Purpose',
+	'Kigyo Budget',
+	'Shipping Method',
+	'Date Requested',
+	'Requested By',
+	'Required Delivery Date',
+	'Remarks (fill up if ECT jig is under new design, supplier)',
+	'Date of Issuance of RFQ',
+	'RFQ No',
+	'RFQ Remarks',
+	'Target Date of Reply Quotation',
+	'Item Code',
+	'Date of Reply Quotation ',
+	'LEADTIME(based on quotation)',
+	'Quotation No ',
+	'Unit Price JPY ',
+	'Unit Price USD',
+	'Unit Price PHP',
+	'Total Amount',
+	'FSIB No.',
+	'FSIB Code',
+	'Date sent to Internal Signatories',
+	'Target Approval date of quotation',
+	'RFQ Status'
+);
+
+$fields_exp = array(
+	'Request ID',
+	'Status',
+	'Ex. Mazda',
+	'Ex. J12SRHD',
+	'Ex.123',
+	'Ex. DA-123',
+	'Ex.',
+	'Ex.Assy jig',
+	'Ex.123',
+	'Ex. EV-MP Set up',
+	'Ex.12345',
+	'Ex. AIR',
+	'Ex. YYYY-MM-DD',
+	'Ex. Juan',
+	'Ex. YYYY-MM-DD',
+	'Example',
+	'Ex. YYYY-MM-DD',
+	'RFQ No',
+	'Ex. Local/Imported',
+	'Ex. YYYY-MM-DD',
+	'Item Code',
+	'Ex. YYYY-MM-DD',
+	'LEADTIME(based on quotation)',
+	'Quotation No ',
+	'Unit Price JPY ',
+	'Unit Price USD',
+	'Unit Price PHP',
+	'Total Amount ',
+	'FSIB No. ',
+	'FSIB Code ',
+	'Ex. YYYY-MM-DD',
+	'Ex. YYYY-MM-DD',
+	'RFQ Status'
+);
 
 fputcsv($f, $fields, $delimiter);
 fputcsv($f, $fields_exp, $delimiter);
@@ -21,7 +90,8 @@ fputcsv($f, $fields_exp, $delimiter);
 $sql = "SELECT joms_request.request_id, joms_request.status,joms_request.carmaker,joms_request.carmodel,joms_request.product,joms_request.jigname,joms_request.drawing_no,joms_request.type,joms_request.qty,
 joms_request.purpose,joms_request.budget, joms_request.shipping_method,
 joms_request.date_requested,joms_request.requested_by,joms_request.required_delivery_date,joms_request.remarks,
-joms_rfq_process.date_of_issuance_rfq,joms_rfq_process.rfq_no,joms_rfq_process.target_date_reply_quotation ,joms_rfq_process.item_code
+joms_rfq_process.date_of_issuance_rfq,joms_rfq_process.rfq_no, joms_rfq_process.rfq_remarks, joms_rfq_process.rfq_status,
+joms_rfq_process.target_date_reply_quotation ,joms_rfq_process.item_code
 FROM joms_request LEFT JOIN joms_rfq_process ON joms_rfq_process.request_id = joms_request.request_id WHERE joms_request.status = 'open' AND joms_rfq_process.quotation_no IS NULL";
 $stmt = $conn->prepare($sql);
 $stmt->execute();
@@ -49,6 +119,7 @@ if ($stmt->rowCount() > 0) {
 
 			$row['date_of_issuance_rfq'],
 			$row['rfq_no'],
+			$row['rfq_remarks'],
 			$row['target_date_reply_quotation'],
 			$row['item_code'],
 		);
