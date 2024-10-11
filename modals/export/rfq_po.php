@@ -4,8 +4,8 @@
     <div class="modal-content">
       <div class="modal-header">
         <h4 class="modal-title" id="exampleModalLabel"><b>Export Request Data + RFQ + PO</b></h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"
-          onclick="javascript:window.location.reload()">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <!-- onclick="javascript:window.location.reload()" -->
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -15,6 +15,7 @@
             <div class="small-box bg-info text-center">
               <div class="inner">
                 <h4>Export W/O RFQ <br> And PO</h4>
+                <br>
               </div>
               <div class="icon">
                 <i class="fas fa-download fa-sm" type="button"
@@ -31,6 +32,7 @@
               <div class="inner">
                 <!-- <h3>65</h3> -->
                 <h4>Export With <br> Initial RFQ</h4>
+                <br>
               </div>
               <div class="icon">
                 <i class="fas fa-download" type="button"
@@ -48,6 +50,7 @@
                 <!-- <h3>44</h3> -->
                 <h4 class="text-center">
                   Export With <br> Complete RFQ</h4>
+                <br>
               </div>
               <div class="icon">
                 <i class="fas fa-download" type="button"
@@ -64,6 +67,7 @@
               <div class="inner">
                 <h4 class="text-center">
                   Export With <br> Complete RFQ + PO</h4>
+                <br>
               </div>
               <div class="icon" type="button"
                 onclick="location.replace('../../process/export/export_request_data_po_open.php')">
@@ -81,6 +85,7 @@
               <div class="inner">
                 <!-- <h3>65</h3> -->
                 <h4>Export With <br>All Open Request</h4>
+                <br>
               </div>
               <div class="icon">
                 <i class="fas fa-download" type="button"
@@ -97,6 +102,7 @@
               <div class="inner">
                 <!-- <h3>65</h3> -->
                 <h4>Export With <br>All Closed Request</h4>
+                <br>
               </div>
               <div class="icon">
                 <i class="fas fa-download" type="button"
@@ -111,8 +117,8 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" class="close" data-dismiss="modal"
-          onclick="javascript:window.location.reload()">Close</button>
+        <button type="button" class="btn btn-secondary" class="close" data-dismiss="modal">Close</button>
+        <!-- onclick="javascript:window.location.reload()" -->
       </div>
     </div>
   </div>

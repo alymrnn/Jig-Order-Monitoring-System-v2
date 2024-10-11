@@ -73,7 +73,7 @@
                     <div class="col-lg-4 col-md-6 col-sm-12">
                       <div class="small-box bg-secondary">
                         <div class="inner">
-                          <a href="../../template/template for request.csv" style="color:white;">
+                          <a href="../../template/template-for-request.csv" style="color:white;">
                             <h5>Download Template</h5>
                             <br>
                             <br>
@@ -82,7 +82,7 @@
                           <i class="fas fa-download"></i>
                         </div>
                         </a>
-                        <a href="../../template/template for request.csv" class="small-box-footer">Proceed <i
+                        <a href="../../template/template-for-request.csv" class="small-box-footer">Proceed <i
                             class="fas fa-arrow-circle-right"></i></a>
                       </div>
                     </div>
@@ -118,7 +118,7 @@
                           <label>Count</label>
                         </div>
                         <div class="col-6 offset-5">
-                          <p class="p-1" style="background: #FFFAD1; border-left: 3px solid #E89F4C; font-size: 16px;">
+                          <p class="p-1" style="background: #FFFAD1; border-left: 3px solid #E89F4C; font-size: 14px;">
                             <span><i>Note:</i></span> Items
                             highlighted in <span style="color:red; font-weight: bold">RED</span> are those that are
                             delayed based on the <span style="color:red; font-weight: bold">REQUIRED DELIVERY
@@ -134,22 +134,23 @@
                               id="list_of_uploaded_request_table">
                               <thead style="text-align:center;">
                                 <tr>
-                                  <th>#</th>
-                                  <th>Status</th>
-                                  <th>Car Maker</th>
-                                  <th>Car Model</th>
-                                  <th>Product </th>
-                                  <th>Jig Name </th>
-                                  <th>Drawing No </th>
-                                  <th>Type </th>
-                                  <th>Qty </th>
-                                  <th>Purpose </th>
-                                  <th>Kigyo Budget </th>
-                                  <th>Date Requested </th>
-                                  <th>Requested By </th>
-                                  <th>Required Delivery Date </th>
-                                  <th>Remarks (fill up if ECT jig is under new design, supplier) </th>
-                                  <th>Uploaded By</th>
+                                  <th style="background:#f8f9fa;">#</th>
+                                  <th style="background:#f8f9fa;">Status</th>
+                                  <th style="background:#f8f9fa;">Car Maker</th>
+                                  <th style="background:#f8f9fa;">Car Model</th>
+                                  <th style="background:#f8f9fa;">Product </th>
+                                  <th style="background:#f8f9fa;">Jig Name </th>
+                                  <th style="background:#f8f9fa;">Drawing No </th>
+                                  <th style="background:#f8f9fa;">Type </th>
+                                  <th style="background:#f8f9fa;">Qty </th>
+                                  <th style="background:#f8f9fa;">Purpose </th>
+                                  <th style="background:#f8f9fa;">Kigyo Budget </th>
+                                  <th style="background:#f8f9fa;">Shipping Method </th>
+                                  <th style="background:#f8f9fa;">Date Requested </th>
+                                  <th style="background:#f8f9fa;">Requested By </th>
+                                  <th style="background:#f8f9fa;">Required Delivery Date </th>
+                                  <th style="background:#f8f9fa;">Remarks (fill up if ECT jig is under new design, supplier) </th>
+                                  <th style="background:#f8f9fa;">Uploaded By</th>
                                 </tr>
                               </thead>
                               <tbody id="list_of_uploaded_request" style="text-align:center;"></tbody>

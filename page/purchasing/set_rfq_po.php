@@ -134,7 +134,7 @@
                               <thead
                                 style="text-align:center; position: sticky;top: 0; z-index: 1;  background-color: #f8f9fa;">
                                 <tr>
-                                <th colspan="17" class="bg-secondary">Request</th>
+                                  <th colspan="18" class="bg-secondary">Request</th>
                                   <th colspan="17" class="bg-light">RFQ Process</th>
                                   <th colspan="11" class="bg-secondary">PO Process</th>
                                   <th colspan="2" class="bg-light">Delivery</th>
@@ -154,6 +154,7 @@
                                   <th>Qty </th>
                                   <th>Purpose </th>
                                   <th>Kigyo Budget </th>
+                                  <th>Shipping Method </th>
                                   <th>Date Requested </th>
                                   <th>Requested By </th>
                                   <th>Required Delivery Date </th>

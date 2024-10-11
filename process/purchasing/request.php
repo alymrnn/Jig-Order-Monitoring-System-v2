@@ -23,6 +23,7 @@ if ($method == 'fetch_requested_processed') {
 				echo '<td>'.$j['qty'].'</td>';
 				echo '<td>'.$j['purpose'].'</td>';
 				echo '<td>'.$j['budget'].'</td>';
+				echo '<td>'.$j['shipping_method'].'</td>';
 				echo '<td>'.$j['date_requested'].'</td>';
 				echo '<td>'.$j['requested_by'].'</td>';
 				echo '<td>'.$j['required_delivery_date'].'</td>';

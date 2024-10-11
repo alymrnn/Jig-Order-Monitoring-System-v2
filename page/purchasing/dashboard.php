@@ -91,22 +91,23 @@
                         id="list_of_uploaded_request_table">
                         <thead style="text-align:center; position: sticky;top: 0; z-index: 1;  background-color: #f8f9fa;">
                             <tr>
-                              <th>#</th>
-                              <th>Status</th>
-                              <th>Car Maker</th>  
-                              <th>Car Model</th>
-                              <th>Product </th>
-                              <th>Jig Name </th>
-                              <th>Drawing No </th>
-                              <th>Type </th>
-                              <th>Qty </th>
-                              <th>Purpose </th>
-                              <th>Kigyo Budget </th>
-                              <th>Date Requested </th>
-                              <th>Requested By </th>
-                              <th>Required Delivery Date </th>
-                              <th>Remarks (fill up if ECT jig is under new design, supplier) </th>
-                              <th>Upload By</th>
+                              <th style="background:#f8f9fa;">#</th>
+                              <th style="background:#f8f9fa;">Status</th>
+                              <th style="background:#f8f9fa;">Car Maker</th>  
+                              <th style="background:#f8f9fa;">Car Model</th>
+                              <th style="background:#f8f9fa;">Product </th>
+                              <th style="background:#f8f9fa;">Jig Name </th>
+                              <th style="background:#f8f9fa;">Drawing No </th>
+                              <th style="background:#f8f9fa;">Type </th>
+                              <th style="background:#f8f9fa;">Qty </th>
+                              <th style="background:#f8f9fa;">Purpose </th>
+                              <th style="background:#f8f9fa;">Kigyo Budget </th>
+                              <th style="background:#f8f9fa;">Shipping Method </th>
+                              <th style="background:#f8f9fa;">Date Requested </th>
+                              <th style="background:#f8f9fa;">Requested By </th>
+                              <th style="background:#f8f9fa;">Required Delivery Date </th>
+                              <th style="background:#f8f9fa;">Remarks (fill up if ECT jig is under new design, supplier) </th>
+                              <th style="background:#f8f9fa;">Upload By</th>
                             </tr>
                           </thead>
                           <tbody id="list_of_uploaded_request" style="text-align:center;">

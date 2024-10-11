@@ -66,7 +66,7 @@
                       <thead
                         style="text-align:center; position: sticky;top: 0; z-index: 1;  background-color: #f8f9fa;">
                         <tr>
-                        <th colspan="17" class="bg-secondary">Request</th>
+                          <th colspan="18" class="bg-secondary">Request</th>
                           <th colspan="17" class="bg-light">RFQ Process</th>
                           <th colspan="9" class="bg-secondary">PO Process</th>
                           <th colspan="4" class="bg-light">Delivery</th>
@@ -88,18 +88,19 @@
                           <th>Qty </th>
                           <th>Purpose </th>
                           <th>Kigyo Budget </th>
+                          <th>Shipping Method </th>
                           <th>Date Requested </th>
                           <th>Requested By </th>
                           <th>Required Delivery Date </th>
                           <th>Remarks (fill up if ECT jig is under new design, supplier) </th>
                           <th>Uploaded By</th>
-<!-- Initial RFQ -->
+                          <!-- Initial RFQ -->
                           <th>Date of Issuance of RFQ </th>
                           <th>RFQ No </th>
                           <th>Target Date of Reply Quotation </th>
                           <th>Item Code </th>
                           <th>Uploaded By</th>
-<!-- RFQ -->
+                          <!-- RFQ -->
                           <th>Date of Reply Quotation </th>
                           <th>LEADTIME(based on quotation)</th>
                           <th>Quotation No </th>
@@ -126,7 +127,7 @@
                           <th>Remarks </th>
                           <th>Actual Arrival date </th>
                           <th>Uploaded By</th>
-          <!-- Installation -->
+                          <!-- Installation -->
                           <th>Line Number</th>
                           <th>Installation Date</th>
                           <th>Uploaded By</th>
@@ -194,7 +195,7 @@
                         <thead
                           style="text-align:center; position: sticky;top: 0; z-index: 1;  background-color: #f8f9fa;">
                           <tr>
-                            <th colspan="16" class="bg-secondary">Request</th>
+                            <th colspan="17" class="bg-secondary">Request</th>
                             <th colspan="17" class="bg-light">RFQ Process</th>
                             <th colspan="9" class="bg-secondary">PO Process</th>
                             <th colspan="4" class="bg-light">Delivery</th>
@@ -212,6 +213,7 @@
                             <th>Qty </th>
                             <th>Purpose </th>
                             <th>Kigyo Budget </th>
+                            <th>Shipping Method </th>
                             <th>Date Requested </th>
                             <th>Requested By </th>
                             <th>Required Delivery Date </th>
@@ -237,25 +239,25 @@
                             <th>Target Approval date of quotation </th>
                             <th>Uploaded By</th>
 
-                          <th>Approval date of quotation </th>
-                          <th>Target Date Submission to Purchasing </th>
-                          <th>Actual Date of Submission to Purchasing </th>
-                          <th>Target PO Date</th>
-                          <th>PO Date </th>
-                          <th>PO No. </th>
-                          <!-- <th>Ordering Additional Details </th> -->
-                          <th>Supplier </th>
-                          <th>ETD </th>
-                          <th>ETA </th>
-                          <th>Invoice No </th>
-                          <!-- <th>Classification </th> -->
-                          <th>Remarks </th>
-                          <th>Actual Arrival date </th>
-                          <th>Uploaded By</th>
+                            <th>Approval date of quotation </th>
+                            <th>Target Date Submission to Purchasing </th>
+                            <th>Actual Date of Submission to Purchasing </th>
+                            <th>Target PO Date</th>
+                            <th>PO Date </th>
+                            <th>PO No. </th>
+                            <!-- <th>Ordering Additional Details </th> -->
+                            <th>Supplier </th>
+                            <th>ETD </th>
+                            <th>ETA </th>
+                            <th>Invoice No </th>
+                            <!-- <th>Classification </th> -->
+                            <th>Remarks </th>
+                            <th>Actual Arrival date </th>
+                            <th>Uploaded By</th>
 
-                          <th>Line Number</th>
-                          <th>Installation Date</th>
-                          <th>Uploaded By</th>
+                            <th>Line Number</th>
+                            <th>Installation Date</th>
+                            <th>Uploaded By</th>
                           </tr>
                         </thead>
                         <!-- get the id for javascript functions para madisplay ang mga data -->

@@ -8,7 +8,8 @@ if ($method == 'fetch_requested_processed') {
 	$request_status = $_POST['request_status'];
 	$c = 0;
 	$query = "SELECT joms_request.request_id, joms_request.status, joms_request.carmaker, joms_request.carmodel, joms_request.product, joms_request.jigname, joms_request.drawing_no, joms_request.type,
-	joms_request.qty, joms_request.purpose, joms_request.budget, joms_request.date_requested, joms_request.requested_by , joms_request.required_delivery_date, joms_request.remarks, joms_request.uploaded_by,
+	joms_request.qty, joms_request.purpose, joms_request.budget, joms_request.shipping_method,
+	joms_request.date_requested, joms_request.requested_by , joms_request.required_delivery_date, joms_request.remarks, joms_request.uploaded_by,
 	joms_rfq_process.date_of_issuance_rfq, joms_rfq_process.rfq_no, joms_rfq_process.target_date_reply_quotation, joms_rfq_process.item_code, joms_rfq_process.date_reply_quotation , joms_rfq_process.leadtime, joms_rfq_process.quotation_no,
 	joms_rfq_process.unit_price_jpy, joms_rfq_process.unit_price_usd, joms_rfq_process.unit_price_usd,  joms_rfq_process.total_amount, joms_rfq_process.fsib_no, joms_rfq_process.fsib_code, joms_rfq_process.date_sent_to_internal_signatories,joms_rfq_process.target_approval_date_of_quotation,
 	joms_rfq_process.i_uploaded_by, joms_rfq_process.c_uploaded_by
@@ -77,7 +78,8 @@ if ($method == 'filter_rfq_process') {
 	$rfq_status_search = $_POST['rfq_status_search'];
 	$c = 0;
 	$query = "SELECT joms_request.request_id, joms_request.status, joms_request.carmaker, joms_request.carmodel, joms_request.product, joms_request.jigname, joms_request.drawing_no, joms_request.type,
-	joms_request.qty, joms_request.purpose, joms_request.budget, joms_request.date_requested, joms_request.requested_by , joms_request.required_delivery_date, joms_request.remarks, joms_request.uploaded_by,
+	joms_request.qty, joms_request.purpose, joms_request.budget, joms_request.shipping_method,
+	joms_request.date_requested, joms_request.requested_by , joms_request.required_delivery_date, joms_request.remarks, joms_request.uploaded_by,
 	joms_rfq_process.date_of_issuance_rfq, joms_rfq_process.rfq_no, joms_rfq_process.target_date_reply_quotation, joms_rfq_process.item_code, joms_rfq_process.date_reply_quotation , joms_rfq_process.leadtime, joms_rfq_process.quotation_no, joms_rfq_process.i_uploaded_by,joms_rfq_process.c_uploaded_by,
 	joms_rfq_process.unit_price_jpy, joms_rfq_process.unit_price_usd, joms_rfq_process.unit_price_php, joms_rfq_process.total_amount, joms_rfq_process.fsib_no, joms_rfq_process.fsib_code, joms_rfq_process.date_sent_to_internal_signatories
 	FROM joms_request
@@ -106,6 +108,7 @@ if ($method == 'filter_rfq_process') {
 			echo '<td>' . $j['qty'] . '</td>';
 			echo '<td>' . $j['purpose'] . '</td>';
 			echo '<td>' . $j['budget'] . '</td>';
+			echo '<td>' . $j['shipping_method'] . '</td>';
 			echo '<td>' . $j['date_requested'] . '</td>';
 			echo '<td>' . $j['requested_by'] . '</td>';
 			echo '<td>' . $j['required_delivery_date'] . '</td>';
@@ -124,7 +127,8 @@ if ($method == 'filter_rfq_process') {
 	}
 
 	$query = "SELECT joms_request.request_id, joms_request.status, joms_request.carmaker, joms_request.carmodel, joms_request.product, joms_request.jigname, joms_request.drawing_no, joms_request.type,
-	joms_request.qty, joms_request.purpose, joms_request.budget, joms_request.date_requested, joms_request.requested_by , joms_request.required_delivery_date, joms_request.remarks,joms_request.uploaded_by,
+	joms_request.qty, joms_request.purpose, joms_request.budget, joms_request.shipping_method,
+	joms_request.date_requested, joms_request.requested_by , joms_request.required_delivery_date, joms_request.remarks,joms_request.uploaded_by,
 	joms_rfq_process.date_of_issuance_rfq, joms_rfq_process.rfq_no, joms_rfq_process.target_date_reply_quotation,joms_rfq_process.item_code, joms_rfq_process.date_reply_quotation , joms_rfq_process.leadtime, joms_rfq_process.quotation_no, joms_rfq_process.i_uploaded_by,joms_rfq_process.c_uploaded_by,
 	joms_rfq_process.unit_price_jpy, joms_rfq_process.unit_price_usd, joms_rfq_process.unit_price_php, joms_rfq_process.total_amount, joms_rfq_process.fsib_no, joms_rfq_process.fsib_code, joms_rfq_process.date_sent_to_internal_signatories, joms_rfq_process.target_approval_date_of_quotation
 	FROM joms_request
@@ -153,6 +157,7 @@ if ($method == 'filter_rfq_process') {
 			echo '<td>' . $j['qty'] . '</td>';
 			echo '<td>' . $j['purpose'] . '</td>';
 			echo '<td>' . $j['budget'] . '</td>';
+			echo '<td>' . $j['shipping_method'] . '</td>';
 			echo '<td>' . $j['date_requested'] . '</td>';
 			echo '<td>' . $j['requested_by'] . '</td>';
 			echo '<td>' . $j['required_delivery_date'] . '</td>';
@@ -182,7 +187,8 @@ if ($method == 'filter_rfq_process') {
 		}
 	}
 	$query = "SELECT joms_request.request_id, joms_request.status, joms_request.carmaker, joms_request.carmodel, joms_request.product, joms_request.jigname, joms_request.drawing_no, joms_request.type,
-	joms_request.qty, joms_request.purpose, joms_request.budget, joms_request.date_requested, joms_request.requested_by , joms_request.required_delivery_date, joms_request.remarks,joms_request.uploaded_by,
+	joms_request.qty, joms_request.purpose, joms_request.budget, joms_request.shipping_method,
+	joms_request.date_requested, joms_request.requested_by , joms_request.required_delivery_date, joms_request.remarks,joms_request.uploaded_by,
 	joms_rfq_process.date_of_issuance_rfq, joms_rfq_process.rfq_no, joms_rfq_process.target_date_reply_quotation, joms_rfq_process.item_code, joms_rfq_process.date_reply_quotation , joms_rfq_process.leadtime, joms_rfq_process.quotation_no, joms_rfq_process.i_uploaded_by,joms_rfq_process.c_uploaded_by,
 	joms_rfq_process.unit_price_jpy, joms_rfq_process.unit_price_usd, joms_rfq_process.unit_price_php, joms_rfq_process.total_amount, joms_rfq_process.fsib_no, joms_rfq_process.fsib_code, joms_rfq_process.date_sent_to_internal_signatories, joms_rfq_process.target_approval_date_of_quotation
 	FROM joms_request
@@ -211,6 +217,7 @@ if ($method == 'filter_rfq_process') {
 			echo '<td>' . $j['qty'] . '</td>';
 			echo '<td>' . $j['purpose'] . '</td>';
 			echo '<td>' . $j['budget'] . '</td>';
+			echo '<td>' . $j['shipping_method'] . '</td>';
 			echo '<td>' . $j['date_requested'] . '</td>';
 			echo '<td>' . $j['requested_by'] . '</td>';
 			echo '<td>' . $j['required_delivery_date'] . '</td>';
@@ -241,7 +248,8 @@ if ($method == 'filter_rfq_process') {
 	}
 
 	$query = "SELECT joms_request.request_id, joms_request.status, joms_request.carmaker, joms_request.carmodel, joms_request.product, joms_request.jigname, joms_request.drawing_no, joms_request.type,
-	joms_request.qty, joms_request.purpose, joms_request.budget, joms_request.date_requested, joms_request.requested_by , joms_request.required_delivery_date, joms_request.remarks, joms_request.uploaded_by, joms_request.cancel_date, joms_request.cancel_reason, joms_request.cancel_by, joms_request.cancel_section,
+	joms_request.qty, joms_request.purpose, joms_request.budget, joms_request.shipping_method,
+	joms_request.date_requested, joms_request.requested_by , joms_request.required_delivery_date, joms_request.remarks, joms_request.uploaded_by, joms_request.cancel_date, joms_request.cancel_reason, joms_request.cancel_by, joms_request.cancel_section,
 	joms_rfq_process.date_of_issuance_rfq, joms_rfq_process.rfq_no, joms_rfq_process.target_date_reply_quotation, joms_rfq_process.item_code, joms_rfq_process.date_reply_quotation , joms_rfq_process.leadtime, joms_rfq_process.quotation_no, joms_rfq_process.i_uploaded_by,joms_rfq_process.c_uploaded_by,
 	joms_rfq_process.unit_price_jpy, joms_rfq_process.unit_price_usd, joms_rfq_process.unit_price_php, joms_rfq_process.total_amount, joms_rfq_process.fsib_no, joms_rfq_process.fsib_code, joms_rfq_process.date_sent_to_internal_signatories, joms_rfq_process.target_approval_date_of_quotation
 	FROM joms_request
@@ -276,6 +284,7 @@ if ($method == 'filter_rfq_process') {
 			echo '<td>' . $j['qty'] . '</td>';
 			echo '<td>' . $j['purpose'] . '</td>';
 			echo '<td>' . $j['budget'] . '</td>';
+			echo '<td>' . $j['shipping_method'] . '</td>';
 			echo '<td>' . $j['date_requested'] . '</td>';
 			echo '<td>' . $j['requested_by'] . '</td>';
 			echo '<td>' . $j['required_delivery_date'] . '</td>';

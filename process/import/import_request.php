@@ -66,7 +66,7 @@ function check_csv($file, $conn)
         $is_valid_required_delivery_date = validate_date($date_rdd);
 
         // CHECK IF BLANK DATA
-        if ($line[0] == '' || $line[1] == '' || $line[2] == '' || $line[3] == '' || $line[5] == '' || $line[6] == '' || $line[7] == '' || $line[8] == '' || $line[9] == '' || $line[10] == '') {
+        if ($line[0] == '' || $line[1] == '' || $line[2] == '' || $line[3] == '' || $line[5] == '' || $line[6] == '' || $line[7] == '' || $line[8] == '' || $line[9] == '' || $line[10] == '' || $line[11] == '') {
             // IF BLANK DETECTED ERROR
             $hasBlankError++;
             $hasError = 1;
@@ -136,9 +136,10 @@ if (isset($_POST['upload'])) {
                     $qty = $line[6];
                     $purpose = $line[7];
                     $budget = $line[8];
-                    $requested_by = $line[9];
-                    $required_delivery_date = $line[10];
-                    $remarks = $line[11];
+                    $shipping_method = $line[9];
+                    $requested_by = $line[10];
+                    $required_delivery_date = $line[11];
+                    $remarks = $line[12];
 
                     $date_r = str_replace('/', '-', $date_requested);
                     $date_requested = date("Y-m-d", strtotime($date_r));
@@ -152,7 +153,7 @@ if (isset($_POST['upload'])) {
                     $uploaded_by = $_SESSION['fullname'];
                     $section = $_SESSION['section'];
 
-                    $insert = "INSERT INTO joms_request(`request_id`, `carmaker`, `carmodel`, `product`, `jigname`, `drawing_no`, `type`, `qty`, `purpose`, `budget`, `date_requested`, `requested_by`, `required_delivery_date`, `remarks`, `uploaded_by`, `section`) VALUES ('$request_id','$carmaker','$carmodel','$product','$jigname','$drawing_no','$type','$qty','$purpose','$budget','$server_date_only','$requested_by','$required_delivery_date','$remarks','$uploaded_by','$section')";
+                    $insert = "INSERT INTO joms_request(`request_id`, `carmaker`, `carmodel`, `product`, `jigname`, `drawing_no`, `type`, `qty`, `purpose`, `budget`, `date_requested`, `requested_by`, `required_delivery_date`,`shipping_method`,`remarks`, `uploaded_by`, `section`) VALUES ('$request_id','$carmaker','$carmodel','$product','$jigname','$drawing_no','$type','$qty','$purpose','$budget','$server_date_only','$requested_by','$required_delivery_date','$shipping_method','$remarks','$uploaded_by','$section')";
                     $stmt = $conn->prepare($insert);
                     if ($stmt->execute()) {
                         update_notif_count_joms_request($conn);
@@ -161,6 +162,7 @@ if (isset($_POST['upload'])) {
                         $error = $error + 1;
                     }
                 }
+
                 fclose($csvFile);
 
                 if ($error == 0) {

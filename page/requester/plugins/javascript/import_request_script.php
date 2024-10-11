@@ -53,11 +53,12 @@
         var date_requested = document.getElementById('req_date_requested').value;
         var requested_by = document.getElementById('req_requested_by').value;
         var delivery_date = document.getElementById('req_delivery_date').value;
+        var shipping_method = document.getElementById('req_shipping_method').value;
         var remarks = document.getElementById('req_remarks').value;
 
         if (!car_maker || !car_model || !product || !jig_name || !drawing_no || !type ||
             !quantity || !purpose || !kigyo_budget || !date_requested || !requested_by ||
-            !delivery_date || !remarks) {
+            !delivery_date || !shipping_method || !remarks) {
             Swal.fire({
                 icon: 'warning',
                 title: 'Missing Information',
@@ -85,6 +86,7 @@
                 date_requested: date_requested,
                 requested_by: requested_by,
                 delivery_date: delivery_date,
+                shipping_method: shipping_method,
                 remarks: remarks
             },
             success: function (response) {
@@ -110,6 +112,7 @@
                     $('#req_date_requested').val('');
                     $('#req_requested_by').val('');
                     $('#req_delivery_date').val('');
+                    $('#req_shipping_method').val('');
                     $('#req_remarks').val('');
 
                     $('#add_single_item_record').modal('hide');

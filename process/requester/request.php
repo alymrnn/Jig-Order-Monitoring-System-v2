@@ -15,7 +15,7 @@ if ($method == 'fetch_request') {
 
 	//Select or check all the data in the table and combine Request+RFQ+PO+Installation
 	$c = 0;
-	$query = "SELECT joms_request.request_id, joms_request.status, joms_request.carmaker, joms_request.carmodel, joms_request.product, joms_request.jigname, joms_request.drawing_no, joms_request.type, joms_request.qty, joms_request.purpose, joms_request.budget, joms_request.date_requested, joms_request.requested_by , joms_request.required_delivery_date, joms_request.remarks, joms_request.uploaded_by, joms_request.cancel_date, joms_request.cancel_reason, joms_request.cancel_by, joms_request.cancel_section,joms_request.section,
+	$query = "SELECT joms_request.request_id, joms_request.status, joms_request.carmaker, joms_request.carmodel, joms_request.product, joms_request.jigname, joms_request.drawing_no, joms_request.type, joms_request.qty, joms_request.purpose, joms_request.budget, joms_request.date_requested, joms_request.requested_by , joms_request.required_delivery_date, joms_request.shipping_method,joms_request.remarks, joms_request.uploaded_by, joms_request.cancel_date, joms_request.cancel_reason, joms_request.cancel_by, joms_request.cancel_section,joms_request.section,
 	joms_rfq_process.date_of_issuance_rfq, joms_rfq_process.rfq_no, joms_rfq_process.target_date_reply_quotation,  joms_rfq_process.item_code, joms_rfq_process.date_reply_quotation, joms_rfq_process.leadtime, joms_rfq_process.quotation_no, joms_rfq_process.unit_price_jpy, joms_rfq_process.unit_price_usd,joms_rfq_process.unit_price_php, joms_rfq_process.total_amount, joms_rfq_process.fsib_no, joms_rfq_process.fsib_code, joms_rfq_process.date_sent_to_internal_signatories, joms_rfq_process.i_uploaded_by, joms_rfq_process.c_uploaded_by, 
 	joms_rfq_process.target_approval_date_of_quotation, joms_po_process.approval_date_of_quotation, joms_po_process.target_date_submission_to_purchasing, joms_po_process.actual_date_of_submission_to_purchasing, joms_po_process.target_po_date, joms_po_process.po_date, joms_po_process.po_no, joms_po_process.supplier, joms_po_process.etd, joms_po_process.eta, joms_po_process.actual_arrival_date, joms_po_process.invoice_no, joms_po_process.po_uploaded_by, joms_po_process.remarks AS remarks2,
 	joms_installation.installation_date, joms_installation.set_by, joms_installation.line_no
@@ -134,6 +134,7 @@ if ($method == 'fetch_request') {
 			echo '<td style = "' . $color4 . '">' . $j['qty'] . '</td>';
 			echo '<td style = "' . $color4 . '">' . $j['purpose'] . '</td>';
 			echo '<td style = "' . $color4 . '">' . $j['budget'] . '</td>';
+			echo '<td style = "' . $color4 . '">' . $j['shipping_method'] . '</td>';
 			echo '<td style = "' . $color4 . '">' . $j['date_requested'] . '</td>';
 			echo '<td style = "' . $color4 . '">' . $j['requested_by'] . '</td>';
 			echo '<td style = "' . $color4 . '">' . $j['required_delivery_date'] . '</td>';
@@ -217,6 +218,7 @@ if ($method == 'fetch_requested_processed') {
 			echo '<td style="' . $color4 . '">' . $j['qty'] . '</td>';
 			echo '<td style="' . $color4 . '">' . $j['purpose'] . '</td>';
 			echo '<td style="' . $color4 . '">' . $j['budget'] . '</td>';
+			echo '<td style="' . $color4 . '">' . $j['shipping_method'] . '</td>';
 			echo '<td style="' . $color4 . '">' . $j['date_requested'] . '</td>';
 			echo '<td style="' . $color4 . '">' . $j['requested_by'] . '</td>';
 			echo '<td style="' . $color4 . '">' . $j['required_delivery_date'] . '</td>';
@@ -309,6 +311,7 @@ if ($method == 'add_single_item_record') {
 	$date_requested = trim($_POST['date_requested']);
 	$requested_by = trim($_POST['requested_by']);
 	$delivery_date = trim($_POST['delivery_date']);
+	$shipping_method = trim($_POST['shipping_method']);
 	$remarks = trim($_POST['remarks']);
 
 	$request_id = '';
@@ -317,8 +320,8 @@ if ($method == 'add_single_item_record') {
 	$uploaded_by = $_SESSION['fullname'];
 	$section = $_SESSION['section'];
 
-	$query = "INSERT INTO joms_request(`request_id`, `carmaker`, `carmodel`, `product`, `jigname`, `drawing_no`, `type`, `qty`,`purpose`, `budget`, `date_requested`, `requested_by`, `required_delivery_date`, `remarks`, `uploaded_by`, `section`) 
-	VALUES ('$request_id','$car_maker','$car_model','$product','$jig_name','$drawing_no','$type','$quantity','$purpose','$kigyo_budget','$date_requested','$requested_by','$delivery_date','$remarks','$uploaded_by','$section')";
+	$query = "INSERT INTO joms_request(`request_id`, `carmaker`, `carmodel`, `product`, `jigname`, `drawing_no`, `type`, `qty`,`purpose`, `budget`, `date_requested`, `requested_by`, `required_delivery_date`, `shipping_method`,`remarks`, `uploaded_by`, `section`) 
+	VALUES ('$request_id','$car_maker','$car_model','$product','$jig_name','$drawing_no','$type','$quantity','$purpose','$kigyo_budget','$date_requested','$requested_by','$delivery_date','$shipping_method','$remarks','$uploaded_by','$section')";
 
 	$stmt = $conn->prepare($query);
 	if ($stmt->execute()) {

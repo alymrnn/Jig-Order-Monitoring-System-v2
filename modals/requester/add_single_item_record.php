@@ -50,7 +50,17 @@
                     </div>
 
                 </div>
-                <div class="row">
+                <div class="row mb-3">
+                    <div class="col-3">
+                        <label>Shipping Method</label>
+                        <!-- <input type="text" class="form-control" id="req_shipping_method"> -->
+                         <select name="req_shipping_method" id="req_shipping_method" class="form-control">
+                            <option value="" selected disabled>Select shipping method</option>
+                            <option value="AIR">AIR</option>
+                            <option value="LAND">LAND</option>
+                            <option value="SEA">SEA</option>
+                         </select>
+                    </div>
                     <div class="col-3">
                         <label>Date Requested</label>
                         <input type="date" class="form-control" id="req_date_requested">
@@ -63,6 +73,8 @@
                         <label>Required Delivery Date</label>
                         <input type="date" class="form-control" id="req_delivery_date">
                     </div>
+                </div>
+                <div class="row">
                     <div class="col-3">
                         <label>Remarks</label>
                         <input type="text" class="form-control" id="req_remarks">
