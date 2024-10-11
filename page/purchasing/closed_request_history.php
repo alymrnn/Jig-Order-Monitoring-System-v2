@@ -52,16 +52,16 @@
                     <input type="text" class="form-control" id="search_jigname">
                   </div>
                   <div class="col-lg-2 col-6">
-                    <label>Carmaker</label>
+                    <label>Car Maker</label>
                     <input type="text" class="form-control" id="search_carmaker">
                   </div>
                   <div class="col-lg-1 col-6">
-                    <label>Search</label>
+                    <label>&nbsp;</label>
                     <button type="button" class="btn btn-secondary btn-block" onclick="get_closed_request_history()"><i
                         class="fas fa-search"></i> Search</button>
                   </div>
                   <div class="col-lg-2 col-12">
-                    <label>Export</label>
+                    <label>&nbsp;</label>
                     <button type="button" class="btn btn-secondary btn-block"
                       onclick="export_closed_request_history()"><i class="fas fa-download"></i> Export History</button>
                   </div>

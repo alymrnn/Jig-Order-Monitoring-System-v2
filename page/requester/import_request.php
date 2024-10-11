@@ -38,7 +38,23 @@
               <div class="card-body">
                 <div class="container-fluid">
                   <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-12">
+                    <div class="col-lg-4 col-md-6 col-sm-12">
+                      <div class="small-box bg-primary">
+                        <div class="inner">
+                          <a href="" style="color:white;" data-toggle="modal" data-target="#add_single_item_record">
+                            <h5>Add Single Item</h5>
+                            <br>
+                            <br>
+                        </div>
+                        <div class="icon">
+                          <i class="fas fa-plus"></i>
+                        </div>
+                        </a>
+                        <a href="#" class="small-box-footer" data-toggle="modal" data-target="#add_single_item_record">Proceed
+                          <i class="fas fa-arrow-circle-right"></i></a>
+                      </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-12">
                       <div class="small-box bg-info">
                         <div class="inner">
                           <a href="" style="color:white;" data-toggle="modal" data-target="#import_request">
@@ -54,7 +70,7 @@
                           <i class="fas fa-arrow-circle-right"></i></a>
                       </div>
                     </div>
-                    <div class="col-lg-6 col-md-6 col-sm-12">
+                    <div class="col-lg-4 col-md-6 col-sm-12">
                       <div class="small-box bg-secondary">
                         <div class="inner">
                           <a href="../../template/template for request.csv" style="color:white;">
@@ -79,7 +95,7 @@
             <!-- left column -->
             <div class="col-md-12">
               <!-- general form elements -->
-              <div class="card card-info">
+              <div class="card card-secondary">
                 <div class="card-header">
                   <h3 class="card-title">List of Request Data</h3>
                   <div class="card-tools">
@@ -102,11 +118,12 @@
                           <label>Count</label>
                         </div>
                         <div class="col-6 offset-5">
-                          <p style="background: #FFFAD1; border-left: 3px solid #E89F4C; font-size: 16px;">
+                          <p class="p-1" style="background: #FFFAD1; border-left: 3px solid #E89F4C; font-size: 16px;">
                             <span><i>Note:</i></span> Items
                             highlighted in <span style="color:red; font-weight: bold">RED</span> are those that are
                             delayed based on the <span style="color:red; font-weight: bold">REQUIRED DELIVERY
-                              DATE</span></p>
+                              DATE</span>
+                          </p>
                         </div>
                       </div>
 

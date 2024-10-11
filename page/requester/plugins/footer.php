@@ -1,10 +1,10 @@
 <footer class="main-footer">
-  <div class="d-flex justify-content-between">
+  <div class="d-flex justify-content-between" style="font-size: 13px;">
     <div class="mr-auto "> <strong> Developed by: </strong> JJ Buendia
       | <strong>Co-Developers:</strong> Vince Alcantara, Raymart Vergara, Ally Maranan
     </div>
     <div> <strong>Copyright &copy; 2023 | All Rights Reserved</div>
-    <div style="font-weight: normal;">&nbsp;&nbsp;Version 2.1.2</div>
+    <div style="font-weight: normal;">&nbsp;&nbsp;Version 2.1.10</div>
   </div>
 </footer>
 <?php
@@ -15,6 +15,7 @@ include '../../modals/account/add_account.php';
 include '../../modals/account/update_account.php';
 include '../../modals/monitor/cancel_request.php';
 include '../../modals/cancel/cancel_info_modal.php';
+include '../../modals/requester/add_single_item_record.php';
 ?>
 <!-- jQuery -->
 <!-- <script src="../../plugins/jquery/jquery.min.js"></script> -->

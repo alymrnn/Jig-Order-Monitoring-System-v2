@@ -102,7 +102,7 @@
                       <div class="container-fluid">
                         <div class="row mb-0">
                           <div class="col-12 d-flex justify-content-between">
-                            <div class="col-3">
+                            <div class="col-4">
                               <div class="input-group">
                                 <button type="button" class="btn btn-danger" id="btnCancel" data-toggle="modal" disabled
                                   data-target="#cancel_request">
@@ -113,7 +113,7 @@
                                   id="rfq_status_search">
                                   <option selected value="open_all">RFQ Process</option>
                                   <option value="open_initial">Initial RFQ</option>
-                                  <option value="open_complete">Compelete RFQ</option>
+                                  <option value="open_complete">Complete RFQ</option>
                                   <option value="open_po">PO Process</option>
                                   <option value="cancelled">Cancelled</option>
                                 </select>

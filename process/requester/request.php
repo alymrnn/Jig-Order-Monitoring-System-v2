@@ -205,7 +205,7 @@ if ($method == 'fetch_requested_processed') {
 				$color4 = "background-color:#C83535; color:#FFF";
 			}
 
-			echo '<tr>'; 
+			echo '<tr>';
 			echo '<td>' . $c . '</td>';
 			echo '<td style="' . $color4 . '">' . $j['status'] . '</td>';
 			echo '<td style="' . $color4 . '">' . $j['carmaker'] . '</td>';
@@ -275,6 +275,57 @@ if ($method == 'fetch_opt_car_model') {
 		}
 	} else {
 		echo '<option value="">No car models available</option>';
+	}
+}
+
+function generate_joms_request_id($request_id)
+{
+	if ($request_id == "") {
+		$request_id = date("ymdh");
+		$rand = substr(md5(microtime()), rand(0, 26), 5);
+		$request_id = 'JOMS:' . $request_id;
+		$request_id = $request_id . '' . $rand;
+	}
+	return $request_id;
+}
+
+function update_notif_count_joms_request($conn)
+{
+	$sql = "UPDATE `notif_joms_request` SET `new_joms_request`= new_joms_request + 1 WHERE interface = 'AME3'";
+	$stmt = $conn->prepare($sql);
+	$stmt->execute();
+}
+
+if ($method == 'add_single_item_record') {
+	$car_maker = trim($_POST['car_maker']);
+	$car_model = trim($_POST['car_model']);
+	$product = trim($_POST['product']);
+	$jig_name = trim($_POST['jig_name']);
+	$drawing_no = trim($_POST['drawing_no']);
+	$type = trim($_POST['type']);
+	$quantity = trim($_POST['quantity']);
+	$purpose = trim($_POST['purpose']);
+	$kigyo_budget = trim($_POST['kigyo_budget']);
+	$date_requested = trim($_POST['date_requested']);
+	$requested_by = trim($_POST['requested_by']);
+	$delivery_date = trim($_POST['delivery_date']);
+	$remarks = trim($_POST['remarks']);
+
+	$request_id = '';
+	$request_id = generate_joms_request_id($request_id);
+
+	$uploaded_by = $_SESSION['fullname'];
+	$section = $_SESSION['section'];
+
+	$query = "INSERT INTO joms_request(`request_id`, `carmaker`, `carmodel`, `product`, `jigname`, `drawing_no`, `type`, `qty`,`purpose`, `budget`, `date_requested`, `requested_by`, `required_delivery_date`, `remarks`, `uploaded_by`, `section`) 
+	VALUES ('$request_id','$car_maker','$car_model','$product','$jig_name','$drawing_no','$type','$quantity','$purpose','$kigyo_budget','$date_requested','$requested_by','$delivery_date','$remarks','$uploaded_by','$section')";
+
+	$stmt = $conn->prepare($query);
+	if ($stmt->execute()) {
+		update_notif_count_joms_request($conn);
+		echo 'success';
+	} else {
+		echo 'error';
 	}
 }
 
