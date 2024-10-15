@@ -30,7 +30,7 @@
         <li class="nav-item">
           <a href="dashboard.php" class="nav-link active">
             <i class="nav-icon fas fa-list"></i>
-            <p>
+            <p style="font-size:14px;">
               Request Data
             </p>
           </a>
@@ -38,7 +38,7 @@
         <li class="nav-item">
           <a href="set_rfq_po.php" class="nav-link ">
             <i class="nav-icon far fa-file-alt"></i>
-            <p>
+            <p style="font-size:14px;">
               Set RFQ + PO Process
             </p>
           </a>
@@ -46,7 +46,7 @@
         <li class="nav-item">
           <a href="closed_request_history.php" class="nav-link">
             <i class="nav-icon fas fa-history"></i>
-            <p>
+            <p style="font-size:14px;">
               Closed Request History
             </p>
           </a>
@@ -54,7 +54,7 @@
         <li class="nav-item" id="accounts_bar">
           <a href="purchasing_account.php" class="nav-link">
             <i class="nav-icon fas fa-user-cog"></i>
-            <p>
+            <p style="font-size:14px;">
               Account Management
             </p>
           </a>

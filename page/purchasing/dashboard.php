@@ -1,5 +1,5 @@
-<?php include 'plugins/navbar.php';?>
-<?php include 'plugins/sidebar/dashboardbar.php';?>
+<?php include 'plugins/navbar.php'; ?>
+<?php include 'plugins/sidebar/dashboardbar.php'; ?>
 
 <!-- Main Sidebar Container -->
 <div class="content-wrapper">
@@ -41,12 +41,13 @@
                       <div class="inner">
                         <a href="../../process/export/export_request_data.php" style="color:white;">
                           <h5>Export Request Data</h5><br><br>
-                        </div>
-                        <div class="icon">
-                          <i class="fas fa-download"></i>
-                        </div>
+                      </div>
+                      <div class="icon">
+                        <i class="fas fa-download"></i>
+                      </div>
                       </a>
-                      <a href="../../process/export/export_request_data.php" class="small-box-footer">Proceed <i class="fas fa-arrow-circle-right"></i></a>
+                      <a href="../../process/export/export_request_data.php" class="small-box-footer">Proceed <i
+                          class="fas fa-arrow-circle-right"></i></a>
                     </div>
                   </div>
                 </div>
@@ -54,7 +55,7 @@
             </div>
           </div>
         </div>
-      <!-- end row -->
+        <!-- end row -->
       </div>
 
       <div class="row">
@@ -86,14 +87,15 @@
                   </div>
                   <div class="row">
                     <div class="col-12">
-                    <div class="card-body table-responsive p-0" style="height: 600px; overflow-y: auto;">
-                      <table class="table table-head-fixed text-nowrap table-bordered table-hover"
-                        id="list_of_uploaded_request_table">
-                        <thead style="text-align:center; position: sticky;top: 0; z-index: 1;  background-color: #f8f9fa;">
+                      <div class="card-body table-responsive p-0" style="height: 550px; overflow-y: auto;">
+                        <table class="table table-head-fixed text-nowrap table-bordered table-hover"
+                          id="list_of_uploaded_request_table">
+                          <thead
+                            style="text-align:center; position: sticky;top: 0; z-index: 1;  background-color: #f8f9fa;">
                             <tr>
                               <th style="background:#f8f9fa;">#</th>
                               <th style="background:#f8f9fa;">Status</th>
-                              <th style="background:#f8f9fa;">Car Maker</th>  
+                              <th style="background:#f8f9fa;">Car Maker</th>
                               <th style="background:#f8f9fa;">Car Model</th>
                               <th style="background:#f8f9fa;">Product </th>
                               <th style="background:#f8f9fa;">Jig Name </th>
@@ -106,7 +108,8 @@
                               <th style="background:#f8f9fa;">Date Requested </th>
                               <th style="background:#f8f9fa;">Requested By </th>
                               <th style="background:#f8f9fa;">Required Delivery Date </th>
-                              <th style="background:#f8f9fa;">Remarks (fill up if ECT jig is under new design, supplier) </th>
+                              <th style="background:#f8f9fa;">Remarks (fill up if ECT jig is under new design, supplier)
+                              </th>
                               <th style="background:#f8f9fa;">Upload By</th>
                             </tr>
                           </thead>
@@ -136,6 +139,6 @@
 </div>
 
 
-<?php include 'plugins/footer.php';?>
+<?php include 'plugins/footer.php'; ?>
 <?php include 'plugins/javascript/notification_script.php'; ?>
 <?php include 'plugins/javascript/dashboard_script.php'; ?>

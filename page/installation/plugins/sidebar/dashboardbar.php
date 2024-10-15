@@ -30,16 +30,15 @@
         <li class="nav-item">
           <a href="dashboard.php" class="nav-link active bg-success">
             <i class="nav-icon fas fa-wrench"></i>
-            <p>
+            <p style="font-size:14px;">
               Set Installation
-
             </p>
           </a>
         </li>
         <li class="nav-item" id="accounts_bar">
           <a href="installation_account.php" class="nav-link">
             <i class="nav-icon fas fa-user-cog"></i>
-            <p>
+            <p style="font-size:14px;">
               Account Management
             </p>
           </a>

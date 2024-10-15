@@ -26,7 +26,7 @@
         <li class="nav-item">
           <a href="dashboard.php" class="nav-link">
             <i class="nav-icon fas fa-chalkboard-teacher"></i>
-            <p>
+            <p style="font-size:14px;">
               Request Monitoring
             </p>
           </a>
@@ -34,7 +34,7 @@
         <li class="nav-item">
           <a href="import_request.php" class="nav-link active">
             <i class="nav-icon fas fa-upload"></i>
-            <p>
+            <p style="font-size:14px;">
               Import Request Data
             </p>
           </a>
@@ -42,7 +42,7 @@
         <li class="nav-item" id="accounts_bar">
           <a href="requester_account.php" class="nav-link">
             <i class="nav-icon fas fa-user-cog"></i>
-            <p>
+            <p style="font-size:14px;">
               Account Management
             </p>
           </a>

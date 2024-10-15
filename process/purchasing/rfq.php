@@ -205,7 +205,7 @@ if ($method == 'filter_rfq_process') {
 			if (!empty($j['date_reply_quotation'])) {
 				$dateReplyQuotation = $j['date_reply_quotation'];
 			}
-			
+
 			$targetApprovalDateQuotation = "";
 			if (!empty($j['target_approval_date_of_quotation'])) {
 				$targetApprovalDateQuotation = $j['target_approval_date_of_quotation'];
@@ -275,7 +275,7 @@ if ($method == 'filter_rfq_process') {
 
 			echo '<tr>';
 			echo '<td>';
-			
+
 			$disable_row = '';
 
 			if ($rfq_status_search == 'cancelled') {
@@ -310,26 +310,26 @@ if ($method == 'filter_rfq_process') {
 
 			// rows conditions
 			if ($rfq_status_search == "open_initial" || $rfq_status_search == "open_complete" || $rfq_status_search == "open_all" || $rfq_status_search == "open_po" || $rfq_status_search == "cancelled") {
-				echo '<td>' . $j['date_of_issuance_rfq'] . '</td>';
-				echo '<td>' . $j['rfq_no'] . '</td>';
-				echo '<td>' . $j['rfq_remarks'] . '</td>';
+				echo '<td style ="' . $targetReplyQuotationColor . '">' . $j['date_of_issuance_rfq'] . '</td>';
+				echo '<td style ="' . $targetReplyQuotationColor . '">' . $j['rfq_no'] . '</td>';
+				echo '<td style ="' . $targetReplyQuotationColor . '">' . $j['rfq_remarks'] . '</td>';
 				echo '<td style ="' . $targetReplyQuotationColor . '">' . $j['target_date_reply_quotation'] . '</td>';
-				echo '<td>' . $j['item_code'] . '</td>';
-				echo '<td>' . $j['i_uploaded_by'] . '</td>';
+				echo '<td style ="' . $targetReplyQuotationColor . '">' . $j['item_code'] . '</td>';
+				echo '<td style ="' . $targetReplyQuotationColor . '">' . $j['i_uploaded_by'] . '</td>';
 				if ($rfq_status_search == "open_complete" || $rfq_status_search == "open_all" || $rfq_status_search == "open_po" || $rfq_status_search == "cancelled") {
-					echo '<td>' . $j['date_reply_quotation'] . '</td>';
-					echo '<td>' . $j['leadtime'] . '</td>';
-					echo '<td>' . $j['quotation_no'] . '</td>';
-					echo '<td>' . $j['unit_price_jpy'] . '</td>';
-					echo '<td>' . $j['unit_price_usd'] . '</td>';
-					echo '<td>' . $j['unit_price_php'] . '</td>';
-					echo '<td>' . $j['total_amount'] . '</td>';
-					echo '<td>' . $j['fsib_no'] . '</td>';
-					echo '<td>' . $j['fsib_code'] . '</td>';
-					echo '<td>' . $j['date_sent_to_internal_signatories'] . '</td>';
+					echo '<td style ="' . $targetApprovalDateQuotationColor . '">' . $j['date_reply_quotation'] . '</td>';
+					echo '<td style ="' . $targetApprovalDateQuotationColor . '">' . $j['leadtime'] . '</td>';
+					echo '<td style ="' . $targetApprovalDateQuotationColor . '">' . $j['quotation_no'] . '</td>';
+					echo '<td style ="' . $targetApprovalDateQuotationColor . '">' . $j['unit_price_jpy'] . '</td>';
+					echo '<td style ="' . $targetApprovalDateQuotationColor . '">' . $j['unit_price_usd'] . '</td>';
+					echo '<td style ="' . $targetApprovalDateQuotationColor . '">' . $j['unit_price_php'] . '</td>';
+					echo '<td style ="' . $targetApprovalDateQuotationColor . '">' . $j['total_amount'] . '</td>';
+					echo '<td style ="' . $targetApprovalDateQuotationColor . '">' . $j['fsib_no'] . '</td>';
+					echo '<td style ="' . $targetApprovalDateQuotationColor . '">' . $j['fsib_code'] . '</td>';
+					echo '<td style ="' . $targetApprovalDateQuotationColor . '">' . $j['date_sent_to_internal_signatories'] . '</td>';
 					echo '<td style ="' . $targetApprovalDateQuotationColor . '">' . $j['target_approval_date_of_quotation'] . '</td>';
-					echo '<td>' . $j['rfq_status'] . '</td>';
-					echo '<td>' . $j['c_uploaded_by'] . '</td>';
+					echo '<td style ="' . $targetApprovalDateQuotationColor . '">' . $j['rfq_status'] . '</td>';
+					echo '<td style ="' . $targetApprovalDateQuotationColor . '">' . $j['c_uploaded_by'] . '</td>';
 					if ($rfq_status_search == "open_po") {
 						echo '<td>' . $j['approval_date_of_quotation'] . '</td>';
 						echo '<td>' . $j['target_date_submission_to_purchasing'] . '</td>';
