@@ -188,6 +188,7 @@
                                   <th>Target PO Date</th>
                                   <th>PO Date </th>
                                   <th>PO No. </th>
+                                  
                                   <!-- <th>Ordering Additional Details </th> -->
                                   <th>Supplier </th>
                                   <th>ETD </th>
