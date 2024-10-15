@@ -50,19 +50,19 @@ if ($method == 'fetch_requested_processed') {
 
 
 			if (($targetReplyQuotation < $dateReplyQuotation) || ($dateReplyQuotation == '1970-01-01')) {
-				$targetReplyQuotationColor = "background-color:red;";
+				$targetReplyQuotationColor = "background-color:#C83535; color:#FFF";
 			}
 			if (($targetApprovalDateQuotation < $approvalDateQuotation) || ($approvalDateQuotation == '1970-01-01')) {
-				$targetApprovalDateQuotationColor = "background-color:red;";
+				$targetApprovalDateQuotationColor = "background-color:#C83535; color:#FFF";
 			}
 			if (($actualDateSub < $poDate) || ($poDate == '1970-01-01')) {
-				$poDateColor = "background-color:red;";
+				$poDateColor = "background-color:#C83535; color:#FFF";
 			}
 			if ($etd == $server_date_only) {
-				$etdColor = "background-color:red;";
+				$etdColor = "background-color:#C83535; color:#FFF";
 			}
 			if ($eta == $server_date_only) {
-				$etaColor = "background-color:red;";
+				$etaColor = "background-color:#C83535; color:#FFF";
 			}
 
 
@@ -241,33 +241,33 @@ if ($method == 'filter_rfq_process') {
 			// Conditions
 
 			if (($targetReplyQuotation < $dateReplyQuotation) || ($dateReplyQuotation == '1970-01-01')) {
-				$targetReplyQuotationColor = "background-color:red;";
+				$targetReplyQuotationColor = "background-color:#C83535; color:#FFF";
 			} else {
 				$targetReplyQuotationColor = "";
 			}
 			if (($targetApprovalDateQuotation < $approvalDateQuotation) || ($approvalDateQuotation == '1970-01-01')) {
-				$targetApprovalDateQuotationColor = "background-color:red;";
+				$targetApprovalDateQuotationColor = "background-color:#C83535; color:#FFF";
 			} else {
 				$targetApprovalDateQuotationColor = "";
 			}
 			if (($actualDateSub < $poDate) || ($poDate == '1970-01-01')) {
-				$poDateColor = "background-color:red;";
+				$poDateColor = "background-color:#C83535; color:#FFF";
 			} else {
 				$poDateColor = "";
 			}
 			if ($etd == $server_date_only) {
-				$etdColor = "background-color:red;";
+				$etdColor = "background-color:#C83535; color:#FFF";
 			} else {
 				$etdColor = "";
 			}
 			if ($eta == $server_date_only) {
-				$etaColor = "background-color:red;";
+				$etaColor = "background-color:#C83535; color:#FFF";
 			} else {
 				$etaColor = "";
 			}
 
 			if ($date_of_issuance_rfq == '' && $server_date_only > $restriction_of_issuance_rfq || $date_of_issuance_rfq > $restriction_of_issuance_rfq) {
-				$color = "background-color:red;";
+				$color = "background-color:#C83535; color:#FFF";
 
 			} else {
 				$color = "";
