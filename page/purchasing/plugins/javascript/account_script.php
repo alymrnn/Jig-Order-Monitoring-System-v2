@@ -227,7 +227,7 @@
     }
 
     const search_account = () => {
-        var fullname = document.getElementById('fullname_search').value;
+        var fullname = document.getElementById('full_name_search').value;
         $.ajax({
             url: '../../process/account/account_p.php',
             type: 'POST',

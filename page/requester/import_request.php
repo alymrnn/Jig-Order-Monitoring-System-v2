@@ -42,7 +42,7 @@
                       <div class="small-box bg-primary">
                         <div class="inner">
                           <a href="" style="color:white;" data-toggle="modal" data-target="#add_single_item_record">
-                            <h5>Add Single Item</h5>
+                            <h5>Add Item</h5>
                             <br>
                             <br>
                         </div>

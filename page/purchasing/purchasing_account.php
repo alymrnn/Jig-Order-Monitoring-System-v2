@@ -10,7 +10,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="">AME 3 Account Management</h1>
+                            <h1 class="">Account Management</h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
@@ -24,8 +24,6 @@
             <!-- /.content-header -->
             <!-- Main content -->
             <div class="container-fluid">
-
-
                 <div class="row">
                     <div class="col-md-12">
                         <!-- general form elements -->
@@ -39,17 +37,15 @@
                                     <div class="d-flex mb-3">
                                         <div class="mr-auto p-2">
                                             <a href="#" class="btn btn-info" data-toggle="modal"
-                                                data-target="#add_account">Register
-                                                Account</a>
+                                                data-target="#add_account"><i class="fas fa-plus"> </i> Add Account</a>
                                         </div>
                                         <div class="p-2">
                                             <input type="text" id="full_name_search" class="form-control"
-                                                autocomplete="off" placeholder="Fullname">
+                                                autocomplete="off" placeholder="Full Name">
                                         </div>
                                         <div class="p-2">
-                                            <button class="btn btn-primary" id="searchReqBtn"
-                                                onclick="load_accounts()">Search
-                                                <i class="fas fa-search"></i></button>
+                                            <button class="btn btn-primary" id="searchReqBtn" onclick="search_account()">
+                                                <i class="fas fa-search"></i> Search</button>
                                         </div>
                                     </div>
 
@@ -78,14 +74,13 @@
                         </div>
                     </div>
                 </div>
-                <!-- /.row -->
             </div>
         </div>
     </div>
 </section>
 
 <?php
-include 'plugins/footer.php'; 
+include 'plugins/footer.php';
 ?>
 <?php
 include 'plugins/javascript/notification_script.php';
