@@ -31,8 +31,10 @@
               <button type="button" class="btn btn-danger ml-1 mr-2" id="btnCancel" data-toggle="modal"
                 data-target="#cancel_request" disabled>
                 Cancel Request</button>
-              <button type="button" class="btn btn-primary" onclick="export_request_monitoring_record()">
-                Export Record</button>
+              <button type="button" class="btn btn-primary mr-2" onclick="export_request_monitoring_record()">
+                Export Filtered Record</button>
+              <button type="button" class="btn btn-primary" onclick="export_all_record()">
+                Export ALL Record</button>
               <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
                   <i class="fas fa-minus"></i>
@@ -53,7 +55,8 @@
                     <p class="p-1" style="background: #FFFAD1; border-left: 3px solid #E89F4C; font-size: 14px;">
                       <span><i>Note:</i></span> Items
                       highlighted in <span style="color:red; font-weight: bold">RED</span> are those that are delayed
-                      based on the <span style="color:red; font-weight: bold">REQUIRED DELIVERY DATE</span></p>
+                      based on the <span style="color:red; font-weight: bold">REQUIRED DELIVERY DATE</span>
+                    </p>
                   </div>
                 </div>
                 <div class="row mb-4">

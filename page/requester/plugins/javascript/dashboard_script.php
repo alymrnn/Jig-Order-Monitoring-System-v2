@@ -237,4 +237,8 @@
 		);
 	}
 
+	const export_all_record = () => {
+		window.open('../../process/export/export_all_record.php', '_blank');
+	}
+
 </script>
