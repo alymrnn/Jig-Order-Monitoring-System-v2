@@ -15,11 +15,11 @@
                         <input type="text" id="cancel_reason" class="form-control">
                     </div>
                     <div class="col-md-6 mt-2 float-right">
-                        <label>Canellation Date: </label>
+                        <label>Cancellation Date: </label>
                         <input type="date" id="cancel_date" class="form-control">
                     </div>
                     <div class="col-11 text-center mt-2 d-flex justify-content-end">
-                        <span class="p">Number of Checked:</span>
+                        <span class="p">Number of Checked: &nbsp;</span>
                         <span class="h5" id="numcheck"></span>
                     </div>
                 </div>

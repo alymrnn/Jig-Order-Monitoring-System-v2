@@ -15,6 +15,7 @@
                         <!-- <input type="text" class="form-control" id="req_car_maker"> -->
                         <select name="req_car_maker" id="req_car_maker" class="form-control">
                             <option value="" selected disabled>Select car maker</option>
+                            <option value="ALL">ALL</option>
                             <option value="MAZDA">MAZDA</option>
                             <option value="DAIHATSU">DAIHATSU</option>
                             <option value="HONDA">HONDA</option>

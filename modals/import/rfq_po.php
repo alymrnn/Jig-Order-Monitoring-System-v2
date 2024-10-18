@@ -1,6 +1,6 @@
 <div class="modal fade" id="import_rfq_po" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
   aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
+  <div class="modal-dialog modal-xl" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h4 class="modal-title" id="exampleModalLabel"><b>Import Request Data + RFQ + PO</b></h4>
@@ -16,6 +16,8 @@
             <div class="small-box bg-info text-center">
               <div class="inner">
                 <h4>Import Req + Initial RFQ</h4>
+                <br>
+                <br>
               </div>
               <div class="icon">
                 <i class="fas fa-upload fa-sm" class="close" data-dismiss="modal" type="button"
@@ -28,10 +30,10 @@
             </div>
           </div>
           <div class="col-lg-4 col-6">
-
             <div class="small-box bg-danger text-center">
               <div class="inner">
                 <h4>Import Req + Initial RFQ + RFQ</h4>
+                <br>
               </div>
               <div class="icon">
                 <i class="fas fa-upload fa-sm" class="close" data-dismiss="modal" type="button"
@@ -48,6 +50,7 @@
             <div class="small-box bg-success text-center">
               <div class="inner">
                 <h4>Import Req + Complete RFQ + PO </h4>
+                <br>
               </div>
               <div class="icon">
                 <i class="fas fa-upload fa-sm" type="button" class="close" data-dismiss="modal"

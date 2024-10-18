@@ -34,22 +34,21 @@
                             <!-- /.card-header -->
                             <div class="card-body">
                                 <div class="container-fluid">
-                                    <div class="d-flex mb-3">
-                                        <div class="mr-auto p-2">
-                                            <a href="#" class="btn btn-info" data-toggle="modal"
-                                                data-target="#add_account"><i class="fas fa-plus"></i> Add Account</a>
-                                        </div>
-                                        <div class="p-2">
+                                    <div class="row mb-3">
+                                        <div class="col-md-3">
                                             <input type="text" id="fullname_search" class="form-control"
                                                 autocomplete="off" placeholder="Full Name">
                                         </div>
-                                        <div class="p-2">
-                                            <button class="btn btn-primary" id="searchReqBtn"
+                                        <div class="col-md-2">
+                                            <button class="btn btn-primary btn-block" id="searchReqBtn"
                                                 onclick="search_account()"><i class="fas fa-search"></i> Search
                                             </button>
                                         </div>
+                                        <div class="col-md-2 offset-5">
+                                            <button class="btn btn-info btn-block" data-toggle="modal"
+                                                data-target="#add_account"><i class="fas fa-plus"></i> Add Account</button>
+                                        </div>
                                     </div>
-
                                     <div class="card-body table-responsive p-0" style="height: 500px;">
                                         <table class="table table-head-fixed text-nowrap table-hover">
                                             <thead style="text-align:center;">
