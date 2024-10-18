@@ -125,7 +125,7 @@
                               <th>Date Requested </th>
                               <th>Requested By </th>
                               <th>Required Delivery Date </th>
-                              <th>Remarks (fill up if ECT jig is under new design, supplier) </th>
+                              <th>Order Destination </th>
                               <th>Upload By </th>
 
                               <th>Date of Issuance of RFQ </th>

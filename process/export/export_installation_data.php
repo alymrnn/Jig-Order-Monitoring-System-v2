@@ -26,7 +26,7 @@ $fields = array(
 	'Date Requested',
 	'Requested By',
 	'Required Delivery Date',
-	'Remarks (fill up if ECT jig is under new design, supplier)',
+	'Order Destination',
 	'Date of Issuance of RFQ',
 	'RFQ No',
 	'RFQ Remarks',
