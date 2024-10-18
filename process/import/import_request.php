@@ -59,14 +59,14 @@ function check_csv($file, $conn)
             continue; // Skip blank lines
         }
 
-        $date_r = str_replace('/', '-', $line[9]);
-        $is_valid_date_requested = validate_date($date_r);
+        // $date_r = str_replace('/', '-', $line[13]);
+        // $is_valid_date_requested = validate_date($date_r);
 
-        $date_rdd = str_replace('/', '-', $line[11]);
+        $date_rdd = str_replace('/', '-', $line[10]);
         $is_valid_required_delivery_date = validate_date($date_rdd);
 
         // CHECK IF BLANK DATA
-        if ($line[0] == '' || $line[1] == '' || $line[2] == '' || $line[3] == '' || $line[5] == '' || $line[6] == '' || $line[7] == '' || $line[8] == '' || $line[9] == '' || $line[10] == '' || $line[11] == '') {
+        if ($line[0] == '' || $line[1] == '' || $line[2] == '' || $line[3] == '' || $line[5] == '' || $line[6] == '' || $line[7] == '' || $line[8] == '' || $line[9] == '' || $line[10] == '' || $line[11] == '' || $line[12] == '') {
             // IF BLANK DETECTED ERROR
             $hasBlankError++;
             $hasError = 1;

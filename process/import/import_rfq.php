@@ -41,13 +41,13 @@ function check_csv($file, $conn)
         if (empty(implode('', $line))) {
             continue; // Skip blank lines
         }
-        $date_rq = str_replace('/', '-', $line[19]);
+        $date_rq = str_replace('/', '-', $line[21]);
         $date_reply_quotation = validate_date($date_rq);
 
-        $date_dis = str_replace('/', '-', $line[28]);
+        $date_dis = str_replace('/', '-', $line[30]);
         $date_sent_to_internal_signatories = validate_date($date_dis);
 
-        $date_tadq = str_replace('/', '-', $line[29]);
+        $date_tadq = str_replace('/', '-', $line[31]);
         $target_approval_date_of_quotation = validate_date($date_tadq);
         // CHECK IF BLANK DATA
         if (
@@ -135,24 +135,27 @@ if (isset($_POST['upload'])) {
                     $requested_by = $line[12];
                     $required_delivery_date = $line[13];
                     $remarks = $line[14];
+                    $shipping_method = $line[15]; 
                     //rfq
-                    $date_of_issuance_rfq = $line[15];
-                    $rfq_no = $line[16];
-                    $target_date_reply_quotation = $line[17];
-                    $item_code = $line[18];
+                    $date_of_issuance_rfq = $line[16];
+                    $rfq_no = $line[17]; 
+                    $rfq_remarks = $line[18];
+                    $target_date_reply_quotation = $line[19];
+                    $item_code = $line[20];
 
-                    $date_reply_quotation = $line[19];
-                    $leadtime = $line[20];
-                    $quotation_no = $line[21];
-                    $unit_price_jpy = $line[22];
-                    $unit_price_usd = $line[23];
-                    $unit_price_php = $line[24];
-                    $total_amount = $line[25];
+                    $date_reply_quotation = $line[21];
+                    $leadtime = $line[22];
+                    $quotation_no = $line[23];
+                    $unit_price_jpy = $line[24];
+                    $unit_price_usd = $line[25];
+                    $unit_price_php = $line[26];
+                    $total_amount = $line[27];
 
-                    $fsib_no = $line[26];
-                    $fsib_code = $line[27];
-                    $date_sent_to_internal_signatories = $line[28];
-                    $target_approval_date_of_quotation = $line[29];
+                    $fsib_no = $line[28];
+                    $fsib_code = $line[29];
+                    $date_sent_to_internal_signatories = $line[30];
+                    $target_approval_date_of_quotation = $line[31]; 
+                    $rfq_status = $line[32]; 
 
                     $date_rq = str_replace('/', '-', $date_reply_quotation);
                     $date_reply_quotation = date("Y-m-d", strtotime($date_rq));

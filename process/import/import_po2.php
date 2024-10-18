@@ -47,7 +47,7 @@ function check_csv($file, $conn)
 
         // CHECK IF BLANK DATA
         if (
-            $line[0] == ''  || $line[27] == '' || $line[28] == '' || $line[29] == '' || $line[30] == '' ||
+            $line[0] == '' || $line[27] == '' || $line[28] == '' || $line[29] == '' || $line[30] == '' ||
             $line[31] == '' || $line[32] == '' || $line[33] == '' || $line[34] == '' || $line[35] == '' ||
             $line[36] == '' || $line[37] == '' || $line[38] == ''
         ) {
@@ -103,36 +103,38 @@ if (isset($_POST['upload'])) {
                     $requested_by = $line[12];
                     $required_delivery_date = $line[13];
                     $remarks = $line[14];
+                    $shipping_method = $line[15];
                     //rfq
-                    $date_of_issuance_rfq = $line[15];
-                    $rfq_no = $line[16];
-                    $target_date_reply_quotation = $line[17];
-                    $item_code = $line[18];
-                    $date_reply_quotation = $line[19];
-                    $leadtime = $line[20];
-                    $quotation_no = $line[21];
-                    $unit_price_jpy = $line[22];
-                    $unit_price_usd = $line[23];
-                    $unit_price_php = $line[24];
-                    $total_amount = $line[25];
-                    $fsib_no = $line[26];
-                    $fsib_code = $line[27];
-                    $date_sent_to_internal_signatories = $line[28];
-                    $target_approval_date_of_quotation = $line[29];
+                    $date_of_issuance_rfq = $line[16];
+                    $rfq_no = $line[17];
+                    $rfq_remarks = $line[18];
+                    $target_date_reply_quotation = $line[19];
+                    $item_code = $line[20];
+                    $date_reply_quotation = $line[21];
+                    $leadtime = $line[22];
+                    $quotation_no = $line[23];
+                    $unit_price_jpy = $line[24];
+                    $unit_price_usd = $line[25];
+                    $unit_price_php = $line[26];
+                    $total_amount = $line[27];
+                    $fsib_no = $line[28];
+                    $fsib_code = $line[29];
+                    $date_sent_to_internal_signatories = $line[30];
+                    $target_approval_date_of_quotation = $line[31];
+                    $rfq_status = $line[32];
                     //po
-                    $approval_date_of_quotation = $line[30];
-                    $target_date_submission_to_purchasing = $line[31];
-                    $actual_date_of_submission_to_purchasing = $line[32];
-                    $target_po_date = $line[33];
-                    $po_date = $line[34];
-                    $po_no = $line[35];
-                    $supplier = $line[36];
-                    $etd = $line[37];
-                    $eta = $line[38];
-                    $actual_arrival_date = $line[39];
-                    $invoice_no = $line[40];
-                    // $classification = $line[42];
-                    $remarks2 = $line[41];
+                    $approval_date_of_quotation = $line[33];
+                    $target_date_submission_to_purchasing = $line[34];
+                    $actual_date_of_submission_to_purchasing = $line[35];
+                    $target_po_date = $line[36];
+                    $po_date = $line[37];
+                    $po_no = $line[38];
+                    $supplier = $line[39];
+                    $etd = $line[40];
+                    $eta = $line[41];
+                    $invoice_no = $line[42];
+                    $remarks2 = $line[43];
+                    $actual_arrival_date = $line[44];
 
                     // CHECK IF BLANK DATA
                     $date_adoq = str_replace('/', '-', $approval_date_of_quotation);

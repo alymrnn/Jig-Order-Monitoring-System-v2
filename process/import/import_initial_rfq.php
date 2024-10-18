@@ -41,13 +41,13 @@ function check_csv($file, $conn)
             continue; // Skip blank lines
         }
 
-        $date_i_rfq = str_replace('/', '-', $line[15]);
+        $date_i_rfq = str_replace('/', '-', $line[16]);
         $is_valid_date_requested = validate_date($date_i_rfq);
-        $date_tdrq = str_replace('/', '-', $line[17]);
+        $date_tdrq = str_replace('/', '-', $line[19]);
         $is_valid_required_delivery_date = validate_date($date_tdrq);
 
         // CHECK IF BLANK DATA
-        if ($line[0] == '' || $line[1] == '' || $line[2] == '' || $line[3] == '' || $line[4] == '' || $line[5] == '' || $line[7] == '' || $line[8] == '' || $line[9] == '' || $line[10] == '' || $line[11] == '' || $line[12] == '' || $line[13] == '' || $line[16] == '') {
+        if ($line[0] == '' || $line[1] == '' || $line[2] == '' || $line[3] == '' || $line[4] == '' || $line[5] == '' || $line[7] == '' || $line[8] == '' || $line[9] == '' || $line[10] == '' || $line[11] == '' || $line[12] == '' || $line[13] == '' || $line[14] == '' || $line[15] == '' || $line[16] == '' || $line[17] == '' || $line[18] == '' || $line[19] == '' || $line[20] == '') {
             // IF BLANK DETECTED ERROR
             $hasBlankError++;
             $hasError = 1;
@@ -55,12 +55,12 @@ function check_csv($file, $conn)
         }
 
         // CHECK ROW VALIDATION
-        if ($is_valid_date_requested == false && !empty($line[15])) {
+        if ($is_valid_date_requested == false && !empty($line[16])) {
             $hasError = 1;
             $row_valid_arr[0] = 1;
             array_push($notValidDateOfIssuanceRfq, $check_csv_row);
         }
-        if ($is_valid_required_delivery_date == false && !empty($line[17])) {
+        if ($is_valid_required_delivery_date == false && !empty($line[19])) {
             $hasError = 1;
             $row_valid_arr[1] = 1;
             array_push($notValidTargetDateReplyQuotation, $check_csv_row);
@@ -124,11 +124,13 @@ if (isset($_POST['upload'])) {
                     $requested_by = $line[12];
                     $required_delivery_date = $line[13];
                     $remarks = $line[14];
+                    $shipping_method = $line[15];
                     //rfq
-                    $date_of_issuance_rfq = $line[15];
-                    $rfq_no = $line[16];
-                    $target_date_reply_quotation = $line[17];
-                    $item_code = $line[18];
+                    $date_of_issuance_rfq = $line[16];
+                    $rfq_no = $line[17];
+                    $rfq_remarks = $line[18];
+                    $target_date_reply_quotation = $line[19];
+                    $item_code = $line[20];
 
                     if (!empty($date_of_issuance_rfq)) {
                         $date_i_rfq = str_replace('/', '-', $date_of_issuance_rfq);
@@ -151,7 +153,7 @@ if (isset($_POST['upload'])) {
 
                         $i_uploaded_by = $_SESSION['fullname'];
 
-                        $insert = "INSERT INTO joms_rfq_process(`request_id`, `date_of_issuance_rfq`, `rfq_no`, `target_date_reply_quotation`, `item_code`, `i_uploaded_by`) VALUES ('$request_id','$date_of_issuance_rfq','$rfq_no','$target_date_reply_quotation', '$item_code', '$i_uploaded_by')";
+                        $insert = "INSERT INTO joms_rfq_process(`request_id`, `date_of_issuance_rfq`, `rfq_no`, `rfq_remarks`, `target_date_reply_quotation`, `item_code`, `i_uploaded_by`) VALUES ('$request_id','$date_of_issuance_rfq','$rfq_no','$rfq_remarks','$target_date_reply_quotation', '$item_code', '$i_uploaded_by')";
                         $stmt = $conn->prepare($insert);
                         if ($stmt->execute()) {
                             // $error = 0;
@@ -179,7 +181,7 @@ if (isset($_POST['upload'])) {
                                 $i_uploaded_by = $_SESSION['fullname'];
 
                                 $stmt = NULL;
-                                $query = "UPDATE joms_rfq_process SET date_of_issuance_rfq = '$date_of_issuance_rfq', rfq_no = '$rfq_no', target_date_reply_quotation = '$target_date_reply_quotation', item_code = '$item_code', i_uploaded_by = '$i_uploaded_by', i_date_updated = '$server_date_time' WHERE request_id = '$request_id'";
+                                $query = "UPDATE joms_rfq_process SET date_of_issuance_rfq = '$date_of_issuance_rfq', rfq_no = '$rfq_no', rfq_remarks = '$rfq_remarks', target_date_reply_quotation = '$target_date_reply_quotation', item_code = '$item_code', i_uploaded_by = '$i_uploaded_by', i_date_updated = '$server_date_time' WHERE request_id = '$request_id'";
                                 $stmt = $conn->prepare($query);
                                 if ($stmt->execute()) {
                                     $error = 0;
