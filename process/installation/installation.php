@@ -86,11 +86,11 @@ if ($method == 'fetch_request') {
 			echo '<td style = "' . $color . '">' . $j['qty'] . '</td>';
 			echo '<td style = "' . $color . '">' . $j['purpose'] . '</td>';
 			echo '<td style = "' . $color . '">' . $j['budget'] . '</td>';
-			echo '<td style = "' . $color . '">' . $j['shipping_method'] . '</td>';
 			echo '<td style = "' . $color . '">' . $j['date_requested'] . '</td>';
 			echo '<td style = "' . $color . '">' . $j['requested_by'] . '</td>';
 			echo '<td style = "' . $color . '">' . $j['required_delivery_date'] . '</td>';
 			echo '<td style = "' . $color . '">' . $j['remarks'] . '</td>';
+			echo '<td style = "' . $color . '">' . $j['shipping_method'] . '</td>';
 			echo '<td style = "' . $color . '">' . $j['uploaded_by'] . '</td>';
 			//rfq
 			echo '<td style = "' . $color2 . '">' . $j['date_of_issuance_rfq'] . '</td>';

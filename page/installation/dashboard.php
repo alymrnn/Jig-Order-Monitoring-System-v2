@@ -88,11 +88,11 @@
                           <th>Qty </th>
                           <th>Purpose </th>
                           <th>Kigyo Budget </th>
-                          <th>Shipping Method </th>
                           <th>Date Requested </th>
                           <th>Requested By </th>
                           <th>Required Delivery Date </th>
                           <th>Order Destination </th>
+                          <th>Shipping Method </th>
                           <th>Uploaded By</th>
                           <!-- Initial RFQ -->
                           <th>Date of Issuance of RFQ </th>
@@ -215,11 +215,11 @@
                             <th>Qty </th>
                             <th>Purpose </th>
                             <th>Kigyo Budget </th>
-                            <th>Shipping Method </th>
                             <th>Date Requested </th>
                             <th>Requested By </th>
                             <th>Required Delivery Date </th>
                             <th>Order Destination </th>
+                            <th>Shipping Method </th>
                             <th>Uploaded By</th>
 
                             <th>Date of Issuance of RFQ </th>

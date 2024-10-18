@@ -136,10 +136,10 @@ if (isset($_POST['upload'])) {
                     $qty = $line[6];
                     $purpose = $line[7];
                     $budget = $line[8];
-                    $shipping_method = $line[9];
-                    $requested_by = $line[10];
-                    $required_delivery_date = $line[11];
-                    $remarks = $line[12];
+                    $requested_by = $line[9];
+                    $required_delivery_date = $line[10];
+                    $remarks = $line[11];
+                    $shipping_method = $line[12];
 
                     $date_r = str_replace('/', '-', $date_requested);
                     $date_requested = date("Y-m-d", strtotime($date_r));
@@ -153,7 +153,7 @@ if (isset($_POST['upload'])) {
                     $uploaded_by = $_SESSION['fullname'];
                     $section = $_SESSION['section'];
 
-                    $insert = "INSERT INTO joms_request(`request_id`, `carmaker`, `carmodel`, `product`, `jigname`, `drawing_no`, `type`, `qty`, `purpose`, `budget`, `date_requested`, `requested_by`, `required_delivery_date`,`shipping_method`,`remarks`, `uploaded_by`, `section`) VALUES ('$request_id','$carmaker','$carmodel','$product','$jigname','$drawing_no','$type','$qty','$purpose','$budget','$server_date_only','$requested_by','$required_delivery_date','$shipping_method','$remarks','$uploaded_by','$section')";
+                    $insert = "INSERT INTO joms_request(`request_id`, `carmaker`, `carmodel`, `product`, `jigname`, `drawing_no`, `type`, `qty`, `purpose`, `budget`, `date_requested`, `requested_by`, `required_delivery_date`,`remarks`, `shipping_method`,`uploaded_by`, `section`) VALUES ('$request_id','$carmaker','$carmodel','$product','$jigname','$drawing_no','$type','$qty','$purpose','$budget','$server_date_only','$requested_by','$required_delivery_date','$remarks','$shipping_method','$uploaded_by','$section')";
                     $stmt = $conn->prepare($insert);
                     if ($stmt->execute()) {
                         update_notif_count_joms_request($conn);

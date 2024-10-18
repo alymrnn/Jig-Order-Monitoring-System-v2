@@ -3,7 +3,7 @@ include '../../process/conn.php';
 
 $delimiter = ",";
 
-$filename = 'Request Data Record_'.$server_date_only.'.csv';
+$filename = 'Request Data Record_' . $server_date_only . '.csv';
 
 // Create a file pointer 
 $f = fopen('php://memory', 'w');
@@ -12,8 +12,50 @@ $f = fopen('php://memory', 'w');
 fputs($f, "\xEF\xBB\xBF");
 
 // Set column headers 
-$fields = array('Request ID', 'Status', 'Car Maker', 'Car Model', 'Product', 'Jig Name', 'Drawing No', 'Type', 'Qty', 'Purpose', 'Kigyo Budget', 'Shipping Method','Date Requested', 'Requested By', 'Required Delivery Date', 'Order Destination', 'Date of Issuance of RFQ', 'RFQ No', 'Target Date of Reply Quotation', 'Item Code');
-$fields_exp = array('Request ID', 'Status', 'Ex. Mazda', 'Ex. J12SRHD', 'Ex.123', 'Ex. DA-123', 'Ex.', 'Ex.Assy jig', 'Ex.123', 'Ex. EV-MP Set up', 'Ex.12345', 'Ex. AIR','Ex. YYYY-MM-DD', 'Ex. Juan', 'Ex. YYYY-MM-DD', 'Example','Ex. YYYY-MM-DD', 'RFQ No','Ex. YYYY-MM-DD', 'Item Code');
+$fields = array(
+	'Request ID',
+	'Status',
+	'Car Maker',
+	'Car Model',
+	'Product',
+	'Jig Name',
+	'Drawing No',
+	'Type',
+	'Qty',
+	'Purpose',
+	'Kigyo Budget',
+	'Date Requested',
+	'Requested By',
+	'Required Delivery Date',
+	'Order Destination',
+	'Shipping Method',
+	'Date of Issuance of RFQ',
+	'RFQ No',
+	'Target Date of Reply Quotation',
+	'Item Code'
+);
+$fields_exp = array(
+	'Request ID',
+	'Status',
+	'Ex. Mazda',
+	'Ex. J12SRHD',
+	'Ex.123',
+	'Ex. DA-123',
+	'Ex.',
+	'Ex.Assy jig',
+	'Ex.123',
+	'Ex. EV-MP Set up',
+	'Ex.12345',
+	'Ex. YYYY-MM-DD',
+	'Ex. Juan',
+	'Ex. YYYY-MM-DD',
+	'Example',
+	'Ex. AIR',
+	'Ex. YYYY-MM-DD',
+	'RFQ No',
+	'Ex. YYYY-MM-DD',
+	'Item Code'
+);
 
 fputcsv($f, $fields, $delimiter);
 fputcsv($f, $fields_exp, $delimiter);
@@ -35,11 +77,11 @@ if ($stmt->rowCount() > 0) {
 			$row['qty'],
 			$row['purpose'],
 			$row['budget'],
-			$row['shipping_method'],
 			$row['date_requested'],
 			$row['requested_by'],
 			$row['required_delivery_date'],
-			$row['remarks']
+			$row['remarks'],
+			$row['shipping_method']
 		);
 		fputcsv($f, $lineData, $delimiter);
 	}
@@ -48,7 +90,7 @@ if ($stmt->rowCount() > 0) {
 	// Output each row of the data, format line as csv and write to file pointer 
 	$lineData = array("NO DATA FOUND");
 	fputcsv($f, $lineData, $delimiter);
-	
+
 
 }
 

@@ -104,11 +104,11 @@
                               <th style="background:#f8f9fa;">Qty </th>
                               <th style="background:#f8f9fa;">Purpose </th>
                               <th style="background:#f8f9fa;">Kigyo Budget </th>
-                              <th style="background:#f8f9fa;">Shipping Method </th>
                               <th style="background:#f8f9fa;">Date Requested </th>
                               <th style="background:#f8f9fa;">Requested By </th>
                               <th style="background:#f8f9fa;">Required Delivery Date </th>
                               <th style="background:#f8f9fa;">Order Destination</th>
+                              <th style="background:#f8f9fa;">Shipping Method </th>
                               <th style="background:#f8f9fa;">Upload By</th>
                             </tr>
                           </thead>

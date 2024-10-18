@@ -39,11 +39,11 @@ if ($method == 'get_closed_request_history') {
 			echo '<td>' . $j['qty'] . '</td>';
 			echo '<td>' . $j['purpose'] . '</td>';
 			echo '<td>' . $j['budget'] . '</td>';
-			echo '<td>' . $j['shipping_method'] . '</td>';
 			echo '<td>' . $j['date_requested'] . '</td>';
 			echo '<td>' . $j['requested_by'] . '</td>';
 			echo '<td>' . $j['required_delivery_date'] . '</td>';
 			echo '<td>' . $j['remarks'] . '</td>';
+			echo '<td>' . $j['shipping_method'] . '</td>';
 			echo '<td>' . $j['uploaded_by'] . '</td>';
 			//rfq
 			echo '<td>' . $j['date_of_issuance_rfq'] . '</td>';
