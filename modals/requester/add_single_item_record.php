@@ -87,7 +87,7 @@
                 </div>
                 <div class="row">
                     <div class="col-3">
-                        <label style="font-weight: normal;">Remarks</label>
+                        <label style="font-weight: normal;">Order Destination</label>
                         <input type="text" class="form-control" id="req_remarks">
                     </div>
                 </div>
