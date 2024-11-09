@@ -67,8 +67,8 @@
                         style="text-align:center; position: sticky;top: 0; z-index: 1;  background-color: #f8f9fa;">
                         <tr>
                           <th colspan="18" class="bg-secondary">Request</th>
-                          <th colspan="19" class="bg-light">RFQ Process</th>
-                          <th colspan="9" class="bg-secondary">PO Process</th>
+                          <th colspan="20" class="bg-light">RFQ Process</th>
+                          <th colspan="12" class="bg-secondary">PO Process</th>
                           <th colspan="4" class="bg-light">Delivery</th>
                           <th colspan="3" class="bg-secondary">Installation</th>
                         </tr>
@@ -103,6 +103,7 @@
                           <th>Uploaded By</th>
                           <!-- RFQ -->
                           <th>Date of Reply Quotation </th>
+                          <th>Validity of Quotation </th>
                           <th>LEADTIME(based on quotation)</th>
                           <th>Quotation No </th>
                           <th>Unit Price JPY </th>
@@ -120,6 +121,9 @@
                           <th>Target Date Submission to Purchasing </th>
                           <th>Actual Date of Submission to Purchasing </th>
                           <th>Target PO Date</th>
+                          <th>Date Received PO Doc from Purchasing</th>
+                          <th>Date Issued to Requestor</th>
+                          <th>Issued To</th>
                           <th>PO Date </th>
                           <th>PO No. </th>
                           <th>Supplier </th>
@@ -198,8 +202,8 @@
                           style="text-align:center; position: sticky;top: 0; z-index: 1;  background-color: #f8f9fa;">
                           <tr>
                             <th colspan="17" class="bg-secondary">Request</th>
-                            <th colspan="19" class="bg-light">RFQ Process</th>
-                            <th colspan="9" class="bg-secondary">PO Process</th>
+                            <th colspan="20" class="bg-light">RFQ Process</th>
+                            <th colspan="12" class="bg-secondary">PO Process</th>
                             <th colspan="4" class="bg-light">Delivery</th>
                             <th colspan="3" class="bg-secondary">Installation</th>
                           </tr>
@@ -230,6 +234,7 @@
                             <th>Uploaded By</th>
 
                             <th>Date of Reply Quotation </th>
+                            <th>Validity of Quotation </th>
                             <th>LEADTIME(based on quotation)</th>
                             <th>Quotation No </th>
                             <th>Unit Price JPY </th>
@@ -247,6 +252,9 @@
                             <th>Target Date Submission to Purchasing </th>
                             <th>Actual Date of Submission to Purchasing </th>
                             <th>Target PO Date</th>
+                            <th>Date Received PO Doc from Purchasing</th>
+                            <th>Date Issued to Requestor</th>
+                            <th>Issued To</th>
                             <th>PO Date </th>
                             <th>PO No. </th>
                             <!-- <th>Ordering Additional Details </th> -->

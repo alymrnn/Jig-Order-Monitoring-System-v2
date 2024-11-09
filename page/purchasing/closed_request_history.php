@@ -106,8 +106,8 @@
                         id="list_of_uploaded_request_with_po_table">
                         <thead style="text-align:center; position: sticky;top: 0; z-index: 1;  background-color: #f8f9fa;">
                         <th colspan="17" class="bg-secondary">Request</th>
-                            <th colspan="19" class="bg-light">RFQ Process</th>
-                            <th colspan="11" class="bg-secondary">PO Process</th>
+                            <th colspan="20" class="bg-light">RFQ Process</th>
+                            <th colspan="14" class="bg-secondary">PO Process</th>
                             <th colspan="2" class="bg-light">Delivery</th>
                             <tr>
                               <th>#</th>
@@ -135,6 +135,7 @@
                               <th>Item Code </th>
                               <th>Upload By </th>
                               <th>Date of Reply Quotation </th>
+                              <th>Validity of Quotation </th>
                               <th>LEADTIME(based on quotation)</th>
                               <th>Quotation No </th>
                               <th>Unit Price JPY </th>
@@ -152,6 +153,9 @@
                               <th>Target Date Submission to Purchasing </th>
                               <th>Actual Date of Submission to Purchasing </th>
                               <th>Target PO Date</th>
+                              <th>Date Received PO Doc from Purchasing</th>
+                              <th>Date Issued to Requestor</th>
+                              <th>Issued To</th>
                               <th>PO Date </th>
                               <th>PO No. </th>
                               <!-- <th>Ordering Additional Details </th> -->
