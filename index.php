@@ -73,7 +73,7 @@ if (isset($_SESSION['username'])) {
           <!-- /.col -->
           <div class="input-group mb-3">
             <button type="submit" class="btn btn-primary btn-block" name="login_btn" value="login">Sign In</button>
-            <a href="template/Joms work instructions.pdf" class="btn btn-secondary btn-block" target="_blank">Work
+            <a href="template/Jig-Order-Monitoring-System-v2_WI.pdf" class="btn btn-secondary btn-block" target="_blank">Work
               Instruction</a>
           </div>
           <!-- /.col -->
