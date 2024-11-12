@@ -88,6 +88,7 @@ if (isset($_POST['upload'])) {
                     if (empty(implode('', $line))) {
                         continue; // Skip blank lines
                     }
+
                     $request_id = $line[0];
                     $status = $line[1];
                     $carmaker = $line[2];
@@ -104,6 +105,7 @@ if (isset($_POST['upload'])) {
                     $required_delivery_date = $line[13];
                     $remarks = $line[14];
                     $shipping_method = $line[15];
+
                     //rfq
                     $date_of_issuance_rfq = $line[16];
                     $rfq_no = $line[17];
@@ -111,30 +113,35 @@ if (isset($_POST['upload'])) {
                     $target_date_reply_quotation = $line[19];
                     $item_code = $line[20];
                     $date_reply_quotation = $line[21];
-                    $leadtime = $line[22];
-                    $quotation_no = $line[23];
-                    $unit_price_jpy = $line[24];
-                    $unit_price_usd = $line[25];
-                    $unit_price_php = $line[26];
-                    $total_amount = $line[27];
-                    $fsib_no = $line[28];
-                    $fsib_code = $line[29];
-                    $date_sent_to_internal_signatories = $line[30];
-                    $target_approval_date_of_quotation = $line[31];
-                    $rfq_status = $line[32];
-                    //po
-                    $approval_date_of_quotation = $line[33];
-                    $target_date_submission_to_purchasing = $line[34];
-                    $actual_date_of_submission_to_purchasing = $line[35];
-                    $target_po_date = $line[36];
-                    $po_date = $line[37];
-                    $po_no = $line[38];
-                    $supplier = $line[39];
-                    $etd = $line[40];
-                    $eta = $line[41];
-                    $invoice_no = $line[42];
-                    $remarks2 = $line[43];
-                    $actual_arrival_date = $line[44];
+                    $validity_quotation = $line[22];
+                    $leadtime = $line[23];
+                    $quotation_no = $line[24];
+                    $unit_price_jpy = $line[25];
+                    $unit_price_usd = $line[26];
+                    $unit_price_php = $line[27];
+                    $total_amount = $line[28];
+                    $fsib_no = $line[29];
+                    $fsib_code = $line[30];
+                    $date_sent_to_internal_signatories = $line[31];
+                    $target_approval_date_of_quotation = $line[32];
+                    $rfq_status = $line[33];
+
+                    // PO fields
+                    $approval_date_of_quotation = $line[34];
+                    $target_date_submission_to_purchasing = $line[35];
+                    $actual_date_of_submission_to_purchasing = $line[36];
+                    $target_po_date = $line[37];
+                    $date_received_po_doc_purchasing = $line[38];
+                    $date_issued_to_requestor = $line[39];
+                    $issued_to = $line[40];
+                    $po_date = $line[41];
+                    $po_no = $line[42];
+                    $supplier = $line[43];
+                    $etd = $line[44];
+                    $eta = $line[45];
+                    $invoice_no = $line[46];
+                    $remarks2 = $line[47];
+                    $actual_arrival_date = $line[48];
 
                     // CHECK IF BLANK DATA
                     $date_adoq = str_replace('/', '-', $approval_date_of_quotation);
@@ -169,8 +176,8 @@ if (isset($_POST['upload'])) {
 
                         $po_uploaded_by = $_SESSION['fullname'];
 
-                        $insert = "INSERT INTO joms_po_process(`request_id`, `approval_date_of_quotation`, `target_date_submission_to_purchasing`, `actual_date_of_submission_to_purchasing`, `target_po_date`, `po_date`, `po_no`, `supplier`, `etd`, `eta`, `actual_arrival_date`, `invoice_no`,`remarks`, `po_uploaded_by`) 
-                         VALUES ('$request_id', '$approval_date_of_quotation', '$target_date_submission_to_purchasing', '$actual_date_of_submission_to_purchasing', '$target_po_date', '$po_date', '$po_no',  '$supplier', '$etd', '$eta', '$actual_arrival_date', '$invoice_no', '$remarks2', '$po_uploaded_by')";
+                        $insert = "INSERT INTO joms_po_process(`request_id`, `approval_date_of_quotation`, `target_date_submission_to_purchasing`, `actual_date_of_submission_to_purchasing`, `target_po_date`, `date_received_po_doc_purchasing`, `date_issued_to_requestor`, `issued_to`, `po_date`, `po_no`, `supplier`, `etd`, `eta`, `actual_arrival_date`, `invoice_no`,`remarks`, `po_uploaded_by`) 
+                         VALUES ('$request_id', '$approval_date_of_quotation', '$target_date_submission_to_purchasing', '$actual_date_of_submission_to_purchasing', '$target_po_date', '$date_received_po_doc_purchasing', '$date_issued_to_requestor', '$issued_to', '$po_date', '$po_no',  '$supplier', '$etd', '$eta', '$actual_arrival_date', '$invoice_no', '$remarks2', '$po_uploaded_by')";
                         $stmt = $conn->prepare($insert);
                         if ($stmt->execute()) {
                             // $error = 0;
@@ -205,6 +212,9 @@ if (isset($_POST['upload'])) {
                                 target_date_submission_to_purchasing = '$target_date_submission_to_purchasing',
                                 actual_date_of_submission_to_purchasing = '$actual_date_of_submission_to_purchasing',
                                 target_po_date = '$target_po_date',
+                                date_received_po_doc_purchasing = '$date_received_po_doc_purchasing',
+                                date_issued_to_requestor = '$date_issued_to_requestor',
+                                issued_to = '$issued_to',
                                 po_date = '$po_date',
                                 po_no = '$po_no',
                                 -- ordering_additional_details = '$ordering_additional_details',

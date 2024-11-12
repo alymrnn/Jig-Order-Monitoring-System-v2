@@ -3,7 +3,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h4 class="modal-title" id="exampleModalLabel"><b>Import RFQ</b></h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="javascript:window.location.reload()">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -13,7 +13,7 @@
                     <input type="file" name="file" class="form-control-lg" accept=".csv">
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" class="close" data-dismiss="modal" onclick="javascript:window.location.reload()">Close</button>
+        <button type="button" class="btn btn-secondary" class="close" data-dismiss="modal">Close</button>
         <input type="submit" class="btn btn-primary" name="upload" value="Upload" id ="full_rfq_btn" onclick = "import_full_rfq_button()">
       </div>
          </form>

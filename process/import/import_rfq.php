@@ -44,17 +44,18 @@ function check_csv($file, $conn)
         $date_rq = str_replace('/', '-', $line[21]);
         $date_reply_quotation = validate_date($date_rq);
 
-        $date_dis = str_replace('/', '-', $line[30]);
+        $date_dis = str_replace('/', '-', $line[31]);
         $date_sent_to_internal_signatories = validate_date($date_dis);
 
-        $date_tadq = str_replace('/', '-', $line[31]);
+        $date_tadq = str_replace('/', '-', $line[32]);
         $target_approval_date_of_quotation = validate_date($date_tadq);
         // CHECK IF BLANK DATA
         if (
             $line[0] == '' || $line[1] == '' || $line[2] == '' || $line[3] == '' || $line[4] == '' || $line[5] == '' ||
             $line[7] == '' || $line[8] == '' || $line[9] == '' || $line[10] == '' || $line[11] == '' || $line[12] == '' ||
             $line[13] == '' || $line[15] == '' || $line[16] == '' || $line[17] == '' || $line[19] == '' ||
-            $line[20] == '' || $line[21] == '' || $line[22] == '' || $line[23] == '' || $line[24] == '' || $line[25] == '' || $line[26] == '' || $line[27] == '' || $line[28] == '' || $line[29] == ''
+            $line[20] == '' || $line[21] == '' || $line[22] == '' || $line[23] == '' || $line[24] == '' || 
+            $line[25] == '' || $line[26] == '' || $line[27] == '' || $line[28] == '' || $line[29] == '' || $line[30] == ''
         ) {
             // IF BLANK DETECTED ERROR
             $hasBlankError++;
@@ -144,18 +145,19 @@ if (isset($_POST['upload'])) {
                     $item_code = $line[20];
 
                     $date_reply_quotation = $line[21];
-                    $leadtime = $line[22];
-                    $quotation_no = $line[23];
-                    $unit_price_jpy = $line[24];
-                    $unit_price_usd = $line[25];
-                    $unit_price_php = $line[26];
-                    $total_amount = $line[27];
+                    $validity_quotation = $line[22];
+                    $leadtime = $line[23];
+                    $quotation_no = $line[24];
+                    $unit_price_jpy = $line[25];
+                    $unit_price_usd = $line[26];
+                    $unit_price_php = $line[27];
+                    $total_amount = $line[28];
 
-                    $fsib_no = $line[28];
-                    $fsib_code = $line[29];
-                    $date_sent_to_internal_signatories = $line[30];
-                    $target_approval_date_of_quotation = $line[31]; 
-                    $rfq_status = $line[32]; 
+                    $fsib_no = $line[29];
+                    $fsib_code = $line[30];
+                    $date_sent_to_internal_signatories = $line[31];
+                    $target_approval_date_of_quotation = $line[32]; 
+                    $rfq_status = $line[33]; 
 
                     $date_rq = str_replace('/', '-', $date_reply_quotation);
                     $date_reply_quotation = date("Y-m-d", strtotime($date_rq));
@@ -179,6 +181,7 @@ if (isset($_POST['upload'])) {
 
                         $query = "UPDATE joms_rfq_process SET 
                         date_reply_quotation = '$date_reply_quotation', 
+                        validity_quotation = '$validity_quotation', 
                         leadtime = '$leadtime', 
                         quotation_no = '$quotation_no', 
                         unit_price_jpy = '$unit_price_jpy', 
@@ -189,6 +192,7 @@ if (isset($_POST['upload'])) {
                         fsib_code = '$fsib_code',
                         date_sent_to_internal_signatories = '$date_sent_to_internal_signatories',
                         target_approval_date_of_quotation = '$target_approval_date_of_quotation',
+                        rfq_status = '$rfq_status',
                         c_uploaded_by = '$c_uploaded_by',
                         c_date_updated = '$server_date_time'
                         WHERE request_id = '$request_id'";

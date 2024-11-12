@@ -31,6 +31,7 @@ $fields = array(
 	'Shipping Method',
 	'Date of Issuance of RFQ',
 	'RFQ No',
+	'RFQ Remarks',
 	'Target Date of Reply Quotation',
 	'Item Code'
 );
@@ -53,6 +54,7 @@ $fields_exp = array(
 	'Ex. AIR',
 	'Ex. YYYY-MM-DD',
 	'RFQ No',
+	'RFQ Remarks',
 	'Ex. YYYY-MM-DD',
 	'Item Code'
 );

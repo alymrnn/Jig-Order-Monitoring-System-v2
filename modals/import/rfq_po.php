@@ -4,8 +4,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h4 class="modal-title" id="exampleModalLabel"><b>Import Request Data + RFQ + PO</b></h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"
-          onclick="javascript:window.location.reload()">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -89,8 +88,7 @@
         </div>
       </div>
       <div class="modal-footer m-0 p-1">
-        <button type="button" class="btn btn-secondary" class="close" data-dismiss="modal"
-          onclick="javascript:window.location.reload()">Close</button>
+        <button type="button" class="btn btn-secondary" class="close" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>

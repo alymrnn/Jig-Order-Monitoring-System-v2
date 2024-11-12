@@ -5,7 +5,6 @@
       <div class="modal-header">
         <h4 class="modal-title" id="exampleModalLabel"><b>Export Request Data + RFQ + PO</b></h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <!-- onclick="javascript:window.location.reload()" -->
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -118,7 +117,6 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" class="close" data-dismiss="modal">Close</button>
-        <!-- onclick="javascript:window.location.reload()" -->
       </div>
     </div>
   </div>
