@@ -106,7 +106,7 @@ $fields_exp = array(
 	'Ex. YYYY-MM-DD',
 	'Item Code',
 	'Ex. YYYY-MM-DD',
-	'Validity of Quotation',
+	'Ex. YYYY-MM-DD',
 	'LEADTIME(based on quotation)',
 	'Quotation No ',
 	'Unit Price JPY ',
@@ -130,9 +130,9 @@ $fields_exp = array(
 	'Supplier ',
 	'Ex. YYYY-MM-DD',
 	'Ex. YYYY-MM-DD',
-	'Ex. YYYY-MM-DD',
 	'Invoice No ',
-	'Remarks '
+	'Remarks',
+	'Ex. YYYY-MM-DD',
 );
 
 fputcsv($f, $fields, $delimiter);

@@ -15,7 +15,7 @@
           </ol>
         </div>
       </div>
-    </div><!-- /.container-fluid -->
+    </div>
   </section>
 
   <!-- Main content -->
@@ -28,58 +28,72 @@
           <div class="card card-secondary">
             <div class="card-header">
               <h3 class="card-title"></h3>
-              <button type="button" class="btn btn-danger ml-1 mr-2" id="btnCancel" data-toggle="modal"
-                data-target="#cancel_request" disabled>
-                Cancel Request</button>
-              <button type="button" class="btn btn-primary mr-2" onclick="export_request_monitoring_record()">
-                Export Filtered Record</button>
-              <button type="button" class="btn btn-primary" onclick="export_all_record()">
-                Export ALL Record</button>
-              <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                  <i class="fas fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-tool" data-card-widget="maximize">
-                  <i class="fas fa-expand"></i>
-                </button>
+              <div class="row">
+                <div class="col-sm-2">
+                  <button type="button" class="btn btn-danger ml-1 mr-2" style="width: 100%;" id="btnCancel"
+                    data-toggle="modal" data-target="#cancel_request" disabled>
+                    <i class="fas fa-times"></i> Cancel Request</button>
+                </div>
+                <div class="col-sm-2">
+                  <button type="button" class="btn btn-primary mr-2" style="width: 100%;"
+                    onclick="export_request_monitoring_record()">
+                    <i class="fas fa-download"></i> Export Filtered Record</button>
+                </div>
+                <div class="col-sm-2">
+                  <button type="button" class="btn btn-primary" style="width: 100%;" onclick="export_all_record()">
+                    <i class="fas fa-download"></i> Export ALL Record</button>
+                </div>
+                <div class="col-sm-2 offset-4">
+                  <div class="card-tools text-right">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                      <i class="fas fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-tool" data-card-widget="maximize">
+                      <i class="fas fa-expand"></i>
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
               <div class="container-fluid">
-                <div class="row">
+                <div class="row mb-3">
                   <div class="col-sm-2">
                     <label>Count:&ensp;</label><b><span class="h2" id="count_view"></span></b><br>
                   </div>
-                  <div class="col-6 offset-4">
+
+                  <div class="col-sm-2">
+                    <label class="m-0 p-0">Car Maker</label>
+                    <select class="form-control" id="request_car_maker_search" style="width: 100%;" required>
+                      <option selected value="Please Select">Select car maker</option>
+                    </select>
+                  </div>
+                  <div class="col-sm-2">
+                    <label class="m-0 p-0">Car Model</label>
+                    <select class="form-control" id="request_car_model_search" style="width: 100%;" required>
+                      <option selected value="Please Select">Select car model</option>
+                    </select>
+                  </div>
+                  <div class="col-sm-2 offset-4">
+                    <br>
+                    <button class="btn btn-dark" style="width:100%;" onclick="clear_search_input()"><i
+                        class="fas fa-trash"></i> Clear</button>
+                  </div>
+                  <!-- <div class="col-6 offset-4">
                     <p class="p-1" style="background: #FFFAD1; border-left: 3px solid #E89F4C; font-size: 14px;">
                       <span><i>Note:</i></span> Items
                       highlighted in <span style="color:red; font-weight: bold">RED</span> are those that are delayed
                       based on the <span style="color:red; font-weight: bold">REQUIRED DELIVERY DATE</span>
                     </p>
-                  </div>
+                  </div> -->
                 </div>
                 <div class="row mb-4">
-                  <div class="col-sm-2">
-                    <label>Car Maker</label>
-                    <select class="form-control" id="request_car_maker_search" style="width: 100%;"
-                      onchange="search_request()" required>
-                      <option selected value="Please Select">Select car maker</option>
-                    </select>
-                  </div>
-                  <div class="col-sm-2">
-                    <label>Car Model</label>
-                    <select class="form-control" id="request_car_model_search" style="width: 100%;"
-                      onchange="search_request()" required>
-                      <option selected value="Please Select">Select car model</option>
-                    </select>
-                  </div>
-                  <div class="col-sm-2">
-                    <label>Section</label>
-                    <label class="text-danger">*</label>
-                    <select class="form-control" id="request_section_search" style="width: 100%;"
-                      onchange="search_request()" required>
-                      <option selected value="Please Select">Select section</option>
+                  <div class="col-sm-2 offset-2">
+                    <label class="m-0 p-0">Section</label>
+                    <!-- <label class="text-danger">*</label> -->
+                    <select class="form-control" id="request_section_search" style="width: 100%;" required>
+                      <option selected value="">Select section</option>
                       <option value="mppd1">MPPD1 - Request</option>
                       <option value="ame1req">AME1 - Request</option>
                       <option value="ame2req">AME2 - Request</option>
@@ -88,10 +102,9 @@
                     </select>
                   </div>
                   <div class="col-sm-2 ">
-                    <label>Status</label>
-                    <label class="text-danger">*</label>
-                    <select class="form-control" id="request_status_search" style="width: 100%;"
-                      onchange="search_request()" required>
+                    <label class="m-0 p-0">Status</label>
+                    <label class="text-danger m-0 p-0">*</label>
+                    <select class="form-control" id="request_status_search" style="width: 100%;" required>
                       <option selected value="pending">Pending</option>
                       <option value="open">Open</option>
                       <option value="ame3">Closed - AME3</option>
@@ -100,19 +113,30 @@
                     </select>
                   </div>
                   <div class="col-sm-2">
-                    <label>Date From</label>
-                    <label class="text-danger">*</label>
-                    <input type="date" class="form-control" id="request_date_from_search" onchange="search_request()">
+                    <label class="m-0 p-0">Date From <label class="m-0 p-0" style="font-size:13px;">(Date
+                        Requested)</label></label>
+                    <label class="text-danger m-0 p-0">*</label>
+                    <input type="date" class="form-control" id="request_date_from_search">
                   </div>
                   <div class="col-sm-2">
-                    <label>Date To</label>
-                    <label class="text-danger">*</label>
-                    <input type="date" class="form-control" id="request_date_to_search" onchange="search_request()">
+                    <label class="m-0 p-0">Date To <label class="m-0 p-0" style="font-size:13px;">(Date
+                        Requested)</label></label>
+                    <label class="text-danger m-0 p-0">*</label>
+                    <input type="date" class="form-control" id="request_date_to_search">
+                  </div>
+                  <div class="col-sm-2">
+                    <br>
+                    <button class="btn btn-primary" style="width: 100%" onclick="search_request()"><i
+                        class="fas fa-search"></i> Search</button>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-12">
                     <div class="card-body table-responsive p-0" style="height: 500px; overflow-y: auto;">
+                      <div id="spinner" style="display: none; text-align: center; margin-top: 10px;">
+                        <img src="../../dist/img/loading-spinner.gif" alt="Loading..."
+                          style="width: 50px; height: 50px;">
+                      </div>
                       <table class="table table-head-fixed text-nowrap table-bordered table-hover"
                         id="list_of_request_table">
                         <thead
@@ -120,8 +144,8 @@
                           <tr>
                             <th colspan="18" class="bg-secondary">Request</th>
                             <th colspan="20" class="bg-light">RFQ Process</th>
-                            <th colspan="14" class="bg-secondary">PO Process</th>
-                            <th colspan="2" class="bg-light">Delivery</th>
+                            <th colspan="12" class="bg-secondary">PO Process</th>
+                            <th colspan="4" class="bg-light">Delivery</th>
                             <th colspan="3" class="bg-secondary">Installation</th>
                           </tr>
                           <tr>

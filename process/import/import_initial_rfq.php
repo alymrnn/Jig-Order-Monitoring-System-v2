@@ -71,10 +71,10 @@ function check_csv($file, $conn)
 
     if ($hasError == 1) {
         if ($row_valid_arr[0] == 1) {
-            $message = $message . 'Invalid Date Requested on row/s ' . implode(", ", $notValidDateOfIssuanceRfq) . '. ';
+            $message = $message . 'INVALID DATE FORMAT: Date of Issuance of RFQ on row/s ' . implode(", ", $notValidDateOfIssuanceRfq) . '. ';
         }
         if ($row_valid_arr[1] == 1) {
-            $message = $message . 'Invalid Required Delivery Date on row/s ' . implode(", ", $notValidTargetDateReplyQuotation) . '. ';
+            $message = $message . 'INVALID DATE FORMAT: Target Date of Reply Quotation on row/s ' . implode(", ", $notValidTargetDateReplyQuotation) . '. ';
         }
 
         if ($hasBlankError >= 1) {

@@ -21,8 +21,10 @@
         search_request();
         setInterval(search_request, 10000);
 
-        var currentDate = new Date().toISOString().split('T')[0];
-        $('#req_date_requested').val(currentDate);
+        // var currentDate = new Date().toISOString().split('T')[0];
+        // $('#req_date_requested').val(currentDate);
+
+        document.getElementById('req_date_requested').value = '<?= $server_date_only ?>';
     });
 
     const search_request = () => {

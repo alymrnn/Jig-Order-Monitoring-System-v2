@@ -85,6 +85,15 @@ if (!isset($_SESSION['username'])) {
     ::-webkit-scrollbar-thumb:hover {
       background: #332D2D;
     }
+
+    #spinner {
+      display: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
+    }
   </style>
 </head>
 

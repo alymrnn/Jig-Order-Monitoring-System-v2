@@ -74,7 +74,7 @@
               </div>
               <a class="small-box-footer" type="button" class="btn btn-success" class="close" data-dismiss="modal"
                 onclick="location.replace('../../process/export/export_request_data_po_open.php')">
-                Export Closed
+                Export Open
                 Status <i class="fas fa-arrow-circle-right"></i>
               </a>
             </div>

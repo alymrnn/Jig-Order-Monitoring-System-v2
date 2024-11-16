@@ -24,26 +24,32 @@ if ($method == 'fetch_request') {
 		LEFT JOIN joms_po_process ON joms_po_process.request_id = joms_request.request_id
 		LEFT JOIN joms_installation ON joms_installation.request_id = joms_request.request_id";
 
-	//process para sa mga table  kapag may date ang intallation  i-display ng data kay ame 3 if wala i-display ang data kay ame 3.
+	//process para sa mga table  kapag may date ang installation  i-display ng data kay ame 3 if wala i-display ang data kay ame 3.
 	if ($request_status == 'ame2') {
 		$query = $query . " WHERE joms_request.status = 'closed' AND joms_installation.installation_date != ''";
 	} else if ($request_status == 'ame3') {
 		$query = $query . " WHERE joms_request.status = 'closed' AND joms_installation.installation_date IS NULL";
 	} else {
-		$query = $query . " WHERE joms_request.status = '$request_status' AND joms_request.section= '$request_section'";
+		$query = $query . " WHERE joms_request.status = '$request_status'";
+	}
 
-		// Only add carmaker or carmodel conditions if they are provided
-		if (!empty($request_car_maker)) {
-			$query = $query . " AND joms_request.carmaker = '$request_car_maker'";
-		}
+	// Only add section or carmaker or carmodel conditions if they are provided
+	if (!empty($request_section)) {
+		$query = $query . " AND joms_request.section = '$request_section'";
+	}
 
-		if (!empty($request_car_model)) {
-			$query = $query . " AND joms_request.carmodel = '$request_car_model'";
-		}
+	if (!empty($request_car_maker)) {
+		$query = $query . " AND joms_request.carmaker = '$request_car_maker'";
+	}
+
+	if (!empty($request_car_model)) {
+		$query = $query . " AND joms_request.carmodel = '$request_car_model'";
 	}
 
 	//color for coding for the delay of date 
 	$query = $query . " AND (joms_request.date_requested >= '$request_date_from' AND joms_request.date_requested <= '$request_date_to')";
+
+	// echo $query;
 
 	$stmt = $conn->prepare($query);
 	$stmt->execute();
@@ -190,6 +196,10 @@ if ($method == 'fetch_request') {
 			echo '<td>' . $j['set_by'] . '</td>';
 			echo '</tr>';
 		}
+	} else {
+		echo '<tr>';
+		echo '<td style="text-align:center; color:red;">No Record Found</td>';
+		echo '</tr>';
 	}
 }
 

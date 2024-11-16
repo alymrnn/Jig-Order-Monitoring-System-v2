@@ -46,7 +46,7 @@ function check_csv($file, $conn)
     $row_valid_arr = array(0, 0);
 
     // $notValidDateRequested = array();
-    // $notValidRequiredDeliveryDate = array();
+    $notValidRequiredDeliveryDate = array();
 
     $message = "";
     $check_csv_row = 2;
@@ -81,7 +81,7 @@ function check_csv($file, $conn)
         // }
         if ($is_valid_required_delivery_date == false) {
             $hasError = 1;
-            $row_valid_arr[1] = 1;
+            $row_valid_arr[0] = 1;
             array_push($notValidRequiredDeliveryDate, $check_csv_row);
         }
     }
@@ -92,9 +92,9 @@ function check_csv($file, $conn)
         // if ($row_valid_arr[0] == 1) {
         //     $message = $message . 'Invalid Date Requested on row/s ' . implode(", ", $notValidDateRequested) . '. ';
         // }
-        // if ($row_valid_arr[1] == 1) {
-        //     $message = $message . 'Invalid Required Delivery Date on row/s ' . implode(", ", $notValidRequiredDeliveryDate) . '. ';
-        // }
+        if ($row_valid_arr[0] == 1) {
+            $message = $message . 'INVALID DATE FORMAT: Date Required Delivery Date on row/s ' . implode(", ", $notValidRequiredDeliveryDate) . '. ';
+        }
 
         if ($hasBlankError >= 1) {
             $message = $message . 'Blank Cell Exists on row/s ' . implode(", ", $hasBlankErrorArr) . '. ';

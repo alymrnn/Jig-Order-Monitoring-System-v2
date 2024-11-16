@@ -27,6 +27,7 @@ function check_csv($file, $conn)
 
     $row_valid_arr = array(0, 0, 0);
 
+    $notValidValidityQuotation = array();
     $notValidDateReplyQuotation = array();
     $notValidDateSentInternalSignatories = array();
     $notValidTargetApprovalDateQuotation = array();
@@ -41,8 +42,12 @@ function check_csv($file, $conn)
         if (empty(implode('', $line))) {
             continue; // Skip blank lines
         }
+
         $date_rq = str_replace('/', '-', $line[21]);
         $date_reply_quotation = validate_date($date_rq);
+
+        $date_vq = str_replace('/', '-', $line[22]);
+        $validity_quotation = validate_date($date_vq);
 
         $date_dis = str_replace('/', '-', $line[31]);
         $date_sent_to_internal_signatories = validate_date($date_dis);
@@ -68,14 +73,19 @@ function check_csv($file, $conn)
             $row_valid_arr[0] = 1;
             array_push($notValidDateReplyQuotation, $check_csv_row);
         }
-        if ($date_sent_to_internal_signatories == false) {
+        if ($validity_quotation == false) {
             $hasError = 1;
             $row_valid_arr[1] = 1;
+            array_push($notValidValidityQuotation, $check_csv_row);
+        }
+        if ($date_sent_to_internal_signatories == false) {
+            $hasError = 1;
+            $row_valid_arr[2] = 1;
             array_push($notValidDateSentInternalSignatories, $check_csv_row);
         }
         if ($target_approval_date_of_quotation == false) {
             $hasError = 1;
-            $row_valid_arr[2] = 1;
+            $row_valid_arr[3] = 1;
             array_push($notValidTargetApprovalDateQuotation, $check_csv_row);
         }
     }
@@ -84,13 +94,16 @@ function check_csv($file, $conn)
 
     if ($hasError == 1) {
         if ($row_valid_arr[0] == 1) {
-            $message = $message . 'Invalid Date Reply Quotation on row/s ' . implode(", ", $notValidDateReplyQuotation) . '. ';
+            $message = $message . 'INVALID DATE FORMAT: Date Reply Quotation on row/s ' . implode(", ", $notValidDateReplyQuotation) . '.';
         }
         if ($row_valid_arr[1] == 1) {
-            $message = $message . 'Invalid Date Sent Internal Signatories on row/s ' . implode(", ", $notValidDateSentInternalSignatories) . '. ';
+            $message = $message . 'INVALID DATE FORMAT: Validity Quotation on row/s ' . implode(", ", $notValidValidityQuotation) . '.';
         }
         if ($row_valid_arr[2] == 1) {
-            $message = $message . 'Invalid Target Approval Date Quotation on row/s ' . implode(", ", $notValidTargetApprovalDateQuotation) . '. ';
+            $message = $message . 'INVALID DATE FORMAT: Date Sent Internal Signatories on row/s ' . implode(", ", $notValidDateSentInternalSignatories) . '.';
+        }
+        if ($row_valid_arr[3] == 1) {
+            $message = $message . 'INVALID DATE FORMAT: Target Approval Date Quotation on row/s ' . implode(", ", $notValidTargetApprovalDateQuotation) . '. ';
         }
         if ($hasBlankError >= 1) {
             $message = $message . 'Blank Cell Exists on row/s ' . implode(", ", $hasBlankErrorArr) . '. ';
@@ -161,6 +174,9 @@ if (isset($_POST['upload'])) {
 
                     $date_rq = str_replace('/', '-', $date_reply_quotation);
                     $date_reply_quotation = date("Y-m-d", strtotime($date_rq));
+
+                    $date_vq = str_replace('/', '-', $validity_quotation);
+                    $validity_quotation = date("Y-m-d", strtotime($date_vq));
 
                     $date_dis = str_replace('/', '-', $date_sent_to_internal_signatories);
                     $date_sent_to_internal_signatories = date("Y-m-d", strtotime($date_dis));

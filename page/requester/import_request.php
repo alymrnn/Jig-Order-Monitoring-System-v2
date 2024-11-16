@@ -117,14 +117,14 @@
                           <b><span class="h3" id="count_view"></span></b><br>
                           <label>Count</label>
                         </div>
-                        <div class="col-6 offset-5">
+                        <!-- <div class="col-6 offset-5">
                           <p class="p-1" style="background: #FFFAD1; border-left: 3px solid #E89F4C; font-size: 14px;">
                             <span><i>Note:</i></span> Items
                             highlighted in <span style="color:red; font-weight: bold">RED</span> are those that are
                             delayed based on the <span style="color:red; font-weight: bold">REQUIRED DELIVERY
                               DATE</span>
                           </p>
-                        </div>
+                        </div> -->
                       </div>
 
                       <div class="row">

@@ -10,22 +10,24 @@
 		}
 		document.getElementById('request_date_from_search').value = '<?= $server_date_only ?>';
 		document.getElementById('request_date_to_search').value = '<?= $server_date_only ?>';
-		search_request();
-		//setInterval(search_request, 10000);
+		// search_request();
+		// setInterval(search_request, 10000);
 
 		fetch_opt_car_maker();
 		fetch_opt_car_model();
 	});
 
 	const search_request = () => {
-		let request_status = document.getElementById('request_status_search').value;
-		let request_date_from = document.getElementById('request_date_from_search').value;
-		let request_date_to = document.getElementById('request_date_to_search').value;
-		let request_section = document.getElementById('request_section_search').value;
-		let request_car_maker = document.getElementById('request_car_maker_search').value;
-		let request_car_model = document.getElementById('request_car_model_search').value;
+		// Get search parameters
+		var request_status = document.getElementById('request_status_search').value;
+		var request_date_from = document.getElementById('request_date_from_search').value;
+		var request_date_to = document.getElementById('request_date_to_search').value;
+		var request_section = document.getElementById('request_section_search').value;
+		var request_car_maker = document.getElementById('request_car_maker_search').value;
+		var request_car_model = document.getElementById('request_car_model_search').value;
 
-		$('#spinner').css('display', 'block');
+		$('#spinner').fadeIn();
+
 		$.ajax({
 			url: '../../process/requester/request.php',
 			type: 'POST',
@@ -38,25 +40,74 @@
 				request_section: request_section,
 				request_car_maker: request_car_maker,
 				request_car_model: request_car_model
-			}, success: function (response) {
+			},
+			success: function (response) {
 				document.getElementById('list_of_request').innerHTML = response;
+
 				$('#spinner').fadeOut();
-				let count = $('#list_of_request_table tbody tr').length;
-				$('#count_view').html(count);
-				if (request_status == 'open') {
-					document.getElementById("cancel_check_all").disabled = true;
-				} else if (request_status == 'cancelled') {
-					document.getElementById("cancel_check_all").disabled = true;
-				} else if (request_status == 'ame3') {
-					document.getElementById("cancel_check_all").disabled = true;
-				} else if (request_status == 'ame2') {
-					document.getElementById("cancel_check_all").disabled = true;
+
+				// let count = $('#list_of_request_table tbody tr').length;
+				// $('#count_view').html(count);
+
+				// Check if the table has the "No Record Found" row
+				if ($('#list_of_request_table tbody tr td').text().trim() === 'No Record Found') {
+					$('#count_view').html(0);  
 				} else {
-					document.getElementById("cancel_check_all").disabled = false;
+					let count = $('#list_of_request_table tbody tr').length;
+					$('#count_view').html(count);  
 				}
+
+				const disableCancel = ['open', 'cancelled', 'ame3', 'ame2'].includes(request_status);
+				document.getElementById("cancel_check_all").disabled = disableCancel;
+			},
+			error: function () {
+				$('#spinner').fadeOut();
+				alert('An error occurred while fetching data.');
 			}
 		});
-	}
+	};
+
+
+	// const search_request = () => {
+	// 	let request_status = document.getElementById('request_status_search').value;
+	// 	let request_date_from = document.getElementById('request_date_from_search').value;
+	// 	let request_date_to = document.getElementById('request_date_to_search').value;
+	// 	let request_section = document.getElementById('request_section_search').value;
+	// 	let request_car_maker = document.getElementById('request_car_maker_search').value;
+	// 	let request_car_model = document.getElementById('request_car_model_search').value;
+
+	// 	$('#spinner').css('display', 'block');
+	// 	$.ajax({
+	// 		url: '../../process/requester/request.php',
+	// 		type: 'POST',
+	// 		cache: false,
+	// 		data: {
+	// 			method: 'fetch_request',
+	// 			request_status: request_status,
+	// 			request_date_from: request_date_from,
+	// 			request_date_to: request_date_to,
+	// 			request_section: request_section,
+	// 			request_car_maker: request_car_maker,
+	// 			request_car_model: request_car_model
+	// 		}, success: function (response) {
+	// 			document.getElementById('list_of_request').innerHTML = response;
+	// 			$('#spinner').fadeOut();
+	// 			let count = $('#list_of_request_table tbody tr').length;
+	// 			$('#count_view').html(count);
+	// 			if (request_status == 'open') {
+	// 				document.getElementById("cancel_check_all").disabled = true;
+	// 			} else if (request_status == 'cancelled') {
+	// 				document.getElementById("cancel_check_all").disabled = true;
+	// 			} else if (request_status == 'ame3') {
+	// 				document.getElementById("cancel_check_all").disabled = true;
+	// 			} else if (request_status == 'ame2') {
+	// 				document.getElementById("cancel_check_all").disabled = true;
+	// 			} else {
+	// 				document.getElementById("cancel_check_all").disabled = false;
+	// 			}
+	// 		}
+	// 	});
+	// }
 
 	const get_cancel_details = (param) => {
 		var string = param.split('~!~');
@@ -71,7 +122,6 @@
 		document.getElementById('cancel_by_details').value = cancel_by;
 		document.getElementById('cancel_section_details').value = cancel_section;
 		document.getElementById('cancel_date_details').value = cancel_date;
-
 	}
 
 	// check all and uncheck
@@ -239,6 +289,14 @@
 
 	const export_all_record = () => {
 		window.open('../../process/export/export_all_record.php', '_blank');
+	}
+
+	const clear_search_input = () => {
+		document.getElementById('request_car_maker_search').value = '';
+		document.getElementById('request_car_model_search').value = '';
+		document.getElementById('request_section_search').value = '';
+
+		search_request();
 	}
 
 </script>
