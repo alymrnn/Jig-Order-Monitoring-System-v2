@@ -136,7 +136,7 @@
                                 <tr>
                                   <th colspan="18" class="bg-secondary">Request</th>
                                   <th colspan="20" class="bg-light">RFQ Process</th>
-                                  <th colspan="12" class="bg-secondary">PO Process</th>
+                                  <th colspan="13" class="bg-secondary">PO Process</th>
                                   <th colspan="4" class="bg-light">Delivery</th>
                                 </tr>
                                 <tr>
@@ -190,6 +190,7 @@
                                   <th>Date Received PO Doc from Purchasing</th>
                                   <th>Date Issued to Requestor</th>
                                   <th>Issued To</th>
+                                  <th>Date Returned by Requestor</th>
                                   <th>PO Date </th>
                                   <th>PO No. </th>
                                   

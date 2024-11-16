@@ -14,7 +14,7 @@ if ($method == 'fetch_requested_processed') {
 	joms_rfq_process.target_date_reply_quotation, joms_rfq_process.item_code, joms_rfq_process.date_reply_quotation, joms_rfq_process.validity_quotation, joms_rfq_process.leadtime, joms_rfq_process.quotation_no,
 	joms_rfq_process.unit_price_jpy, joms_rfq_process.unit_price_usd, joms_rfq_process.unit_price_usd, joms_rfq_process.total_amount, joms_rfq_process.fsib_no, joms_rfq_process.fsib_code, joms_rfq_process.date_sent_to_internal_signatories,joms_rfq_process.target_approval_date_of_quotation, joms_rfq_process.rfq_status,
 	joms_rfq_process.i_uploaded_by, joms_rfq_process.c_uploaded_by
-	joms_po_process.approval_date_of_quotation, joms_po_process.target_date_submission_to_purchasing, joms_po_process.actual_date_of_submission_to_purchasing, joms_po_process.target_po_date, joms_po_process.date_received_po_doc_purchasing, joms_po_process.date_issued_to_requestor, joms_po_process.issued_to, joms_po_process.po_date, joms_po_process.po_no, joms_po_process.supplier, joms_po_process.etd, joms_po_process.eta, joms_po_process.actual_arrival_date, joms_po_process.invoice_no, joms_po_process.po_uploaded_by, joms_po_process.remarks AS remarks2,
+	joms_po_process.approval_date_of_quotation, joms_po_process.target_date_submission_to_purchasing, joms_po_process.actual_date_of_submission_to_purchasing, joms_po_process.target_po_date, joms_po_process.date_received_po_doc_purchasing, joms_po_process.date_issued_to_requestor, joms_po_process.issued_to, joms_po_process.date_returned_by_requestor, joms_po_process.po_date, joms_po_process.po_no, joms_po_process.supplier, joms_po_process.etd, joms_po_process.eta, joms_po_process.actual_arrival_date, joms_po_process.invoice_no, joms_po_process.po_uploaded_by, joms_po_process.remarks AS remarks2,
 	FROM joms_request
 	LEFT JOIN joms_po_process ON joms_po_process.request_id = joms_request.request_id
 	LEFT JOIN joms_rfq_process ON joms_rfq_process.request_id = joms_request.request_id WHERE joms_request.status = 'open'";
@@ -154,14 +154,14 @@ if ($method == 'filter_rfq_process') {
 		// query select joms complete rfq
 		$query = $query . ", joms_rfq_process.date_reply_quotation, joms_rfq_process.validity_quotation, joms_rfq_process.leadtime, joms_rfq_process.quotation_no, joms_rfq_process.unit_price_jpy, joms_rfq_process.unit_price_usd, joms_rfq_process.unit_price_php, joms_rfq_process.total_amount, joms_rfq_process.fsib_no, joms_rfq_process.fsib_code, joms_rfq_process.date_sent_to_internal_signatories, joms_rfq_process.target_approval_date_of_quotation, joms_rfq_process.rfq_status, joms_rfq_process.c_uploaded_by";
 		// query select joms po process
-		$query = $query . ", joms_po_process.approval_date_of_quotation, joms_po_process.target_date_submission_to_purchasing, joms_po_process.actual_date_of_submission_to_purchasing, joms_po_process.target_po_date, joms_po_process.date_received_po_doc_purchasing, joms_po_process.date_issued_to_requestor, joms_po_process.issued_to, joms_po_process.po_date, joms_po_process.po_no, joms_po_process.supplier, joms_po_process.etd, joms_po_process.eta, joms_po_process.actual_arrival_date, joms_po_process.invoice_no, joms_po_process.po_uploaded_by, joms_po_process.remarks AS remarks2";
+		$query = $query . ", joms_po_process.approval_date_of_quotation, joms_po_process.target_date_submission_to_purchasing, joms_po_process.actual_date_of_submission_to_purchasing, joms_po_process.target_po_date, joms_po_process.date_received_po_doc_purchasing, joms_po_process.date_issued_to_requestor, joms_po_process.issued_to, joms_po_process.date_returned_by_requestor, joms_po_process.po_date, joms_po_process.po_no, joms_po_process.supplier, joms_po_process.etd, joms_po_process.eta, joms_po_process.actual_arrival_date, joms_po_process.invoice_no, joms_po_process.po_uploaded_by, joms_po_process.remarks AS remarks2";
 	} else if ($rfq_status_search == "open_all" || $rfq_status_search == "cancelled") {
 		// query select joms initial rfq
 		$query = $query . ", joms_rfq_process.date_of_issuance_rfq, joms_rfq_process.rfq_no, joms_rfq_process.rfq_remarks, joms_rfq_process.target_date_reply_quotation, joms_rfq_process.item_code, joms_rfq_process.i_uploaded_by";
 		// query select joms complete rfq
 		$query = $query . ", joms_rfq_process.date_reply_quotation, joms_rfq_process.validity_quotation, joms_rfq_process.leadtime, joms_rfq_process.quotation_no, joms_rfq_process.unit_price_jpy, joms_rfq_process.unit_price_usd, joms_rfq_process.unit_price_php, joms_rfq_process.total_amount, joms_rfq_process.fsib_no, joms_rfq_process.fsib_code, joms_rfq_process.date_sent_to_internal_signatories, joms_rfq_process.target_approval_date_of_quotation, joms_rfq_process.rfq_status, joms_rfq_process.c_uploaded_by";
 		// query select joms po eta
-		$query = $query . ", joms_po_process.approval_date_of_quotation, joms_po_process.target_date_submission_to_purchasing, joms_po_process.actual_date_of_submission_to_purchasing, joms_po_process.target_po_date, joms_po_process.date_received_po_doc_purchasing, joms_po_process.date_issued_to_requestor, joms_po_process.issued_to, joms_po_process.po_date, joms_po_process.po_no, joms_po_process.supplier, joms_po_process.etd, joms_po_process.eta, joms_po_process.actual_arrival_date, joms_po_process.invoice_no, joms_po_process.po_uploaded_by, joms_po_process.remarks AS remarks2";
+		$query = $query . ", joms_po_process.approval_date_of_quotation, joms_po_process.target_date_submission_to_purchasing, joms_po_process.actual_date_of_submission_to_purchasing, joms_po_process.target_po_date, joms_po_process.date_received_po_doc_purchasing, joms_po_process.date_issued_to_requestor, joms_po_process.issued_to, joms_po_process.date_returned_by_requestor, joms_po_process.po_date, joms_po_process.po_no, joms_po_process.supplier, joms_po_process.etd, joms_po_process.eta, joms_po_process.actual_arrival_date, joms_po_process.invoice_no, joms_po_process.po_uploaded_by, joms_po_process.remarks AS remarks2";
 	}
 
 	// query from table left joins
@@ -423,6 +423,7 @@ if ($method == 'filter_rfq_process') {
 						echo '<td>' . $j['date_received_po_doc_purchasing'] . '</td>';
 						echo '<td>' . $j['date_issued_to_requestor'] . '</td>';
 						echo '<td>' . $j['issued_to'] . '</td>';
+						echo '<td>' . $j['date_returned_by_requestor'] . '</td>';
 						echo '<td>' . $j['po_date'] . '</td>';
 						echo '<td>' . $j['po_no'] . '</td>';
 						// echo '<td>' . $j['ordering_additional_details'] . '</td>';
@@ -442,6 +443,7 @@ if ($method == 'filter_rfq_process') {
 						echo '<td>' . $j['date_received_po_doc_purchasing'] . '</td>';
 						echo '<td>' . $j['date_issued_to_requestor'] . '</td>';
 						echo '<td>' . $j['issued_to'] . '</td>';
+						echo '<td>' . $j['date_returned_by_requestor'] . '</td>';
 						echo '<td>' . $j['po_date'] . '</td>';
 						echo '<td>' . $j['po_no'] . '</td>';
 						echo '<td>' . $j['supplier'] . '</td>';

@@ -319,7 +319,7 @@ if ($method == 'filter_rfq_process') {
 			echo '<td>' . $j['fsib_no'] . '</td>';
 			echo '<td>' . $j['fsib_code'] . '</td>';
 			echo '<td>' . $j['date_sent_to_internal_signatories'] . '</td>';
-			echo '<td>'. $j['target_approval_date_of_quotation'] . '</td>';
+			echo '<td>' . $j['target_approval_date_of_quotation'] . '</td>';
 			echo '<td>' . $j['rfq_status'] . '</td>';
 			echo '<td>' . $j['c_uploaded_by'] . '</td>';
 
