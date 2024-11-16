@@ -45,7 +45,7 @@ $fields = array(
 	'FSIB No. ',
 	'FSIB Code ',
 	'Date sent to Internal Signatories ',
-	'Target Approval date of quotation ',
+	'Target Approval Date of Quotation ',
 	'RFQ Status ',
 	'Approval date of quotation ',
 	'Target Date Submission to Purchasing ',
@@ -54,6 +54,7 @@ $fields = array(
 	'Date Received PO Doc from Purchasing',
 	'Date Issued to Requestor',
 	'Issued To',
+	'Date Returned By Requestor',
 	'PO Date ',
 	'PO No. ',
 	'Supplier ',
@@ -61,7 +62,7 @@ $fields = array(
 	'ETA ',
 	'Invoice No',
 	'Remarks ',
-	'Actual Arrival date '
+	'Actual Arrival Date '
 );
 $fields_exp = array(
 	'Request ID',
@@ -106,6 +107,7 @@ $fields_exp = array(
 	'Ex. YYYY-MM-DD',
 	'Issued To',
 	'Ex. YYYY-MM-DD',
+	'Ex. YYYY-MM-DD',
 	'PO No. ',
 	'Supplier ',
 	'Ex. YYYY-MM-DD',
@@ -121,7 +123,7 @@ fputcsv($f, $fields_exp, $delimiter);
 $sql = "SELECT joms_request.id,joms_request.request_id,joms_request.status, joms_request.carmaker, joms_request.carmodel, joms_request.product, joms_request.jigname, joms_request.drawing_no, joms_request.type, joms_request.qty, joms_request.purpose, joms_request.budget, joms_request.shipping_method, joms_request.date_requested, joms_request.requested_by, joms_request.required_delivery_date, joms_request.remarks,
 joms_rfq_process.date_of_issuance_rfq, joms_rfq_process.rfq_no, joms_rfq_process.rfq_remarks, joms_rfq_process.rfq_status,
 joms_rfq_process.target_date_reply_quotation, joms_rfq_process.item_code, joms_rfq_process.date_reply_quotation, joms_rfq_process.validity_quotation, joms_rfq_process.leadtime, joms_rfq_process.quotation_no, joms_rfq_process.unit_price_jpy, joms_rfq_process.unit_price_usd,joms_rfq_process.unit_price_php, joms_rfq_process.total_amount, joms_rfq_process.fsib_no, joms_rfq_process.fsib_code, joms_rfq_process.date_sent_to_internal_signatories, joms_rfq_process.target_approval_date_of_quotation, 
-joms_po_process.approval_date_of_quotation, joms_po_process.target_date_submission_to_purchasing, joms_po_process.actual_date_of_submission_to_purchasing, joms_po_process.target_po_date, joms_po_process.date_received_po_doc_purchasing, joms_po_process.date_issued_to_requestor, joms_po_process.issued_to, joms_po_process.po_date, joms_po_process.po_no, joms_po_process.supplier, joms_po_process.etd, joms_po_process.eta, joms_po_process.actual_arrival_date, joms_po_process.invoice_no, joms_po_process.remarks AS remarks2,
+joms_po_process.approval_date_of_quotation, joms_po_process.target_date_submission_to_purchasing, joms_po_process.actual_date_of_submission_to_purchasing, joms_po_process.target_po_date, joms_po_process.date_received_po_doc_purchasing, joms_po_process.date_issued_to_requestor, joms_po_process.issued_to, joms_po_process.date_returned_by_requestor, joms_po_process.po_date, joms_po_process.po_no, joms_po_process.supplier, joms_po_process.etd, joms_po_process.eta, joms_po_process.actual_arrival_date, joms_po_process.invoice_no, joms_po_process.remarks AS remarks2,
 joms_installation.installation_date
 	FROM joms_request
 	LEFT JOIN joms_rfq_process ON joms_rfq_process.request_id = joms_request.request_id
@@ -177,6 +179,7 @@ if ($stmt->rowCount() > 0) {
 			$row['date_received_po_doc_purchasing'],
 			$row['date_issued_to_requestor'],
 			$row['issued_to'],
+			$row['date_returned_by_requestor'],
 			$row['po_date'],
 			$row['po_no'],
 			$row['supplier'],
