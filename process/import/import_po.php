@@ -39,6 +39,8 @@ function check_csv($file, $conn)
     $notValidDateETD = array();
     $notValidDateETA = array();
 
+    $notValidDateReturnedByRequestor = array();
+
     $message = "";
     $check_csv_row = 2;
 
@@ -62,7 +64,7 @@ function check_csv($file, $conn)
         $date_tpd = str_replace('/', '-', $line[37]);
         $target_po_date = validate_date($date_tpd);
 
-        $date_pd = str_replace('/', '-', $line[41]);
+        $date_pd = str_replace('/', '-', $line[42]);
         $po_date = validate_date($date_pd);
 
         // CHECK IF BLANK DATA
@@ -70,7 +72,7 @@ function check_csv($file, $conn)
             if (
                 $line[0] == '' || $line[34] == '' || $line[35] == '' || $line[36] == '' || $line[37] == '' ||
                 $line[38] == '' || $line[39] == '' || $line[40] == '' || $line[41] == '' || $line[42] == '' ||
-                $line[43] == '' || $line[44] == '' || $line[45] == ''
+                $line[43] == '' || $line[44] == '' || $line[45] == '' || $line[46]
             ) {
                 // IF BLANK DETECTED ERROR
                 $hasBlankError++;
@@ -81,7 +83,7 @@ function check_csv($file, $conn)
             if (
                 $line[0] == '' || $line[34] == '' || $line[35] == '' || $line[36] == '' || $line[37] == '' ||
                 $line[38] == '' || $line[39] == '' || $line[40] == '' || $line[41] == '' || $line[42] == '' ||
-                $line[43] == '' || $line[44] == '' || $line[45] == ''
+                $line[43] == '' || $line[44] == '' || $line[45] == '' || $line[46]
             ) {
                 // IF BLANK DETECTED ERROR
                 $hasBlankError++;
@@ -116,7 +118,7 @@ function check_csv($file, $conn)
             $row_valid_arr[4] = 1;
             array_push($notValidPODate, $check_csv_row);
         }
-        if (!empty($line[46])) {
+        if (!empty($line[47])) {
             $date_aad = str_replace('/', '-', $line[46]);
             $actual_arrival_date = validate_date($date_aad);
             if ($actual_arrival_date == false) {
@@ -144,7 +146,7 @@ function check_csv($file, $conn)
                 array_push($notValidDateIssuedToRequestor, $check_csv_row);
             }
         }
-        if (!empty($line[44])) {
+        if (!empty($line[45])) {
             $date_etd = str_replace('/', '-', $line[44]);
             $etd = validate_date($date_etd);
             if ($etd == false) {
@@ -154,13 +156,23 @@ function check_csv($file, $conn)
             }
         }
 
-        if (!empty($line[45])) {
+        if (!empty($line[46])) {
             $date_eta = str_replace('/', '-', $line[45]);
             $eta = validate_date($date_eta);
             if ($eta == false) {
                 $hasError = 1;
                 $row_valid_arr[9] = 1;
                 array_push($notValidDateETA, $check_csv_row);
+            }
+        }
+
+        if (!empty($line[41])) {
+            $date_rbr = str_replace('/', '-', $line[45]);
+            $date_returned_by_requestor = validate_date($date_rbr);
+            if ($date_returned_by_requestor == false) {
+                $hasError = 1;
+                $row_valid_arr[10] = 1;
+                array_push($notValidDateReturnedByRequestor, $check_csv_row);
             }
         }
     }
@@ -198,6 +210,10 @@ function check_csv($file, $conn)
         }
         if ($row_valid_arr[9] == 1) {
             $message = $message . 'INVALID DATE FORMAT: ETA on row/s ' . implode(", ", $notValidDateETA) . '. ';
+        }
+
+        if ($row_valid_arr[10] == 1) {
+            $message = $message . 'INVALID DATE FORMAT: Date Returned By Requestor on row/s ' . implode(", ", $notValidDateReturnedByRequestor) . '. ';
         }
 
         if ($hasBlankError >= 1) {
@@ -274,14 +290,15 @@ if (isset($_POST['upload'])) {
                     $date_received_po_doc_purchasing = $line[38];
                     $date_issued_to_requestor = $line[39];
                     $issued_to = $line[40];
-                    $po_date = $line[41];
-                    $po_no = $line[42];
-                    $supplier = $line[43];
-                    $etd = $line[44];
-                    $eta = $line[45];
-                    $actual_arrival_date = $line[46];
-                    $invoice_no = $line[47];
-                    $remarks2 = $line[48];
+                    $date_returned_by_requestor = $line[41];
+                    $po_date = $line[42];
+                    $po_no = $line[43];
+                    $supplier = $line[44];
+                    $etd = $line[45];
+                    $eta = $line[46];
+                    $actual_arrival_date = $line[47];
+                    $invoice_no = $line[48];
+                    $remarks2 = $line[49];
 
                     // CHECK IF BLANK DATA
                     $date_adoq = str_replace('/', '-', $approval_date_of_quotation);
@@ -324,6 +341,11 @@ if (isset($_POST['upload'])) {
                         $eta = date("Y-m-d", strtotime($date_eta));
                     }
 
+                    if (!empty($date_returned_by_requestor)) {
+                        $date_rbr = str_replace('/', '-', $date_returned_by_requestor);
+                        $date_returned_by_requestor = date("Y-m-d", strtotime($date_rbr));
+                    }
+
                     // CHECK DATA
                     $prevQuery = "SELECT joms_request.id, joms_po_process.request_id FROM joms_request 
                          LEFT JOIN joms_rfq_process ON joms_rfq_process.request_id = joms_request.request_id 
@@ -356,6 +378,7 @@ if (isset($_POST['upload'])) {
                                 date_received_po_doc_purchasing = '$date_received_po_doc_purchasing',
                                 date_issued_to_requestor = '$date_issued_to_requestor',
                                 issued_to = '$issued_to',
+                                date_returned_by_requestor = '$date_returned_by_requestor',
                                 po_date = '$po_date',
                                 po_no = '$po_no',
                                 -- ordering_additional_details = '$ordering_additional_details',
@@ -399,7 +422,7 @@ if (isset($_POST['upload'])) {
                             $insert = "INSERT INTO joms_po_process(
                                 `request_id`, `approval_date_of_quotation`, `target_date_submission_to_purchasing`, 
                                 `actual_date_of_submission_to_purchasing`, `target_po_date`, `date_received_po_doc_purchasing`, 
-                                `date_issued_to_requestor`, `issued_to`, `po_date`, `po_no`, `supplier`, `etd`, `eta`";
+                                `date_issued_to_requestor`, `issued_to`, `date_returned_by_requestor`, `po_date`, `po_no`, `supplier`, `etd`, `eta`";
 
                             // Add conditional columns for non-empty optional dates
                             if (!empty($actual_arrival_date)) {
@@ -411,9 +434,9 @@ if (isset($_POST['upload'])) {
                             $insert .= ", `po_uploaded_by`)";
 
                             if (!empty($actual_arrival_date)) {
-                                $insert = $insert . " VALUES ('$request_id', '$approval_date_of_quotation', '$target_date_submission_to_purchasing', '$actual_date_of_submission_to_purchasing', '$target_po_date', '$date_received_po_doc_purchasing', '$date_issued_to_requestor', '$issued_to', '$po_date', '$po_no',  '$supplier', '$etd', '$eta', '$actual_arrival_date', '$invoice_no', '$remarks2', '$po_uploaded_by')";
+                                $insert = $insert . " VALUES ('$request_id', '$approval_date_of_quotation', '$target_date_submission_to_purchasing', '$actual_date_of_submission_to_purchasing', '$target_po_date', '$date_received_po_doc_purchasing', '$date_issued_to_requestor', '$issued_to', '$date_returned_by_requestor', '$po_date', '$po_no',  '$supplier', '$etd', '$eta', '$actual_arrival_date', '$invoice_no', '$remarks2', '$po_uploaded_by')";
                             } else {
-                                $insert = $insert . " VALUES ('$request_id', '$approval_date_of_quotation', '$target_date_submission_to_purchasing', '$actual_date_of_submission_to_purchasing', '$target_po_date', '$date_received_po_doc_purchasing', '$date_issued_to_requestor', '$issued_to', '$po_date', '$po_no',  '$supplier', '$etd', '$eta', '$invoice_no', '$remarks2', '$po_uploaded_by')";
+                                $insert = $insert . " VALUES ('$request_id', '$approval_date_of_quotation', '$target_date_submission_to_purchasing', '$actual_date_of_submission_to_purchasing', '$target_po_date', '$date_received_po_doc_purchasing', '$date_issued_to_requestor', '$issued_to', '$date_returned_by_requestor', '$po_date', '$po_no',  '$supplier', '$etd', '$eta', '$invoice_no', '$remarks2', '$po_uploaded_by')";
                             }
 
                             $stmt = $conn->prepare($insert);
@@ -492,7 +515,6 @@ if (isset($_POST['upload'])) {
                         }
                     </script>';
     }
-
 }
 
 // KILL CONNECTION
