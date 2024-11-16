@@ -42,7 +42,7 @@ if (!isset($_SESSION['username'])) {
       font-family: 'Poppins', sans-serif;
     }
 
-    .loader {
+    /* .loader {
       border: 16px solid #f3f3f3;
       border-radius: 50%;
       border-top: 16px solid #536A6D;
@@ -50,7 +50,7 @@ if (!isset($_SESSION['username'])) {
       height: 50px;
       -webkit-animation: spin 2s linear infinite;
       animation: spin 2s linear infinite;
-    }
+    } */
 
     @keyframes spin {
       0% {
