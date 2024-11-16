@@ -51,10 +51,10 @@
 
 				// Check if the table has the "No Record Found" row
 				if ($('#list_of_request_table tbody tr td').text().trim() === 'No Record Found') {
-					$('#count_view').html(0);  
+					$('#count_view').html(0);
 				} else {
 					let count = $('#list_of_request_table tbody tr').length;
-					$('#count_view').html(count);  
+					$('#count_view').html(count);
 				}
 
 				const disableCancel = ['open', 'cancelled', 'ame3', 'ame2'].includes(request_status);
@@ -295,6 +295,9 @@
 		document.getElementById('request_car_maker_search').value = '';
 		document.getElementById('request_car_model_search').value = '';
 		document.getElementById('request_section_search').value = '';
+
+		document.getElementById('request_date_from_search').value = '<?= $server_date_only ?>';
+		document.getElementById('request_date_to_search').value = '<?= $server_date_only ?>';
 
 		search_request();
 	}

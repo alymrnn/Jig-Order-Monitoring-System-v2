@@ -87,7 +87,7 @@ $query = "SELECT joms_request.status, joms_request.carmaker, joms_request.carmod
 	joms_rfq_process.date_of_issuance_rfq, joms_rfq_process.rfq_no, joms_rfq_process.rfq_remarks,
     joms_rfq_process.target_date_reply_quotation,  joms_rfq_process.item_code, joms_rfq_process.date_reply_quotation, joms_rfq_process.validity_quotation, joms_rfq_process.leadtime, joms_rfq_process.quotation_no, joms_rfq_process.unit_price_jpy, joms_rfq_process.unit_price_usd,joms_rfq_process.unit_price_php, joms_rfq_process.total_amount, joms_rfq_process.fsib_no, joms_rfq_process.fsib_code, joms_rfq_process.date_sent_to_internal_signatories, joms_rfq_process.i_uploaded_by, joms_rfq_process.c_uploaded_by, 
 	joms_rfq_process.target_approval_date_of_quotation, joms_rfq_process.rfq_status,
-    joms_po_process.approval_date_of_quotation, joms_po_process.target_date_submission_to_purchasing, joms_po_process.actual_date_of_submission_to_purchasing, joms_po_process.target_po_date, joms_po_process.date_received_po_doc_purchasing, joms_po_process.date_issued_to_requestor, joms_po_process.issued_to, joms_po_process.date_returned_by_inspector, joms_po_process.po_date, joms_po_process.po_no, joms_po_process.supplier, joms_po_process.etd, joms_po_process.eta, joms_po_process.actual_arrival_date, joms_po_process.invoice_no, joms_po_process.po_uploaded_by, joms_po_process.remarks AS remarks2,
+    joms_po_process.approval_date_of_quotation, joms_po_process.target_date_submission_to_purchasing, joms_po_process.actual_date_of_submission_to_purchasing, joms_po_process.target_po_date, joms_po_process.date_received_po_doc_purchasing, joms_po_process.date_issued_to_requestor, joms_po_process.issued_to, joms_po_process.date_returned_by_requestor, joms_po_process.po_date, joms_po_process.po_no, joms_po_process.supplier, joms_po_process.etd, joms_po_process.eta, joms_po_process.actual_arrival_date, joms_po_process.invoice_no, joms_po_process.po_uploaded_by, joms_po_process.remarks AS remarks2,
 	joms_installation.installation_date, joms_installation.set_by, joms_installation.line_no
 		 FROM joms_request
 		LEFT JOIN joms_rfq_process ON joms_rfq_process.request_id = joms_request.request_id
@@ -99,19 +99,24 @@ if ($request_status == 'ame2') {
 } else if ($request_status == 'ame3') {
     $query = $query . " WHERE joms_request.status = 'closed' AND joms_installation.installation_date IS NULL";
 } else {
-    $query = $query . " WHERE joms_request.status = '$request_status' AND joms_request.section= '$request_section'";
+    $query = $query . " WHERE joms_request.status = '$request_status'";
+}
 
-    // Only add carmaker or carmodel conditions if they are provided
-    if (!empty($request_car_maker)) {
-        $query = $query . " AND joms_request.carmaker = '$request_car_maker'";
-    }
+// Only add section or carmaker or carmodel conditions if they are provided
+if (!empty($request_section)) {
+    $query = $query . " AND joms_request.section = '$request_section'";
+}
 
-    if (!empty($request_car_model)) {
-        $query = $query . " AND joms_request.carmodel = '$request_car_model'";
-    }
+if (!empty($request_car_maker)) {
+    $query = $query . " AND joms_request.carmaker = '$request_car_maker'";
+}
+
+if (!empty($request_car_model)) {
+    $query = $query . " AND joms_request.carmodel = '$request_car_model'";
 }
 
 $query = $query . " AND (joms_request.date_requested >= '$request_date_from' AND joms_request.date_requested <= '$request_date_to')";
+
 $stmt = $conn->prepare($query, array(PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL));
 $stmt->execute();
 
