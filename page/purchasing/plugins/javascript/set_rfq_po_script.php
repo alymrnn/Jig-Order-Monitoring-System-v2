@@ -82,6 +82,8 @@
     }
 
     const filter_rfq_process = () => {
+        $('#spinner').css('display', 'block');
+
         var rfq_status_search = document.getElementById('rfq_status_search').value;
         $.ajax({
             url: '../../process/purchasing/rfq.php',

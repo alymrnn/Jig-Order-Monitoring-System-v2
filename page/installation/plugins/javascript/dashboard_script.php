@@ -13,6 +13,8 @@
 
     //Only for Display lang sya ng data ng without Installation Date not for searching. check the method name if same sa backend at malaman ang process.
     const search_request = () => {
+        $('#spinner').css('display', 'block');
+
         $.ajax({
             url: '../../process/installation/installation.php',
             type: 'POST',
@@ -22,6 +24,8 @@
                 has_installation_date: 0
             }, success: function (response) {
                 document.getElementById('list_of_request').innerHTML = response;
+                $('#spinner').fadeOut();
+
                 //Count ng request table
                 let count = $('#list_of_request_table tbody tr').length;
                 $('#count_view').html(count);
@@ -30,6 +34,8 @@
     }
     //Only for Display lang sya ng data ng with Installation Date not for searching. check the method name if same sa backend at malaman ang process.
     const search_request2 = () => {
+        $('#spinner').css('display', 'block');
+
         $.ajax({
             url: '../../process/installation/installation.php',
             type: 'POST',
@@ -39,6 +45,8 @@
                 has_installation_date: 1
             }, success: function (response) {
                 document.getElementById('list_of_request2').innerHTML = response;
+                $('#spinner').fadeOut();
+
                 let count = $('#list_of_request_table2 tbody tr').length;
                 $('#count_view2').html(count);
             }
@@ -117,7 +125,7 @@
                 showConfirmButton: false,
                 timer: 1000
             });
-        }else {
+        } else {
 
             var numberOfChecked = arr.length;
             if (numberOfChecked > 0) {
@@ -130,7 +138,7 @@
                         method: 'install',
                         id: arr,
                         installation_date: installation_date,
-                        line_no : line_no
+                        line_no: line_no
                     }, success: function (response) {
                         console.log(response);
                         Swal.fire({

@@ -129,6 +129,10 @@
                       <div class="row">
                         <div class="col-12">
                           <div class="card-body table-responsive p-0" style="height: 900px; overflow-y: auto;">
+                            <div id="spinner" style="display: none; text-align: center; margin-top: 10px;">
+                              <img src="../../dist/img/pin-wheel.gif" alt="Loading..."
+                                style="width: 50px; height: 50px;">
+                            </div>
                             <table class="table table-head-fixed text-nowrap table-bordered table-hover"
                               id="list_of_uploaded_request_with_po_table">
                               <thead
@@ -193,7 +197,7 @@
                                   <th>Date Returned by Requestor</th>
                                   <th>PO Date </th>
                                   <th>PO No. </th>
-                                  
+
                                   <!-- <th>Ordering Additional Details </th> -->
                                   <th>Supplier </th>
                                   <th>ETD </th>
@@ -206,14 +210,6 @@
                               </thead>
                               <tbody id="list_of_uploaded_request_with_po" style="text-align:center;"></tbody>
                             </table>
-                            <div class="row">
-                              <div class="col-6"></div>
-                              <div class="col-6">
-                                <div class="spinner" id="spinner" style="display:none;">
-                                  <div class="loader float-sm-center"></div>
-                                </div>
-                              </div>
-                            </div>
                           </div>
                         </div>
                       </div>

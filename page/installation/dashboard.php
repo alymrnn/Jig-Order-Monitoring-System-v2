@@ -61,6 +61,9 @@
               <div class="row">
                 <div class="col-12">
                   <div class="card-body table-responsive p-0" style="height: 500px; overflow-y: auto;">
+                    <div id="spinner" style="display: none; text-align: center; margin-top: 10px;">
+                      <img src="../../dist/img/pin-wheel.gif" alt="Loading..." style="width: 50px; height: 50px;">
+                    </div>
                     <table class="table table-head-fixed text-nowrap table-bordered table-hover"
                       id="list_of_request_table">
                       <thead
@@ -197,6 +200,9 @@
                 <div class="row">
                   <div class="col-12 ml-0 p-0">
                     <div class="card-body table-responsive p-0" style="height: 500px; overflow-y: auto;">
+                      <div id="spinner" style="display: none; text-align: center; margin-top: 10px;">
+                        <img src="../../dist/img/pin-wheel.gif" alt="Loading..." style="width: 50px; height: 50px;">
+                      </div>
                       <table class="table table-head-fixed text-nowrap table-bordered table-hover"
                         id="list_of_request_table2">
                         <thead

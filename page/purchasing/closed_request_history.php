@@ -101,11 +101,12 @@
                   </div>
                   <div class="row">
                     <div class="col-12">
-                    <div class="card-body table-responsive p-0" style="height: 500px; overflow-y: auto;">
-                      <table class="table table-head-fixed text-nowrap table-bordered table-hover"
-                        id="list_of_uploaded_request_with_po_table">
-                        <thead style="text-align:center; position: sticky;top: 0; z-index: 1;  background-color: #f8f9fa;">
-                        <th colspan="17" class="bg-secondary">Request</th>
+                      <div class="card-body table-responsive p-0" style="height: 500px; overflow-y: auto;">
+                        <table class="table table-head-fixed text-nowrap table-bordered table-hover"
+                          id="list_of_uploaded_request_with_po_table">
+                          <thead
+                            style="text-align:center; position: sticky;top: 0; z-index: 1;  background-color: #f8f9fa;">
+                            <th colspan="17" class="bg-secondary">Request</th>
                             <th colspan="20" class="bg-light">RFQ Process</th>
                             <th colspan="13" class="bg-secondary">PO Process</th>
                             <th colspan="4" class="bg-light">Delivery</th>
@@ -173,10 +174,8 @@
                         </table>
                         <div class="row">
                           <div class="col-6"></div>
-                          <div class="col-6">
-                            <div class="spinner" id="spinner" style="display:none;">
-                              <div class="loader float-sm-center"></div>
-                            </div>
+                          <div id="spinner" style="display: none; text-align: center; margin-top: 10px;">
+                            <img src="../../dist/img/pin-wheel.gif" alt="Loading..." style="width: 50px; height: 50px;">
                           </div>
                         </div>
                       </div>
