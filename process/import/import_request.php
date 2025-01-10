@@ -122,11 +122,55 @@ if (isset($_POST['upload'])) {
                 // PARSE
                 $error = 0;
 
+                // while (($line = fgetcsv($csvFile)) !== false) {
+                //     // Check if the row is blank or consists only of whitespace
+                //     if (empty(implode('', $line))) {
+                //         continue; // Skip blank lines
+                //     }
+                //     $carmaker = $line[0];
+                //     $carmodel = $line[1];
+                //     $product = $line[2];
+                //     $jigname = $line[3];
+                //     $drawing_no = $line[4];
+                //     $type = $line[5];
+                //     $qty = $line[6];
+                //     $purpose = $line[7];
+                //     $budget = $line[8];
+                //     $requested_by = $line[9];
+                //     $required_delivery_date = $line[10];
+                //     $remarks = $line[11];
+                //     $shipping_method = $line[12];
+
+                //     $date_requested = $server_date_only;
+
+                //     $date_r = str_replace('/', '-', $date_requested);
+                //     $date_requested = date("Y-m-d", strtotime($date_r));
+
+                //     $date_rdd = str_replace('/', '-', $required_delivery_date);
+                //     $required_delivery_date = date("Y-m-d", strtotime($date_rdd));
+
+                //     $request_id = '';
+                //     $request_id = generate_joms_request_id($request_id);
+
+                //     $uploaded_by = $_SESSION['fullname'];
+                //     $section = $_SESSION['section'];
+
+                //     $insert = "INSERT INTO joms_request(`request_id`, `carmaker`, `carmodel`, `product`, `jigname`, `drawing_no`, `type`, `qty`, `purpose`, `budget`, `date_requested`, `requested_by`, `required_delivery_date`,`remarks`, `shipping_method`,`uploaded_by`, `section`) VALUES ('$request_id','$carmaker','$carmodel','$product','$jigname','$drawing_no','$type','$qty','$purpose','$budget','$server_date_only','$requested_by','$required_delivery_date','$remarks','$shipping_method','$uploaded_by','$section')";
+                //     $stmt = $conn->prepare($insert);
+                //     if ($stmt->execute()) {
+                //         update_notif_count_joms_request($conn);
+                //         $error = 0;
+                //     } else {
+                //         $error = $error + 1;
+                //     }
+                // }
+
                 while (($line = fgetcsv($csvFile)) !== false) {
                     // Check if the row is blank or consists only of whitespace
                     if (empty(implode('', $line))) {
                         continue; // Skip blank lines
                     }
+
                     $carmaker = $line[0];
                     $carmodel = $line[1];
                     $product = $line[2];
@@ -141,20 +185,45 @@ if (isset($_POST['upload'])) {
                     $remarks = $line[11];
                     $shipping_method = $line[12];
 
-                    $date_r = str_replace('/', '-', $date_requested);
-                    $date_requested = date("Y-m-d", strtotime($date_r));
+                    // Assign date_requested 
+                    $date_requested = $server_date_only;
 
-                    $date_rdd = str_replace('/', '-', $required_delivery_date);
-                    $required_delivery_date = date("Y-m-d", strtotime($date_rdd));
+                    // Format dates
+                    $date_requested = date("Y-m-d", strtotime(str_replace('/', '-', $date_requested)));
+                    $required_delivery_date = date("Y-m-d", strtotime(str_replace('/', '-', $required_delivery_date)));
 
-                    $request_id = '';
-                    $request_id = generate_joms_request_id($request_id);
+                    $request_id = generate_joms_request_id('');
 
                     $uploaded_by = $_SESSION['fullname'];
                     $section = $_SESSION['section'];
 
-                    $insert = "INSERT INTO joms_request(`request_id`, `carmaker`, `carmodel`, `product`, `jigname`, `drawing_no`, `type`, `qty`, `purpose`, `budget`, `date_requested`, `requested_by`, `required_delivery_date`,`remarks`, `shipping_method`,`uploaded_by`, `section`) VALUES ('$request_id','$carmaker','$carmodel','$product','$jigname','$drawing_no','$type','$qty','$purpose','$budget','$server_date_only','$requested_by','$required_delivery_date','$remarks','$shipping_method','$uploaded_by','$section')";
+                    // Use a prepared statement
+                    $insert = "INSERT INTO joms_request 
+                        (`request_id`, `carmaker`, `carmodel`, `product`, `jigname`, `drawing_no`, `type`, `qty`, `purpose`, `budget`, `date_requested`, `requested_by`, `required_delivery_date`, `remarks`, `shipping_method`, `uploaded_by`, `section`) 
+                        VALUES 
+                        (:request_id, :carmaker, :carmodel, :product, :jigname, :drawing_no, :type, :qty, :purpose, :budget, :date_requested, :requested_by, :required_delivery_date, :remarks, :shipping_method, :uploaded_by, :section)";
                     $stmt = $conn->prepare($insert);
+
+                    // Bind parameters
+                    $stmt->bindParam(':request_id', $request_id);
+                    $stmt->bindParam(':carmaker', $carmaker);
+                    $stmt->bindParam(':carmodel', $carmodel);
+                    $stmt->bindParam(':product', $product);
+                    $stmt->bindParam(':jigname', $jigname);
+                    $stmt->bindParam(':drawing_no', $drawing_no);
+                    $stmt->bindParam(':type', $type);
+                    $stmt->bindParam(':qty', $qty);
+                    $stmt->bindParam(':purpose', $purpose);
+                    $stmt->bindParam(':budget', $budget);
+                    $stmt->bindParam(':date_requested', $date_requested);
+                    $stmt->bindParam(':requested_by', $requested_by);
+                    $stmt->bindParam(':required_delivery_date', $required_delivery_date);
+                    $stmt->bindParam(':remarks', $remarks);
+                    $stmt->bindParam(':shipping_method', $shipping_method);
+                    $stmt->bindParam(':uploaded_by', $uploaded_by);
+                    $stmt->bindParam(':section', $section);
+
+                    // Execute the query
                     if ($stmt->execute()) {
                         update_notif_count_joms_request($conn);
                         $error = 0;
@@ -176,8 +245,8 @@ if (isset($_POST['upload'])) {
                         }
                     </script>';
                 } else {
-                    echo 
-                    '<script>
+                    echo
+                        '<script>
                         var x = confirm("WITH ERROR! # OF ERRORS ' . $error . ' ");
                         if(x == true){
                             location.replace("../../page/requester/import_request.php");
@@ -188,7 +257,7 @@ if (isset($_POST['upload'])) {
                 }
             } else {
                 // If errors found
-                echo 
+                echo
                     '<script>
                         var x = confirm("' . $chkCsvMsg . '");
                         if(x == true){

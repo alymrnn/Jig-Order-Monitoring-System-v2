@@ -60,9 +60,9 @@ $fields = array(
 	'Supplier ',
 	'ETD ',
 	'ETA ',
+	'Actual Arrival Date ',
 	'Invoice No',
-	'Remarks ',
-	'Actual Arrival Date '
+	'Remarks '
 );
 $fields_exp = array(
 	'Request ID',
@@ -112,9 +112,9 @@ $fields_exp = array(
 	'Supplier ',
 	'Ex. YYYY-MM-DD',
 	'Ex. YYYY-MM-DD',
+	'Ex. YYYY-MM-DD',
 	'Invoice No',
-	'Remarks',
-	'Ex. YYYY-MM-DD'
+	'Remarks'
 );
 
 fputcsv($f, $fields, $delimiter);
@@ -185,9 +185,9 @@ if ($stmt->rowCount() > 0) {
 			$row['supplier'],
 			$row['etd'],
 			$row['eta'],
-			$row['invoice_no'],
-			$row['remarks2'],
 			$row['actual_arrival_date'],
+			$row['invoice_no'],
+			$row['remarks2']
 		);
 		fputcsv($f, $lineData, $delimiter);
 	}

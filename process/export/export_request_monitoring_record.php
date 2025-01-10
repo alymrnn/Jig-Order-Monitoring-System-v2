@@ -71,9 +71,9 @@ $headers = array(
     'Supplier',
     'ETD',
     'ETA',
+    'Actual Arrival Date',
     'Invoice No',
     'Remarks',
-    'Actual Arrival Date',
     'Uploaded By',
 
     'Line Number',

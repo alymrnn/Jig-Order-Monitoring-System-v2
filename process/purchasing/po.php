@@ -78,7 +78,6 @@ if ($method == 'get_closed_request_history') {
 			echo '<td>' . $j['date_returned_by_requestor'] . '</td>';
 			echo '<td>' . $j['po_date'] . '</td>';
 			echo '<td>' . $j['po_no'] . '</td>';
-			// echo '<td>' . $j['ordering_additional_details'] . '</td>';
 			echo '<td>' . $j['supplier'] . '</td>';
 			echo '<td>' . $j['etd'] . '</td>';
 			echo '<td>' . $j['eta'] . '</td>';

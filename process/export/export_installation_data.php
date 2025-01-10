@@ -58,9 +58,9 @@ $fields = array(
 	'Supplier ',
 	'ETD ',
 	'ETA ',
+	'Actual Arrival Date ',
 	'Invoice No',
 	'Remarks ',
-	'Actual Arrival Date ',
 	'Line Number',
 	'Installation Date'
 );
@@ -112,9 +112,9 @@ $fields_exp = array(
 	'Supplier ',
 	'Ex. YYYY-MM-DD',
 	'Ex. YYYY-MM-DD',
+	'Actual Arrival Date ',
 	'Invoice No ',
 	'Remarks ',
-	'Actual Arrival date ',
 	'Line Number',
 	'Ex. YYYY-MM-DD'
 );
@@ -195,9 +195,9 @@ if ($stmt->rowCount() > 0) {
 			// $row['required_delivery_date2'],
 			$row['etd'],
 			$row['eta'],
+			$row['actual_arrival_date'],
 			$row['invoice_no'],
 			$row['remarks2'],
-			$row['actual_arrival_date'],
 
 			$row['line_no'],
 			$row['installation_date']

@@ -57,9 +57,9 @@ $fields = array(
     'Supplier ',
     'ETD ',
     'ETA ',
+    'Actual Arrival Date ',
     'Invoice No',
     'Remarks ',
-    'Actual Arrival Date ',
     'Line Number',
     'Installation Date'
 );
@@ -191,9 +191,9 @@ if ($stmt->rowCount() > 0) {
             $row['supplier'],
             $row['etd'],
             $row['eta'],
+            $row['actual_arrival_date'],
             $row['invoice_no'],
             $row['remarks2'],
-            $row['actual_arrival_date'],
 
             $row['line_no'],
             $row['installation_date']
